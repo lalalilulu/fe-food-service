@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/app.css';
+import './styles/startpage.css';
+import React from "react";
+import { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
+import Loader from "react-loader-spinner";
+import {Navigation} from "./NavComponent";
+import { LoginForm } from "./LoginForm";
+import { SignUpForm } from "./SignUpForm";
+
+const ProfilePage = lazy(() => import("./ProfilePage"));
+
+const NoMatchPage = () => {
+  return <h3>404 - Not found</h3>;
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <Suspense fallback={<Loader type="Puff" color="#00796B" height={100} width={100} timeout={3000}/>}>
+          <div className="App">
+            <img className="app-logo" src="../assets/images" alt="Logo"/>
+            <Navigation />
+            <Switch>
+              <Route path="/" exact component={LoginForm} />
+              <Route path="/signup" exact component={SignUpForm} />
+              <Route path="/profile" exact component={ProfilePage} />
+              <Route component={NoMatchPage} />
+            </Switch>
+          </div>
+        </Suspense>
+      </Router>
   );
 }
 
