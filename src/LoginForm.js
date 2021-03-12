@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/startpage.css";
+import "./styles/startpage.scss";
 
 export function LoginForm() {
     return (

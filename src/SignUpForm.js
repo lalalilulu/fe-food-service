@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles/startpage.css";
-import "./styles/startpage.css";
+import "./styles/startpage.scss";
+import "./styles/startpage.scss";
 
 export function SignUpForm() {
     return (

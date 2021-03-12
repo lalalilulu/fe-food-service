@@ -1,5 +1,5 @@
-import './styles/app.css';
-import './styles/startpage.css';
+import './styles/app.scss';
+import './styles/startpage.scss';
 import React from "react";
 import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
@@ -19,8 +19,8 @@ function App() {
   return (
       <Router>
         <Suspense fallback={<Loader type="Puff" color="#00796B" height={100} width={100} timeout={3000}/>}>
-          <div className="App">
-            <img className="app-logo" src="../assets/images" alt="Logo"/>
+          <div className="start-page">
+            <img className="app-logo" src="../assets/images/food-logo.png" alt="Logo"/>
             <Navigation />
             <Switch>
               <Route path="/" exact component={LoginForm} />
