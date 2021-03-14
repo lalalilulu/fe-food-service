@@ -1,0 +1,48 @@
+@import "./app";
+
+.update-profile-form {
+  margin-left: 20%;
+  margin-top: 10%;
+}
+
+.update-profile-form h2 {
+  color: $dark-primary-color;
+  font-size: 22px;
+  text-align: start;
+}
+
+.update-profile-form .profile-info {
+  color: $primary-text-color;
+  text-align: start;
+}
+
+.profile-input {
+  width: 80%;
+  font-family: $secondary-font-family;
+  font-size: 15px;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: $light-primary-color;
+  padding-bottom: 1%;
+  margin-bottom: 1%;
+}
+
+.payment {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+//does not work
+//.payment-method:checked {
+//  color: #7B1FA2;
+//}
+
+.payment-label {
+  padding-left: 3%;
+}
+
+.profile-btn {
+  margin-top: 5%;
+  margin-left: -20%;
+}

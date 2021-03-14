@@ -1,23 +1,5 @@
 @import './app';
 
-.login-container {
-  position: fixed; top: 50%; left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 400px;
-  height: 600px;
-  background:  $background-primary-color;
-  box-shadow: $box-shadow;
-  border-radius: 12px;
-  font-family: $primary-font-family;
-}
-
 .app-logo {
   width: 60%;
   height: 22%;
@@ -39,7 +21,7 @@
   color: $primary-text-color;
   outline: 0;
   border-width: 0 0 2px;
-  border-color: $default-primary-color;
+  border-color: $light-primary-color;
   padding-bottom: 2%;
   margin-bottom: 7%;
 }
@@ -59,6 +41,7 @@
 
 .social-n:focus, .social-n:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 .input-error {
@@ -69,13 +52,22 @@
 }
 
 .btn {
-  width: 100%;
+  width: 200px;
+  //-webkit-appearance: button;
+  //-moz-appearance: button;
   height: 36px;
-  background: $dark-primary-color;
+  background: $light-primary-color;
   border-radius: 10px;
-  color: $background-primary-color;
+  color: $dark-primary-color;
   font-family: $secondary-font-family;
-  font-size: 24px;
-  border: 0;
+  font-size: 22px;
+  padding: 2px;
   margin-top: 10%;
+  border: 0;
+}
+
+.btn:focus, .btn:hover {
+  background: $dark-primary-color;
+  color: $background-primary-color;
+  cursor: pointer;
 }

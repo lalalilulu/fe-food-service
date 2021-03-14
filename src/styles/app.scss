@@ -12,15 +12,56 @@ $divider-color: #BDBDBD;
 
 $primary-font-family: Manrope;
 $secondary-font-family: Roboto;
-//font sizes: 15px 18px 24px 32px
+//font sizes: 15px 18px 22px 24px 32px
 
 
 $box-shadow: 0px 0px 6px $divider-color;
-
 
 * {
   outline: none;
   box-sizing: border-box;
 }
 
+.login-container, .profile-container {
+  position: fixed; top: 50%; left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 400px;
+  height: 600px;
+  background:  $background-primary-color;
+  box-shadow: $box-shadow;
+  border-radius: 12px;
+  font-family: $primary-font-family;
+}
 
+.modalHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: -10%;
+}
+
+.modalHeader h2 {
+  font-size: 24px;
+  color: $dark-primary-color;
+}
+
+.return-btn {
+  width: 25%;
+  height: 32px;
+  margin: 5%;
+  padding: 5%;
+  background-image: url("../assets/icons/left-arrow.png");
+  background-repeat: no-repeat;
+  opacity: 0.4;
+}
+
+.return-btn:focus, .return-btn:hover {
+  opacity: 1;
+}
