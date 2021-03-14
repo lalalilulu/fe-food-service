@@ -1,7 +1,7 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import logo from "./assets/images/error.png";
 import './styles/404.scss';
-import {Link} from "react-router-dom";
 
 function NoMatchPage() {
     return (

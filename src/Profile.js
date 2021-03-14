@@ -10,14 +10,14 @@ function Profile() {
                 <h2>My Profile</h2>
             </div>
             <form name="update-profile-form" className="update-profile-form" action="#" method="post">
-                <h2>Key information</h2>
+                <h3>Key information</h3>
                 <div className="profile-info">
                     <input name="name" type="text" className="profile-input" defaultValue="Ivan Ivanov"/>
                     <input name="email" type="email" className="profile-input" defaultValue="ivanov@gmail.com"/>
                     <input name="phone" type="tel" className="profile-input" defaultValue="+7(931)678-57-57"/>
                     <input name="address" type="text" className="profile-input" defaultValue="St. Petersburg, 13 Liniya V.O. 14"/>
                 </div>
-                <h2>Payment Method</h2>
+                <h3>Payment Method</h3>
                 <div className="profile-info">
                     <ul className="payment">
                         <li>

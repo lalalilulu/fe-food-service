@@ -1,0 +1,140 @@
+@import "./app";
+
+.cart-container {
+  height: 850px;
+  overflow: hidden;
+}
+
+.modalHeader h2 {
+  margin-left: 5%;
+}
+
+.cart-form {
+  margin-top: -15%;
+  margin-left: 15%;
+  height: 80%;
+}
+
+.outer-wrapper {
+  width: 350px;
+}
+
+.inner-wrapper {
+  width: 80%;
+  display: flex;
+  overflow-x: auto;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $background-primary-color;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $light-primary-color;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $dark-primary-color;
+}
+
+.item {
+  width: 100%;
+  position: relative;
+  margin-right: 20px;
+  margin-bottom: 0;
+}
+
+.item-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.item-title {
+  font-size: 12px;
+  margin-top: 0;
+}
+
+.cart-form h3 {
+  color: $dark-primary-color;
+  font-size: 18px;
+  text-align: start;
+  margin-bottom: 2%;
+}
+
+.cart-form .cart-info {
+  color: $primary-text-color;
+  text-align: start;
+  margin-bottom: 7%;
+}
+
+.cart-input {
+  width: 80%;
+  font-family: $secondary-font-family;
+  font-size: 15px;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: $light-primary-color;
+  padding-bottom: 1%;
+  margin-bottom: 1%;
+}
+
+.cart-date-picker, .cart-time-picker {
+  width: 80%;
+  margin: 1.5% 0;
+  color: $dark-primary-color;
+}
+
+.cutleryLabel, .cart-comment {
+  font-size: 15px;
+}
+
+.cart-comment {
+  border-color: $light-primary-color;
+  padding-left: 5px;
+}
+
+.cutleryInput {
+  font-size: 15px;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: $light-primary-color;
+  text-align: center;
+  margin-left: 12%;
+}
+
+.payment {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.payment li {
+  display: inline;
+  margin-right: 9%;
+}
+
+//does not work
+//.payment-method:checked {
+//  color: #7B1FA2;
+//}
+
+.payment-label {
+  padding-left: 2.5%;
+  font-size: 15px;
+  margin: 0;
+}
+
+.cart-btn {
+  margin-top: 5%;
+  margin-left: -20%;
+}
+

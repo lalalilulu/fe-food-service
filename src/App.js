@@ -14,7 +14,7 @@ const NoMatchPage = lazy(() => import("./404Error"));
 function App() {
   return (
       <Router>
-        <Suspense fallback={<Loader type="Puff" color="#7B1FA2" height={100} width={100} timeout={3000}/>}>
+        <Suspense fallback={<Loader type="Puff" color="#7B1FA2" height={500} width={300} timeout={300}/>}>
             <Switch>
               <Route path="/" exact component={Autorisation}/>
               <Route path="/dashboard" exact component={Dashboard}/>
