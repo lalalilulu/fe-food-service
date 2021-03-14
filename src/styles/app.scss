@@ -23,45 +23,4 @@ $box-shadow: 0px 0px 6px $divider-color;
   box-sizing: border-box;
 }
 
-.start-page {
-  position: fixed; top: 50%; left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 400px;
-  height: 600px;
-  background:  #FEFFFF;
-  box-shadow: $box-shadow;
-  border-radius: 12px;
-  font-family: $primary-font-family;
-}
-
-.app-logo {
-
-}
-
-.nav-links {
-  display: flex;
-  flex-direction: row;
-  font-size: 15px;
-}
-
-.btn {
-  width: 80%;
-  background: $default-primary-color;
-  border-radius: 10px;
-  color: $background-primary-color;
-  font-size: 24px;
-  border: 0;
-}
-
-.error-input {
-  font-size: 15px;
-  color: $accent-color;
-  display: none;
-}
 

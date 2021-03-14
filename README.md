@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+# Key application information
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, you can run:
+Installing
+First clone the repository
+git clone https://github.com/saranshbansal/food-order-app-reactjs.git
+Then go to the local directory and run below commands
+npm install
+
+npm start
+After following above steps, your browser should automatically launched. If not, open your browser and run:
+http://localhost:3000
 
 ### `npm start`
 
