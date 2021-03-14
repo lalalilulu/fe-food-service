@@ -1,0 +1,21 @@
+@import './app';
+
+.error-info {
+  width: 100%;
+  height: 80%;
+  margin-top: 7%;
+}
+
+.error-png {
+  width: 70%;
+  height: 55%;
+}
+
+.error-info p {
+  margin: 10%;
+  font-size: 18px;
+  color: $dark-primary-color;
+}
+
+
+

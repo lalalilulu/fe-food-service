@@ -1,15 +1,14 @@
 import './styles/app.scss';
-import './styles/autorisation.scss';
-import "./styles/profile.scss";
 import React from "react";
 import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Loader from "react-loader-spinner";
 import { Autorisation } from "./Autorisation";
-
-const Profile = lazy(() => import("./Profile"));
 const Dashboard = lazy(() => import("./Dashboard"));
+const Profile = lazy(() => import("./Profile"));
+const Cart = lazy(() => import("./Cart"));
+const Orders = lazy(() => import("./Orders"));
 const NoMatchPage = lazy(() => import("./404Error"));
 
 function App() {
@@ -20,6 +19,8 @@ function App() {
               <Route path="/" exact component={Autorisation}/>
               <Route path="/dashboard" exact component={Dashboard}/>
               <Route path="/profile" exact component={Profile}/>
+              <Route path="/cart" exact component={Cart}/>
+                <Route path="/orders" exact component={Orders}/>
               <Route component={NoMatchPage} />
             </Switch>
         </Suspense>

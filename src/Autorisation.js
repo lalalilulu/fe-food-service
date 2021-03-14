@@ -3,6 +3,7 @@ import logo from "./assets/images/food-logo.png";
 import facebook from "./assets/icons/facebook-logo.png";
 import vk from "./assets/icons/vk-social-logotype.png";
 import googlePlus from "./assets/icons/google-plus-social-logotype.png";
+import './styles/autorisation.scss';
 
 export function Autorisation() {
     return (
