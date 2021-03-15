@@ -12,9 +12,10 @@ const CompleteOrder = lazy(() => import("./CompleteOrder"));
 const NoMatchPage = lazy(() => import("./404Error"));
 
 function App() {
+
   return (
       <Router>
-        <Suspense fallback={<Loader type="Puff" color="#7B1FA2" height={500} width={300} timeout={300}/>}>
+        <Suspense fallback={<Loader className="loader" type="Puff" color="#7B1FA2" height={500} width={300} timeout={300}/>}>
             <Switch>
               <Route path="/" exact component={Autorisation}/>
               <Route path="/dashboard" exact component={Dashboard}/>

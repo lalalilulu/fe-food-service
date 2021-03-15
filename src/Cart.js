@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import DatePicker from 'react-date-picker';
-import TimePicker from 'react-time-picker';
 import { TextField } from '@material-ui/core';
 import ReactTooltip from 'react-tooltip';
 import CartItem from "./CartItem";
@@ -34,7 +32,6 @@ function Cart() {
                 <h3>Delivery information</h3>
                 <div className="cart-info">
                     <div className="cart-pickers">
-                        {/*<DatePicker className="cart-date-picker" required={true} value={date} onChange={newDate} />*/}
                         <TextField
                             id="time"
                             label="Delivery time"
@@ -48,7 +45,6 @@ function Cart() {
                                 step: 1800, // 30 min
                             }}
                         />
-                        {/*  <TimePicker className="cart-time-picker" minTime="11:00" maxTime="23:00" locale="sv-sv" required={true} value={time} onChange={newTime} />*/}
                     </div>
                     <input name="address" type="text" className="cart-input" placeholder="Enter your address" required/>
                     <input name="phone" type="tel" className="cart-input" placeholder="Enter your phone" required/>
