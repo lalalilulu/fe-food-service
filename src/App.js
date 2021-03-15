@@ -17,10 +17,10 @@ function App() {
         <Suspense fallback={<Loader type="Puff" color="#7B1FA2" height={500} width={300} timeout={300}/>}>
             <Switch>
               <Route path="/" exact component={Autorisation}/>
-              <Route path="/dashboard" exact component={Dashboard}/>
+              <Route path="/main" exact component={Dashboard}/>
               <Route path="/profile" exact component={Profile}/>
               <Route path="/cart" exact component={Cart}/>
-                <Route path="/orders" exact component={Orders}/>
+              <Route path="/orders" exact component={Orders}/>
               <Route component={NoMatchPage} />
             </Switch>
         </Suspense>
