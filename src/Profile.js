@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./styles/profile.scss";
 import ReactTooltip from "react-tooltip";
+import OrderItem from "./OrderItem";
+import "./styles/profile.scss";
 
 function Profile() {
+
+    const items = require("./ordersdata.json").data;
+
     return (
         <div className="profile-container">
             <div className="modalHeader">
@@ -18,10 +22,16 @@ function Profile() {
                     <input name="phone" type="tel" className="profile-input" defaultValue="+7(931)678-57-57"/>
                     <input name="address" type="text" className="profile-input" defaultValue="St. Petersburg, 13 Liniya V.O. 14"/>
                 </div>
-                <h3>Your Points</h3>
-                <div className="profile-info">
-                    <p data-tip="The Food Service Rewards Program. Collect points for every purchase!" data-for="points" className="profile-points">652</p>
-                    <ReactTooltip id="points" type="info" place="bottom" backgroundColor="#7B1FA2" effect="float" event="mouseover" eventOff="mouseout"/>
+                <h3>Order History</h3>
+                <div className="outer-wrapper">
+                    <div className="inner-wrapper">
+                    {items.map((item) => (
+                        <div data-tip={"Dishes: " + item.dishes.join(", ")} data-for={item.number} className="order-item">
+                            <OrderItem number={item.number} date={item.date} status={item.status} cost={item.cost} />
+                            <ReactTooltip id={item.number} type="info" place="bottom" backgroundColor="#7B1FA2" effect="float" event="mouseover" eventOff="mouseout"/>
+                        </div>
+                    ))}
+                    </div>
                 </div>
                 <button type="submit" className="btn profile-btn">Update</button>
             </form>

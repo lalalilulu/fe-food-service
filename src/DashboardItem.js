@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./styles/dashboard.scss";
 
 function DashboardItem(props) {
 
     return (
-        <Link className="card-container" to={`/item/${props.id}`}>
+        <div className="card-container">
             <div className="card-img">
                 <img src={props.image} alt="item-photo"/>
             </div>
@@ -13,7 +12,7 @@ function DashboardItem(props) {
                 <p>{props.name}</p>
                 <p className="itemPrice">{props.price}$</p>
             </div>
-        </Link>
+        </div>
     );
 }
 

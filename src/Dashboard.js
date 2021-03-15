@@ -13,8 +13,7 @@ const NoMatchPage = lazy(() => import("./404Error"));
 
 function Dashboard() {
 
-    const items = require("./fooddata.json").recipe;
-    console.log(items);
+    const items = require("./fooddata.json").data;
 
     return (
                 <div className="dashboard-container">

@@ -13,9 +13,6 @@ export function Navigation() {
                     <Link to="/cart" className="cart-link" />
                 </li>
                 <li>
-                    <Link to="/cart" className="discount-link"/>
-                </li>
-                <li>
                     <Link to="/" className="logout-link"/>
                 </li>
             </ul>
