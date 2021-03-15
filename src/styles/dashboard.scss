@@ -16,6 +16,12 @@
     justify-content: flex-end;
 }
 
+@media print {
+  .navigation {
+    display: none;
+  }
+}
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -25,11 +31,19 @@
   display: block;
   height: 70px;
   width: 70px;
-  margin: 50px;
+  margin: 40px;
   background-size: 70% 70%;
   background-position: center;
   background-repeat: no-repeat;
   transition: .5s;
+}
+
+@media only screen and (max-width: 823px) {
+  .nav-links li a {
+    height: 50px;
+    width: 50px;
+    margin: 12px;
+  }
 }
 
 .profile-link {
@@ -88,15 +102,28 @@
 
 .card {
   width: calc(100% / 8 - 30px);
+  min-width: 210px;
   height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 30px;
+  margin: 1.6%;
   box-shadow: $box-shadow;
   border-radius: 12px;
   transition: .5s;
+}
+
+@media only screen and (max-width: 823px) {
+  .card {
+    margin: 4% auto;
+  }
+}
+
+@media only screen and (max-width: 823px) and (orientation: landscape)  {
+  .card {
+    margin: 1.5% auto;
+  }
 }
 
 .card:hover, .card:focus {
