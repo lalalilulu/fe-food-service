@@ -1,0 +1,141 @@
+@import "./app";
+
+.dashboard-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.navigation {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li a {
+  display: block;
+  height: 70px;
+  width: 70px;
+  margin: 40px;
+  background-size: 70% 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: .5s;
+  border: 2px solid $background-primary-color;
+  border-radius: 12px;
+}
+
+.nav-links li a:hover, .nav-links li a:focus {
+  border: 2px solid $accent-color;
+  color: $accent-color;
+  border-radius: 12px;
+}
+
+.profile-link {
+  background-image: url("../assets/icons/user.png");
+}
+
+.profile-link:focus, .profile-link:hover {
+  background-image: url("../assets/icons/user-active.png");
+}
+
+.cart-link {
+  background-image: url("../assets/icons/shopping-cart.png");
+}
+
+.cart-link:focus, .cart-link:hover {
+  background-image: url("../assets/icons/shopping-cart-active.png");
+}
+
+.discount-link {
+  background-image: url("../assets/icons/discount.png");
+}
+
+.discount-link:focus, .discount-link:hover {
+  background-image: url("../assets/icons/discount-active.png");
+}
+
+.logout-link {
+  background-image: url("../assets/icons/logout.png");
+}
+
+.logout-link:focus, .logout-link:hover {
+  background-image: url("../assets/icons/logout-active.png");
+}
+
+.content-box {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-grow: 1;
+}
+
+.cards {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: calc(100% / 8 - 30px);
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 30px;
+  box-shadow: $box-shadow;
+  border-radius: 12px;
+  transition: .5s;
+}
+
+.card:hover, .card:focus {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.card-container {
+  text-decoration: none;
+  color: $primary-text-color;
+}
+
+.card-img {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.card-img img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.card-content {
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+.itemPrice {
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

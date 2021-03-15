@@ -8,7 +8,7 @@ import { Autorisation } from "./Autorisation";
 const Dashboard = lazy(() => import("./Dashboard"));
 const Profile = lazy(() => import("./Profile"));
 const Cart = lazy(() => import("./Cart"));
-const Orders = lazy(() => import("./Orders"));
+const Complete = lazy(() => import("./Complete"));
 const NoMatchPage = lazy(() => import("./404Error"));
 
 function App() {
@@ -17,10 +17,10 @@ function App() {
         <Suspense fallback={<Loader type="Puff" color="#7B1FA2" height={500} width={300} timeout={300}/>}>
             <Switch>
               <Route path="/" exact component={Autorisation}/>
-              <Route path="/main" exact component={Dashboard}/>
+              <Route path="/dashboard" exact component={Dashboard}/>
               <Route path="/profile" exact component={Profile}/>
               <Route path="/cart" exact component={Cart}/>
-              <Route path="/orders" exact component={Orders}/>
+              <Route path="/complete" exact component={Complete}/>
               <Route component={NoMatchPage} />
             </Switch>
         </Suspense>

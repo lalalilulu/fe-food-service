@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/profile.scss";
+import ReactTooltip from "react-tooltip";
 
 function Profile() {
     return (
@@ -17,22 +18,10 @@ function Profile() {
                     <input name="phone" type="tel" className="profile-input" defaultValue="+7(931)678-57-57"/>
                     <input name="address" type="text" className="profile-input" defaultValue="St. Petersburg, 13 Liniya V.O. 14"/>
                 </div>
-                <h3>Payment Method</h3>
+                <h3>Your Points</h3>
                 <div className="profile-info">
-                    <ul className="payment">
-                        <li>
-                            <input type="radio" value="card" id="card" name="payment-method" className="payment-method" defaultChecked={true}/>
-                            <label className="payment-label" htmlFor="card">Card</label>
-                        </li>
-                        <li>
-                            <input type="radio" value="paypal" id="paypal" name="payment-method" className="payment-method"/>
-                            <label className="payment-label" htmlFor="paypal">Paypal</label>
-                        </li>
-                        <li>
-                            <input type="radio" value="cash" id="cash" name="payment-method" className="payment-method"/>
-                            <label className="payment-label" htmlFor="paypal">Cash</label>
-                        </li>
-                    </ul>
+                    <p data-tip="The Food Service Rewards Program. Collect points for every purchase!" data-for="points" className="profile-points">652</p>
+                    <ReactTooltip id="points" type="info" place="bottom" backgroundColor="#7B1FA2" effect="float" event="mouseover" eventOff="mouseout"/>
                 </div>
                 <button type="submit" className="btn profile-btn">Update</button>
             </form>
