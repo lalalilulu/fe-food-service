@@ -21,7 +21,7 @@ $box-shadow: 0px 0px 6px $divider-color;
   box-sizing: border-box;
 }
 
-.login-container, .profile-container, .container-404, .cart-container {
+.login-container, .profile-container, .container-404, .cart-container, .order-container {
   position: fixed; top: 50%; left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);

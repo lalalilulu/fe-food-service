@@ -8,7 +8,7 @@ import { Autorisation } from "./Autorisation";
 const Dashboard = lazy(() => import("./Dashboard"));
 const Profile = lazy(() => import("./Profile"));
 const Cart = lazy(() => import("./Cart"));
-const Complete = lazy(() => import("./Complete"));
+const CompleteOrder = lazy(() => import("./CompleteOrder"));
 const NoMatchPage = lazy(() => import("./404Error"));
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
               <Route path="/dashboard" exact component={Dashboard}/>
               <Route path="/profile" exact component={Profile}/>
               <Route path="/cart" exact component={Cart}/>
-              <Route path="/complete" exact component={Complete}/>
+              <Route path="/complete" exact component={CompleteOrder}/>
               <Route component={NoMatchPage} />
             </Switch>
         </Suspense>

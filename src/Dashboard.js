@@ -8,7 +8,7 @@ import ItemDetails from "./ItemDetails";
 import Loader from "react-loader-spinner";
 const Profile = lazy(() => import("./Profile"));
 const Cart = lazy(() => import("./Cart"));
-const Orders = lazy(() => import("./Complete"));
+const Orders = lazy(() => import("./CompleteOrder"));
 const NoMatchPage = lazy(() => import("./404Error"));
 
 function Dashboard() {

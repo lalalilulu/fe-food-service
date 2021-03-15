@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import logo from "./assets/images/error.png";
+import errorPng from "./assets/images/error.png";
 import './styles/404.scss';
 
 function NoMatchPage() {
@@ -11,7 +11,7 @@ function NoMatchPage() {
                 <h2>Not Found</h2>
             </div>
             <div className="error-info">
-                <img className="error-png" src={logo} alt="The requested page cannot be found"/>
+                <img className="error-png" src={errorPng} alt="The requested page cannot be found"/>
                 <p>The requested page cannot be found. Please check the URL</p>
             </div>
         </div>
