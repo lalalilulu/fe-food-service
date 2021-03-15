@@ -30,14 +30,6 @@
   background-position: center;
   background-repeat: no-repeat;
   transition: .5s;
-  border: 2px solid $background-primary-color;
-  border-radius: 12px;
-}
-
-.nav-links li a:hover, .nav-links li a:focus {
-  border: 2px solid $accent-color;
-  color: $accent-color;
-  border-radius: 12px;
 }
 
 .profile-link {
@@ -46,6 +38,7 @@
 
 .profile-link:focus, .profile-link:hover {
   background-image: url("../assets/icons/user-active.png");
+  transform: scale(1.15);
 }
 
 .cart-link {
@@ -54,6 +47,7 @@
 
 .cart-link:focus, .cart-link:hover {
   background-image: url("../assets/icons/shopping-cart-active.png");
+  transform: scale(1.15);
 }
 
 .discount-link {
@@ -62,6 +56,7 @@
 
 .discount-link:focus, .discount-link:hover {
   background-image: url("../assets/icons/discount-active.png");
+  transform: scale(1.15);
 }
 
 .logout-link {
@@ -70,6 +65,7 @@
 
 .logout-link:focus, .logout-link:hover {
   background-image: url("../assets/icons/logout-active.png");
+  transform: scale(1.15);
 }
 
 .content-box {
