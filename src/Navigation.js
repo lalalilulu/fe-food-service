@@ -1,11 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/dashboard.scss";
-import user from "./assets/icons/user.png";
-import cart from "./assets/icons/shopping-cart.png";
-import discount from "./assets/icons/discount.png";
-import logout from "./assets/icons/logout.png";
-import logo from "./assets/images/food-logo.png";
 
 export function Navigation() {
     return (

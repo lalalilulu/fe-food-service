@@ -4,7 +4,7 @@ import "./styles/dashboard.scss";
 
 import { Navigation } from "./Navigation";
 import DashboardItem from "./DashboardItem";
-import ItemDetails from "./ItemDetails";
+
 import Loader from "react-loader-spinner";
 const Profile = lazy(() => import("./Profile"));
 const Cart = lazy(() => import("./Cart"));
