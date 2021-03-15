@@ -8,7 +8,7 @@ function CompleteOrder() {
         <div className="order-container">
             <div className="modalHeader">
                 <Link to="/dashboard" className="return-btn"/>
-                <h2>Complete order</h2>
+                <h2>Thank you</h2>
             </div>
             <div className="complete-info">
                 <img className="completePng" src={completePng} alt="Dish"/>
