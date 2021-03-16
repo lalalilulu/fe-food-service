@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/dashboard.scss";
 
-export function Navigation() {
+export function Navigation(props) {
     return (
         <nav className="navigation">
             <ul className="nav-links">
@@ -11,6 +11,7 @@ export function Navigation() {
                 </li>
                 <li>
                     <Link to="/cart" className="cart-link" />
+                    {/*<CountMark count={props.count}/>*/}
                 </li>
                 <li>
                     <Link to="/" className="logout-link"/>

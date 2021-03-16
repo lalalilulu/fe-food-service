@@ -64,6 +64,33 @@
   transform: scale(1.15);
 }
 
+//.cart-items-count {
+//  position: fixed;
+//  background-color: $ncs-red-color;
+//  width: 20px;
+//  height: 20px;
+//  font-size: 13px;
+//  padding: 1px;
+//  top: 2.2%;
+//  margin-left: 4.7%;
+//  border-radius: 50%;
+//
+//  text-align: center;
+//  color: $background-primary-color;
+//}
+//
+//@media only screen and(orientation: portrait) {
+//  .cart-items-count {
+//    top: 4%;
+//  }
+//}
+
+//@media only screen and(orientation: landscape) {
+//  .cart-items-count {
+//    top: 6%;
+//  }
+//}
+
 .discount-link {
   background-image: url("../assets/icons/discount.png");
 }
@@ -100,6 +127,32 @@
   flex-wrap: wrap;
 }
 
+.card-icons {
+  width: 100%;
+  position: relative;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 5%;
+  visibility: hidden;
+}
+
+.details {
+  margin-right: 5%;
+  opacity: 0.3;
+}
+
+.details:hover, .details:focus {
+  opacity: 1;
+}
+
+.add {
+  opacity: 0.3;
+}
+
+.add:hover, .add:focus {
+  opacity: 1;
+}
+
 .card {
   width: calc(100% / 8 - 30px);
   min-width: 210px;
@@ -131,6 +184,14 @@
   cursor: pointer;
 }
 
+.card:hover .card-icons, .card:focus .card-icons{
+  visibility: visible;
+}
+
+.card-icons:hover, .card-icons:hover {
+  opacity: 1;
+}
+
 .card-container {
   text-decoration: none;
   color: $primary-text-color;
@@ -139,7 +200,6 @@
 .card-img {
   display: flex;
   align-items: center;
-  margin-top: 20px;
   padding: 15px;
 }
 

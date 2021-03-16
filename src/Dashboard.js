@@ -5,7 +5,6 @@ import "./styles/dashboard.scss";
 import { Navigation } from "./Navigation";
 import DashboardItem from "./DashboardItem";
 
-import Loader from "react-loader-spinner";
 const Profile = lazy(() => import("./Profile"));
 const Cart = lazy(() => import("./Cart"));
 const Orders = lazy(() => import("./CompleteOrder"));
@@ -14,10 +13,14 @@ const NoMatchPage = lazy(() => import("./404Error"));
 function Dashboard() {
 
     const items = require("./fooddata.json").data;
+    const choosedItems = [];
+    let count = 11;
+    const allItems = document.querySelectorAll(".card-container");
+    allItems.forEach(item => item.addEventListener("click", ))
 
     return (
                 <div className="dashboard-container">
-                    <Navigation />
+                    <Navigation count={count}/>
                     <main className="content-box">
                         <ul className="cards">
                             {items.map((item) => (
