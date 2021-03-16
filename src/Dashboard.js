@@ -14,9 +14,7 @@ function Dashboard() {
 
     const items = require("./fooddata.json").data;
     const choosedItems = [];
-    let count = 11;
-    const allItems = document.querySelectorAll(".card-container");
-    allItems.forEach(item => item.addEventListener("click", ))
+    let count = 0;
 
     return (
                 <div className="dashboard-container">

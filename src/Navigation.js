@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CountMark from "./CountMark";
 import "./styles/dashboard.scss";
 
 export function Navigation(props) {
@@ -11,7 +12,7 @@ export function Navigation(props) {
                 </li>
                 <li>
                     <Link to="/cart" className="cart-link" />
-                    {/*<CountMark count={props.count}/>*/}
+                    <CountMark count={props.count}/>
                 </li>
                 <li>
                     <Link to="/" className="logout-link"/>

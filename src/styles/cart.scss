@@ -1,47 +1,39 @@
 @import "./app";
 
 .cart-container {
-  height: 850px;
-  overflow: hidden;
+  width: 700px;
+  height: 900px;
 }
 
 .modalHeader h2 {
+  margin-top: 5%;
   margin-left: 5%;
+  height: 10%;
 }
 
 .cart-form {
-  margin-top: -15%;
-  margin-left: 15%;
-  height: 80%;
+  margin-top: -10%;
+  margin-left: 10%;
+  width: 70%;
+  height: 90%;
 }
 
-.outer-wrapper {
-  width: 350px;
+.order-table {
+  width: 85%;
 }
 
-.inner-wrapper {
-  width: 80%;
-  display: flex;
-  overflow-x: auto;
+.order-item-name {
+  text-align: start;
 }
 
-/* custom scrollbar */
-::-webkit-scrollbar {
-  height: 10px;
+.order-total, .order-total-price {
+  color: $accent-color;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-::-webkit-scrollbar-track {
-  background: $background-primary-color;
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $light-primary-color;
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: $dark-primary-color;
+.order-total, {
+  text-align: end;
 }
 
 .item {
@@ -73,10 +65,6 @@
   color: $primary-text-color;
   text-align: start;
   margin-bottom: 7%;
-}
-
-.cart-total {
-  color: $accent-color;
 }
 
 .cart-input {
@@ -134,10 +122,14 @@
 //  color: #7B1FA2;
 //}
 
-.payment-label {
-  padding-left: 2.5%;
+.payment-label, .change-label {
+  padding-left: 1.5%;
   font-size: 15px;
   margin: 0;
+}
+
+.change-checkbox, .change-label {
+  display: none;
 }
 
 .cart-btn {

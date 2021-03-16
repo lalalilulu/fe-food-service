@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { TextField } from '@material-ui/core';
-import ReactTooltip from 'react-tooltip';
-import CartItem from "./CartItem";
 import "./styles/cart.scss";
+import OrderTable from "./OrderTable";
 
 function Cart() {
     //const [date, newDate] = useState(new Date());
     //const [time, newTime] = useState(new Date());
 
     const json = require("./fooddata.json");
-    const items = json.recipe.slice(2,3).concat(json.recipe.slice(9,10)).concat(json.recipe.slice(13,15)).concat(json.recipe.slice(17,19));
+    const items = json.data.slice(5,10);
+
+    // const cashPayment = document.getElementById("cash");
+    // const changeLabel = document.querySelector(".change-checkbox");
+    // const changeInput = document.querySelector(".change-label");
+    // if(cashPayment.getAttribute("checked")) {
+    //     changeLabel.style.display = "flex";
+    //     changeInput.style.display = "flex";
+    // }
 
     return (
         <div className="cart-container">
@@ -19,16 +26,8 @@ function Cart() {
                 <h2>My cart</h2>
             </div>
             <form name="cart-form" className="cart-form" action="#" method="post">
-                <div className="outer-wrapper">
-                <div className="inner-wrapper">
-                        {items.map((item) => (
-                            <div data-tip={item.description} data-for={item.id} className="item" key={item.name}>
-                                <CartItem name={item.name} image={item.image} />
-                                <ReactTooltip id={item.id} type="info" place="bottom" backgroundColor="#7B1FA2" effect="float" event="mouseover" eventOff="mouseout"/>
-                            </div>
-                        ))}
-                </div>
-                </div>
+               <OrderTable items={items}/>
+
                 <h3>Delivery information</h3>
                 <div className="cart-info">
                     <div className="cart-pickers">
@@ -51,11 +50,12 @@ function Cart() {
                     {/*<label className="cutleryLabel" htmlFor="number-cutlery">Number of cutlery sets:</label>
                     <input className="cutleryInput" type="number" id="number-cutlery" name="number-cutlery" min="1" max="100" defaultValue={1}/>*/}
                 </div>
+
                 <h3>Comments</h3>
                 <div className="cart-info">
-                    <textarea className="cart-comment" id="order-comment" type="text" rows="1" cols="32" placeholder="Write your comment here"/>
+                    <textarea className="cart-comment" id="order-comment" type="text" rows="3" cols="46" placeholder="Write your comment here"/>
                 </div>
-                <h3><span className="cart-total">Total: 280$</span></h3>
+
                 <h3>Payment Method</h3>
                 <div className="cart-info">
                     <ul className="payment">
@@ -72,6 +72,8 @@ function Cart() {
                             <label className="payment-label" htmlFor="paypal">Cash</label>
                         </li>
                     </ul>
+                    <input type="checkbox" id="change" name="change" className="change-checkbox"/>
+                    <label className="change-label" htmlFor="change">Need change?</label>
                 </div>
                 <button type="submit" className="btn cart-btn">Pay</button>
             </form>
