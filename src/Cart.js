@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { TextField } from '@material-ui/core';
-import "./styles/cart.scss";
 import OrderTable from "./OrderTable";
+import "./styles/cart.scss";
 
 function Cart() {
-    //const [date, newDate] = useState(new Date());
-    //const [time, newTime] = useState(new Date());
 
     const json = require("./fooddata.json");
     const items = json.data.slice(5,10);
@@ -53,7 +51,7 @@ function Cart() {
 
                 <h3>Comments</h3>
                 <div className="cart-info">
-                    <textarea className="cart-comment" id="order-comment" type="text" rows="3" cols="46" placeholder="Write your comment here"/>
+                    <textarea className="cart-comment" id="order-comment" type="text" rows="3" placeholder="Write your comment here"/>
                 </div>
 
                 <h3>Payment Method</h3>
