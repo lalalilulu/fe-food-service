@@ -6,7 +6,7 @@ import "./styles/cart.scss";
 
 function Cart() {
 
-    const json = require("./fooddata.json");
+    const json = require("./data/fooddata.json");
     const items = json.data.slice(5,10);
 
     // const cashPayment = document.getElementById("cash");

@@ -6,7 +6,7 @@ import "./styles/profile.scss";
 
 function Profile() {
 
-    const items = require("./ordersdata.json").data;
+    const items = require("./data/ordersdata.json").data;
 
     return (
         <div className="profile-container">

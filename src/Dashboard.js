@@ -12,7 +12,7 @@ const NoMatchPage = lazy(() => import("./404Error"));
 
 function Dashboard() {
 
-    const items = require("./fooddata.json").data;
+    const items = require("./data/fooddata.json").data;
     const choosedItems = [];
     let count = 0;
 
