@@ -15,6 +15,9 @@ export function Navigation(props) {
                     <CountMark count={props.count}/>
                 </li>
                 <li>
+                    <Link to="/discount" className="discount-link"/>
+                </li>
+                <li>
                     <Link to="/" className="logout-link"/>
                 </li>
             </ul>
