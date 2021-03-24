@@ -1,0 +1,91 @@
+@import "../app";
+
+
+.item-row {
+  margin: 5% 0;
+}
+
+.product-details-img {
+  padding: 5px;
+  margin-top: 5%;
+}
+
+.product-details-img a img {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .product-details-img  {
+    padding: 0;
+  }
+}
+
+.product-head {
+  margin-bottom: 5%;
+  border-bottom: 1px solid $divider-color;
+}
+
+.product-title {
+  padding: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $default-primary-color;
+}
+
+.regular-price, .desc-content {
+  padding: 5px;
+  font-family: $secondary-font-family;
+  font-size: 18px;
+  color: $primary-text-color;
+}
+
+.regular-price {
+  padding: 5px;
+  font-weight: bold;
+}
+
+//.quantity-with_btn {
+//  display: flex;
+//  flex-direction: row;
+//  flex-wrap: nowrap;
+//}
+
+.product-ingredients {
+  list-style: square inside;
+  padding: 5px;
+  font-family: $secondary-font-family;
+  font-size: 15px;
+  color: $secondary-text-color;
+  border-top: 1px solid $divider-color;
+  border-bottom: 1px solid $divider-color;
+}
+
+.quantity-with_btn .cart-counter {
+  margin-top: 5%;
+  width: 20%;
+}
+
+.product-btn {
+  //margin-left: 5%;
+  margin-top: 5%;
+  font-family: $secondary-font-family;
+  font-size: 18px;
+}
+
+.admin-button {
+  background: $divider-color !important;
+}
+
+.admin-button:hover, .admin-button:focus {
+  background: $dark-primary-color !important;
+}
+
+@media only screen and (max-width: 411px) and (orientation: portrait)  {
+  .quantity-with_btn .cart-counter{
+    margin-left: 5%;
+  }
+  .product-btn {
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,96 @@
+@import "../app";
+
+.cards {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card-icons {
+  position: fixed;
+  display: inline-flex;
+  margin: 4% 0 5% 31%;
+  visibility: hidden;
+}
+
+.add {
+  opacity: 0.3;
+}
+
+.add:hover, .add:focus {
+  opacity: 1;
+}
+
+.card {
+  //width: calc(100% / 4 - 25px);
+  width: 220px;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 1%;
+  box-shadow: $box-shadow;
+  border-radius: 12px;
+  transition: .5s;
+}
+
+@media only screen and (max-width: 823px) {
+  .card {
+    margin: 4% auto;
+  }
+}
+
+@media only screen and (max-width: 823px) and (orientation: landscape)  {
+  .card {
+    margin: 1.5% auto;
+  }
+}
+
+.card:hover, .card:focus {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.card:hover .card-icons, .card:focus .card-icons{
+  visibility: visible;
+}
+
+.card-icons:hover, .card-icons:hover {
+  opacity: 1;
+}
+
+.card-container {
+  text-decoration: none;
+  color: $primary-text-color;
+}
+
+.card-img {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.card-img img {
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  margin: 5% auto;
+}
+
+.card-content {
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+.itemPrice {
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

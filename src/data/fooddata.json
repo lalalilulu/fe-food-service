@@ -1617,58 +1617,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "Giouvarlakia",
-			"id": "giouvarlakia",
-			"description": "A low carb version of a traditional hearty Greek dish",
-			"tag": [
-				"Greek"
-			],
-			"image": "http://forkgasm.com/images/106039513_690984628417462_2727964218559966794_n.jpg",
-			"ingredient": [
-				"ground meat (beef, pork, or both), at least 20% fat",
-				"small onion",
-				"cauliflower rice",
-				"lemons",
-				"eggs",
-				"olive oil",
-				"butter",
-				"parsley",
-				"dill",
-				"garlic",
-				"concentrated chicken or vegetable stock"
-			]
-		},
-		{
-			"name": "Tal’s Tahini “bread pudding”",
-			"id": "tahini-bread-pudding",
-			"description": "A delicious baked dessert that takes 5 minutes to make!",
-			"image": "http://forkgasm.com/images/bread-pudding.png",
-			"ingredient": [
-				"tahini",
-				"eggs",
-				"baking powder",
-				"honey",
-				"Sukrin Gold or brown sugar",
-				"maple extract",
-				"cinammon",
-				"sesame seeds for garnish"
-			]
-		},
-		{
-			"name": "Grand Marnier & Coffee Ice Cream",
-			"id": "grand-marnier-coffee-ice-cream",
-			"description": "Easy and decadent!",
-			"ingredient": [
-				"heavy cream",
-				"icing sugar or substitite",
-				"egg yolks",
-				"Grand Marnier",
-				"espresso",
-				"vanilla extract"
-			],
-			"image": "https://forkgasm.com/images/grand-marnier-ice-cream.jpg"
 		}
 	]
 }

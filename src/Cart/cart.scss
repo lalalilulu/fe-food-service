@@ -1,0 +1,98 @@
+@import "../app";
+
+.form-btn {
+  max-width: 330px;
+  width: calc(100% - 2em);
+  margin: 5% auto;
+  background: $light-primary-color;
+  border-radius: 10px;
+  border: 0;
+  font-family: $secondary-font-family;
+  font-size: 18px;
+  color: $dark-primary-color;
+}
+
+.form-btn:focus, .form-btn:hover {
+  background: $default-primary-color;
+  color: $background-primary-color;
+  cursor: pointer;
+}
+
+.input {
+  margin: 0 3% 0 0;
+}
+
+.cart-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart-form h3, h3 {
+  font-family: $secondary-font-family;
+  color: $default-primary-color;
+  font-size: 18px;
+  margin-top: 3%;
+}
+
+.cart-form .cart-info {
+  color: $primary-text-color;
+  //text-align: start;
+}
+
+.cart-inputs {
+  margin-top: 1%;
+}
+
+.cart-date-picker, .cart-time-picker {
+  width: 100%;
+  max-width: 330px;
+  color: $dark-primary-color;
+}
+
+.cutleryLabel, .cart-comment {
+  font-size: 15px;
+}
+
+.cart-comment {
+  width: 100%;
+  max-width: 680px;
+  box-sizing: border-box;
+  border-color: $divider-color;
+  padding-left: 5px;
+  font-family: $secondary-font-family;
+  color: $default-primary-color;
+  font-size: 15px;
+}
+
+.cutleryInput {
+  font-size: 15px;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: $light-primary-color;
+  text-align: center;
+  margin-left: 12%;
+}
+
+.payment {
+  margin-top: 5%;
+}
+
+.payment-options {
+  margin-top: -5%;
+}
+
+@media only screen and (max-width: 823px)  {
+  .cart-form {
+    width: 95%;
+  }
+
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cart-btn {
+    margin-bottom: 10%;
+  }
+}

@@ -1,0 +1,44 @@
+@import "../app";
+
+.custom-table {
+  margin-top: 3%;
+  width: 100%;
+  font-family: $secondary-font-family;
+  font-size: 15px;
+  color: $primary-text-color;
+  justify-content: center;
+}
+
+.item-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.item-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.cart-counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.item-amount {
+  font-size: 18px;
+  margin: 5% 5% 0;
+}
+
+.order-total, .order-total-price {
+  color: $accent-color;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.order-total, {
+  text-align: end;
+}
+

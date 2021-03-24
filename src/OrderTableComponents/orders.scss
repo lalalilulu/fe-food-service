@@ -1,0 +1,26 @@
+@import "../app";
+
+.custom-table {
+  margin: 5% 0;
+  font-family: $secondary-font-family;
+  font-size: 15px;
+  color: $primary-text-color;
+}
+
+.link-text {
+  font-family: $secondary-font-family;
+  font-size: 15px;
+  color: $primary-text-color;
+}
+
+.link, .link:focus, .link:hover  {
+  color: $accent-color;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+

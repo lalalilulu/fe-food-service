@@ -1,0 +1,86 @@
+@import "../Nav/nav.scss";
+
+.dropdown {
+  position: absolute;
+  z-index: 2;
+  top: 75px;
+  width: 240px;
+  transform: translateX(-45%);
+  background-color: $background-primary-color;
+  box-shadow: $box-shadow;
+  border-radius: 12px;
+  font-family: $primary-font-family;
+  font-size: 18px;
+  padding: 1rem;
+  overflow: hidden;
+  transition: height $speed ease;
+}
+
+.menu {
+  width: 100%;
+}
+
+.menu h3 {
+  margin-top: 5%;
+  font-size: 18px;
+}
+
+.menu-item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: $border-radius;
+  transition: background $speed;
+  padding: 0.5rem;
+}
+
+.menu-item .icon-button {
+  margin-right: 0.5rem;
+}
+
+.menu-item .icon-button:hover {
+  filter: none;
+}
+
+.menu-item:hover {
+  background-color: $light-primary-color;
+  color: $dark-primary-color;
+  text-decoration: none;
+}
+
+.icon-right {
+  margin-left: auto;
+}
+
+.menu-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+
+.menu-primary-enter-active {
+  transform: translateX(0%);
+  transition: all $speed ease;
+}
+
+.menu-primary-exit {
+  position: absolute;
+}
+
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all $speed ease;
+}
+
+.menu-secondary-enter {
+  transform: translateX(110%);
+}
+
+.menu-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all $speed ease;
+}
+
+.menu-secondary-exit-active {
+  transform: translateX(110%);
+  transition: all $speed ease;
+}
