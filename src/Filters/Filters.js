@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 
 function Filters() {
 
-    const items = ["soups", "pizzas", "burgers", "pastas", "sushi", "desserts", "drinks"];
+    const items = ["soups", "pastas", "pizzas", "burgers", "desserts"];
 
     const capitalize = function(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
@@ -20,8 +20,6 @@ function Filters() {
         checked2: true,
         checked3: true,
         checked4: true,
-        checked5: true,
-        checked6: true
     });
 
     const handleChange = (event) => {
