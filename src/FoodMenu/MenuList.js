@@ -15,7 +15,7 @@ function MenuList() {
             {items.map((item) => (
                 <li className="card" key={item.id}>
                     <MenuItem id={item.id} image={item.image} name={item.name} description={item.description}
-                              price={Math.floor(Math.random() * (150 - 10) + 10)}/>
+                              price={item.price}/>
                 </li>
             ))}
         </ul>
