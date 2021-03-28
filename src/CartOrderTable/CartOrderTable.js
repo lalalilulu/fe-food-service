@@ -1,5 +1,5 @@
 import React from "react";
-import CartAmountCounter from "./CartAmountCounter";
+import AmountCounter from "../AmountCounter/AmountCounter";
 import "./cartOrderTable.scss";
 
 function CartOrderTable(props) {
@@ -24,10 +24,10 @@ function CartOrderTable(props) {
                         {item.name}
                     </td>
                     <td className=" align-middle text-center">
-                        <CartAmountCounter amount={3}/>
+                        <AmountCounter amount={2}/>
                     </td>
                     <td className="align-middle text-center action-item">
-                        {Math.floor(Math.random() * (150 - 10) + 10)}$
+                        {item.price}$
                     </td>
                 </tr>
             ))}

@@ -1,14 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import "./item-details.scss";
 import "../Autorisation/forms.scss";
-import CartAmountCounter from "../CartOrderTable/CartAmountCounter";
-import MenuItem from "../FoodMenu/MenuItem";
 import {Link} from "react-router-dom";
+import AmountCounter from "../AmountCounter/AmountCounter";
 
 function Item({match}) {
 
     const items = require("../data/fooddata.json").data;
     const item = Array.from(items).find(dish => dish.id === match.params.id);
+
+    const [amount, setAmount] = useState(1);
+    const changeAmount = (amount) => {
+        setAmount(amount);
+    }
 
     return (
         <div className="container-md item-details">
@@ -25,9 +29,6 @@ function Item({match}) {
                         <div className="product-head mb-3">
                             <h2 className="product-title">{item.name}</h2>
                         </div>
-                        <div className="mb-2">
-                            <span className="regular-price">80$</span>
-                        </div>
                         <p className="desc-content mb-5">{item.description}</p>
                         <ul className="product-ingredients">
                             {item.ingredient.map((ingredient) => (
@@ -36,11 +37,11 @@ function Item({match}) {
                                 </li>
                             ))}
                         </ul>
-
-                        <div className="quantity-with_btn mb-4">
-                            <CartAmountCounter amount={1}/>
-                            <button className="btn btn-primary form-btn product-btn">Add to cart</button>
+                        <div className="mb-2 item-amount-container">
+                            <AmountCounter amount={amount} onChange={changeAmount}/>
+                            <span className="regular-price">{item.price*amount}$</span>
                         </div>
+                            <button className="btn btn-primary form-btn product-btn">Add to cart</button>
                         <div className="admin-buttons mb-4">
                             <Link to={`/edit/${item.id}`} className="btn btn-primary form-btn product-btn admin-button">Edit Dish (Admin)</Link>
                             <Link to={`/delete/${item.id}`} className="btn btn-primary form-btn product-btn admin-button">Delete Dish (Admin)</Link>

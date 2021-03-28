@@ -130,7 +130,7 @@
 			"name": "Chilli Prawn Spaghetti",
 			"id": "456791135",
 			"description": "This chilli, prawn and spinach linguine is full of flavour and it’s low in calories and fat but rich in vitamin C",
-			"image": "https://www.deliciousmagazine.co.uk/wp-content/uploads/2018/09/318600-1-eng-GB_4066.jpg",
+			"image": "https://www.waitrose.com/content/dam/waitrose/recipes/images/c/2013wked-February-r2ll7.jpg/_jcr_content/renditions/cq5dam.thumbnail.400.400.png",
 			"ingredient": [
 				"linguine pasta",
 				"tiger prawns",
@@ -340,10 +340,10 @@
 			"price": 24
 		},
 		{
-			"name": "Chocolate Muffin",
+			"name": "Chocolate Muffins",
 			"id": "456656692",
-			"description": "One word: scrumptious! Very moist, tasty and full of chocolate goodness",
-			"image": "https://lh3.googleusercontent.com/proxy/0ChLmwGtpRi2WU9HrsbfNMqOIYA7WG2UWiLttx4wj8Xb7gpbGjw1JqVpn4mdF1heC1ZICyhw3vUw-k6srGtL4JEvBpGCeZeYXZT4UsvzljzyES-QKgtf86oQ4XDfmB93cwrmj1I",
+			"description": "Very moist, tasty and full of chocolate goodness. 3 muffins included",
+			"image": "https://kirbiecravings.com/wp-content/uploads/2020/08/eggless-chocolate-muffins-5.jpg",
 			"ingredient": [
 				"chocolate",
 				"eggs",
@@ -355,7 +355,7 @@
 				"milk",
 				"butter"
 			],
-			"price": 16
+			"price": 12
 		},
 		{
 			"name": "Tal’s Tahini “bread pudding”",
@@ -378,7 +378,7 @@
 			"name": "Grand Marnier & Coffee Ice Cream",
 			"id": "456110875",
 			"image": "https://www.simplyrecipes.com/thmb/ugP5ChANbdU-L9xKBwHLo4GFKWM=/600x600/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2007__04__coffee-ice-cream-vertical-00dc174a766a4ff79f443e516e11fcb7.jpg",
-			"description": "Delicious and nourishing!",
+			"description": "3 scoops of delicious ice cream",
 			"ingredient": [
 				"heavy cream",
 				"icing sugar or substitite",
