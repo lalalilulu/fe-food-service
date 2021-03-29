@@ -1,5 +1,5 @@
 import React from "react";
-import AmountCounter from "../AmountCounter/AmountCounter";
+import CartOrderRow from "../CartOrderRow/CartOrderRow";
 import "./cartOrderTable.scss";
 
 function CartOrderTable(props) {
@@ -16,20 +16,7 @@ function CartOrderTable(props) {
             </thead>
             <tbody>
             {props.items.map((item) => (
-                <tr>
-                    <th scope="row" className="align-middle item-image">
-                        <img src={item.image}/>
-                    </th>
-                    <td className="align-middle text-center">
-                        {item.name}
-                    </td>
-                    <td className=" align-middle text-center">
-                        <AmountCounter amount={2}/>
-                    </td>
-                    <td className="align-middle text-center action-item">
-                        {item.price}$
-                    </td>
-                </tr>
+                <CartOrderRow item={item}/>
             ))}
             <tr>
                 <td/>
