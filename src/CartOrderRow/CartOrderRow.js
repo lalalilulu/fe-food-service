@@ -9,6 +9,8 @@ function CartOrderRow(props) {
         setAmount(amount);
     }
 
+    //props.onChange(props.item.price*amount);
+
     return (
         <tr>
             <th scope="row" className="align-middle item-image">
@@ -21,7 +23,7 @@ function CartOrderRow(props) {
                 <AmountCounter amount={amount} onChange={changeAmount}/>
             </td>
             <td className="align-middle text-center action-item">
-                {props.item.price * amount}$
+                {props.item.price*amount}$
             </td>
         </tr>
     )
