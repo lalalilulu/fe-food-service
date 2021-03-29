@@ -1,10 +1,10 @@
 import React, {Suspense, lazy} from 'react';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Loader from "react-loader-spinner";
-import Nav from "./Nav/Nav";
 import Menu from "./FoodMenu/Menu";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.scss";
+import LeftSideBar from "./Navigation/LeftSideBar/LeftSideBar";
 
 const SignIn = lazy(() => import("./Autorisation/SignIn"));
 const SignUp = lazy(() => import("./Autorisation/SignUp"));
@@ -29,7 +29,7 @@ function App() {
     return (
         <Router>
             <Suspense fallback={<Loader className="loader" type="Puff" color="#7B1FA2" height={500} width={300} timeout={300}/>}>
-        <Nav/>
+        <LeftSideBar />
         <main className="main">
             <Switch>
                 <Route path="/" exact component={Menu} />

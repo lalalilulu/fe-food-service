@@ -1,0 +1,20 @@
+@import "../../app";
+
+.leftSideBar-container-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: $primary-text-color;
+  transition:all ease 0.5s;  
+  z-index: 1;
+}
+
+.leftSideBar-container-overlay-show {
+  opacity: 0.5;
+  visibility: visible;
+}
+
+.leftSideBar-container-overlay-hide {
+  opacity: 0;
+  visibility: hidden;
+}

@@ -1,0 +1,23 @@
+@import "../../../app";
+
+.leftSideBar-burgerButton {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: 1em;
+  z-index: 2;
+
+  i {
+    background-color: $dark-primary-color;
+    width: 2em;
+    height: 0.25em;
+    margin: 0.15em;
+    border-radius: 0.125em;
+  }
+}
+
+@media (max-width: 1024px) {
+  .leftSideBar-burgerButton{
+    margin-left: 5%;
+  }
+}
