@@ -6,10 +6,11 @@ function CartOrderRow(props) {
 
     const [amount, setAmount] = useState(1);
     const changeAmount = (amount) => {
+        props.costsArray[props.index] = props.item.price*amount;
         setAmount(amount);
     }
 
-    //props.onChange(props.item.price*amount);
+    props.onChange(props.costsArray.reduce((accumulator, currentItem) => accumulator + currentItem));
 
     return (
         <tr>

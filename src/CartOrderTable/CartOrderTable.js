@@ -4,8 +4,11 @@ import "./cartOrderTable.scss";
 
 function CartOrderTable(props) {
 
-    const [total, setTotal] = useState(props.items.reduce((accumulator, currentItem) => accumulator + currentItem.price, 0));
+    const cartItems = [...props.items];
+    const [total, setTotal] = useState(cartItems.reduce((accumulator, currentItem) => accumulator + currentItem.price, 0));
+    const costsArray = cartItems.map(item => item.price);
     const changeTotal = (total) => {
+        console.log(costsArray);
         setTotal(total);
     }
 
@@ -20,8 +23,8 @@ function CartOrderTable(props) {
             </tr>
             </thead>
             <tbody>
-            {props.items.map((item) => (
-                <CartOrderRow item={item} onChange={changeTotal}/>
+            {cartItems.map((item, index) => (
+                <CartOrderRow item={item} index={index} costsArray={costsArray} onChange={changeTotal}/>
             ))}
             <tr>
                 <td/>
