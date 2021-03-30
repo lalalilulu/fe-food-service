@@ -13,14 +13,21 @@
 .right-section-container {
   display: flex;
   flex-direction: row;
-  width: 20%;
-  justify-content: space-evenly;
+  justify-self: flex-end;
+  //width: 20%;
+  justify-content: space-around;
   align-items: center;
 }
 
 @media (max-width: 1024px) {
   .right-section-container {
-    width: 45%;
+    width: 47%;
+  }
+}
+
+@media (max-width: 568px) and (orientation:landscape){
+  .right-section-container {
+    width: 55%;
   }
 }
 
@@ -30,16 +37,20 @@
   }
 }
 
-@media (max-width: 736px) {
+@media (max-width: 414px) {
   .user-settings {
     display: none;
   }
 }
 
-@media (max-width: 736px) and (orientation: landscape) {
-  .right-section-container {
-    width: 30%;
-  }
+//@media (max-width: 736px) and (orientation: landscape) {
+//  .right-section-container {
+//    width: 30%;
+//  }
+//}
+
+.user-settings {
+  width: 250px;
 }
 
 .not-authorized {
@@ -52,10 +63,9 @@
   border: 0;
   color: $dark-primary-color;
   font-size: 18px;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  padding: 0.5em 1em;
   justify-content: space-between;
-  margin-right: 5%;
+  margin-right: 2%;
 }
 
 .icon {
@@ -71,6 +81,10 @@
 .username, .amount, .order-sum {
   font-family: $primary-font-family;
   font-size: 18px;
+}
+
+.amount {
+  margin-left: 10px;
 }
 
 .username {

@@ -14,14 +14,14 @@ const TopSection = () => {
                 onClick={() => setIsShowSidebar(true)}
             />
             <div className="row justify-content-md-center right-section-container">
-                <div className="col-sm row user-settings">
+                <div className="col row user-settings">
                     <div className="username">Username</div>
                     <ArrowIcon className="icon"/>
                 </div>
-                <div className="col-sm not-authorized">
+                <div className="col not-authorized">
                     <a href="/signin" className="nav-button transparent">Войти</a>
                 </div>
-                <a href="/cart" className="col-sm row cart-link-button">
+                <a href="/cart" className="row cart-link-button">
                     <CartIcon className="icon"/>
                     <div className="amount">10</div>
                     <LineIcon className="icon"/>
