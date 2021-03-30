@@ -11,6 +11,7 @@ $left-sidebar-width: 20em;
   background-color: $dark-primary-color;
   transition:all ease 0.5s;
   z-index: 3;
+  overflow-y: auto;
 
   .leftSideBar-leftSection-topWrapper {
     width: 100%;

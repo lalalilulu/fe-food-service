@@ -23,9 +23,9 @@ const TopSection = () => {
                 </div>
                 <a href="/cart" className="row cart-link-button">
                     <CartIcon className="icon"/>
-                    <div className="amount">10</div>
+                    <div className="amount">3</div>
                     <LineIcon className="icon"/>
-                    <div className="order-sum">121$</div>
+                    <div className="order-sum">89$</div>
                 </a>
             </div>
         </div>
