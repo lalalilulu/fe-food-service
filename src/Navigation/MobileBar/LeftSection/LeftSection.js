@@ -65,6 +65,9 @@ const LeftSection = () => {
                         <a href="https://www.instagram.com/buzzfeedtasty" target="_blank"><InstaIcon className="icon-social"/></a>
                     </div>
                 </li>
+                <li>
+                    <div className="border-line"/>
+                </li>
             </ul>
         </div>
     );

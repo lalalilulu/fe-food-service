@@ -1,17 +1,15 @@
 import React, {useState} from "react";
-import "./nav.scss";
 
 function NavItem(props) {
     const [open, setOpen] = useState(false);
 
     return (
-        <li className="nav-item">
-            <a href={props.link} className="icon-button" onClick={() => setOpen(!open)}>
+        <span>
+            <a href={props.link} className="icon" onClick={() => setOpen(!open)}>
                 {props.icon}
             </a>
-
             {open && props.children}
-        </li>
+        </span>
     );
 }
 
