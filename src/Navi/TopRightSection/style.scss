@@ -1,0 +1,78 @@
+@import "../../app";
+
+.right-section-container {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+//@media (max-width: 1024px) {
+//  .right-section-container {
+//    width: 30%;
+//    justify-content: space-evenly;
+//  }
+//}
+//
+//@media (max-width: 414px) {
+//  .right-section-container {
+//    width: 55%;
+//  }
+//}
+//
+//@media (max-width: 360px) {
+//  .right-section-container {
+//    width: 67%;
+//  }
+//}
+//
+//@media (min-width: 414px) and (orientation: landscape)  {
+//  .right-section-container {
+//    width: 40%;
+//  }
+//}
+
+.not-authorized {
+  display: none;
+}
+
+.cart-link-button, .nav-button {
+  background: $light-primary-color;
+  border-radius: 10px;
+  border: 0;
+  color: $dark-primary-color;
+  font-size: 18px;
+  padding: 0.5em 1em;
+  justify-content: space-between;
+  margin-right: 2%;
+}
+
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+  fill: $dark-primary-color;
+}
+
+.profile-icon {
+  width: 2em;
+  height: 2em;
+}
+
+.products, .receipt {
+  width: 45%;
+}
+
+.amount, .order-sum {
+  font-family: $primary-font-family;
+  font-size: 18px;
+}
+
+.amount {
+  margin-left: 10px;
+}
+
+.amount:hover, .order-sum:hover {
+  text-decoration: none;
+}

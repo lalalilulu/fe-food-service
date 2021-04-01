@@ -1,10 +1,10 @@
-@import "nav";
+@import "../app";
 
 .dropdown {
   position: absolute;
   z-index: 2;
-  top: 75px;
-  width: 240px;
+  top: 55px;
+  width: 250px;
   transform: translateX(-45%);
   background-color: $background-primary-color;
   box-shadow: $box-shadow;
@@ -14,6 +14,12 @@
   padding: 1rem;
   overflow: hidden;
   transition: height $speed ease;
+}
+
+@media (max-width: 414px) {
+  .dropdown {
+    width: 200px;
+  }
 }
 
 .menu {
@@ -32,6 +38,43 @@
   border-radius: $border-radius;
   transition: background $speed;
   padding: 0.5rem;
+}
+
+a {
+  font-family: $secondary-font-family;
+  color: $primary-text-color;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+  color: $dark-primary-color;
+}
+
+/* Icon Button */
+.icon-button {
+  $button-size: calc(62px * 0.5);
+  width: $button-size;
+  height: $button-size;
+  background-color: $default-primary-color;
+  border-radius: 50%;
+  padding: 6px;
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 100ms;
+}
+
+.icon-button:hover {
+  filter: brightness(1.5);
+  transform: scale(1.05);
+}
+
+.icon-button svg {
+  fill: $background-primary-color;
+  width: 20px;
+  height: 20px;
 }
 
 .menu-item .icon-button {

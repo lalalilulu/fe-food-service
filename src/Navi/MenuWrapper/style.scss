@@ -1,0 +1,57 @@
+@import "../../app";
+
+.leftSideBar-leftSection-menuWrapper {
+  list-style-type: none;
+  margin: 1em;
+  padding: 0;
+
+  li {
+    margin-bottom: 1em;
+
+    a {
+      font-family: $primary-font-family;
+      font-size: 22px;
+      font-weight: bold;
+      color: $background-primary-color;
+      text-decoration: none;
+    }
+  }
+}
+
+.logo-icon {
+  width: 15em;
+  height: 15em;
+  fill: $background-primary-color;
+}
+
+.border-line, .border-logo-line {
+  border-bottom: 1px solid $background-primary-color;
+}
+
+@media (max-width: 1024px) {
+  .logo-icon {
+    display: none;
+  }
+  .border-logo-line {
+    display: none;
+  }
+}
+
+.social-networks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icon-social {
+  width: 1.75em;
+  height: 1.75em;
+  fill: $background-primary-color;
+  transition: ease-in-out 100ms;
+}
+
+.icon-social:hover {
+  fill: $accent-color;
+  transform: scale(1.05);
+}

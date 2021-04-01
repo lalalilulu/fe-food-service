@@ -5,7 +5,7 @@ import './style.scss';
 
 export const LeftSideBarContext = React.createContext({})
 
-const LeftSideBar = () => {
+const LeftSideMobileBar = () => {
   const [isShowSidebar, setIsShowSidebar] = useState(false);
   return (
     <LeftSideBarContext.Provider
@@ -24,4 +24,4 @@ const LeftSideBar = () => {
   );
 };
 
-export default LeftSideBar;
+export default LeftSideMobileBar;

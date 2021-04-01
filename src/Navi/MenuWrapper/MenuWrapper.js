@@ -1,21 +1,19 @@
-import React, {useContext} from 'react';
-import BurgerButton from '../BurgerButton/BurgerButton';
-import {LeftSideBarContext} from '../LeftSideBar';
-import {ReactComponent as FacebookIcon} from "../../../assets/icons/facebook.svg";
-import {ReactComponent as YoutubeIcon} from "../../../assets/icons/youtube.svg";
-import {ReactComponent as InstaIcon} from "../../../assets/icons/instagram.svg";
+import React from 'react';
+import {ReactComponent as LogoIcon} from "../../assets/icons/delivery-truck.svg";
+import {ReactComponent as FacebookIcon} from "../../assets/icons/facebook.svg";
+import {ReactComponent as YoutubeIcon} from "../../assets/icons/youtube.svg";
+import {ReactComponent as InstaIcon} from "../../assets/icons/instagram.svg";
 import './style.scss';
 
-const LeftSection = () => {
-    const {isShowSidebar, setIsShowSidebar} = useContext(LeftSideBarContext);
+const MenuWrapper = () => {
     return (
-        <div className={`leftSideBar-leftSection leftSideBar-leftSection-${isShowSidebar ? 'show' : 'hide'}`}>
-            <div className="leftSideBar-leftSection-topWrapper">
-                <BurgerButton
-                    onClick={() => setIsShowSidebar(false)}
-                />
-            </div>
             <ul className="leftSideBar-leftSection-menuWrapper">
+                <li>
+                    <LogoIcon className="logo-icon"/>
+                </li>
+                <li>
+                    <div className="border-logo-line"/>
+                </li>
                 <li>
                     <a href="/">All Menu</a>
                 </li>
@@ -69,8 +67,7 @@ const LeftSection = () => {
                     <div className="border-line"/>
                 </li>
             </ul>
-        </div>
     );
 };
 
-export default LeftSection;
+export default MenuWrapper;

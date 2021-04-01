@@ -2,7 +2,7 @@ import React from 'react';
 import TopSection from './TopSection/TopSection';
 import LeftSection from './LeftSection/LeftSection';
 
-const LeftSideBar = () => {
+const LeftSideDesktopBar = () => {
 
   return (
       <div>
@@ -13,4 +13,4 @@ const LeftSideBar = () => {
   );
 };
 
-export default LeftSideBar;
+export default LeftSideDesktopBar;

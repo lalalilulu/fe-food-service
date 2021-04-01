@@ -1,12 +1,12 @@
-import React, {Suspense, lazy} from 'react';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import React, {lazy, Suspense} from 'react';
+import {BrowserRouter as Router} from "react-router-dom";
 import Loader from "react-loader-spinner";
-import { useMediaQuery } from "react-responsive";
-import Menu from "./FoodMenu/Menu";
-import MobileNav from "./Navigation/MobileBar/LeftSideBar";
-import DesktopNav from "./Navigation/DesktopBar/LeftSideBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.scss";
+
+import {useMediaQuery} from "react-responsive";
+import LeftSideDesktopBar from "./Navi/DesktopBar/LeftSideDesktopBar";
+import LeftSideMobileBar from "./Navi/MobileBar/LeftSideMobileBar";
 
 
 const SignIn = lazy(() => import("./Autorisation/SignIn"));
@@ -34,28 +34,9 @@ function App() {
         <Router>
             <Suspense fallback={<Loader className="loader" type="Puff" color="#7B1FA2" height={500} width={300}
                                         timeout={300}/>}>
-                {isTabletOrMobile && <MobileNav/>}
-                {isDesktopOrLaptop && <DesktopNav/>}
-                <main className="main">
-                    <Switch>
-                        <Route path="/" exact component={Menu}/>
-                        <Route path="/menu/:id" component={MenuItem}/>
-                        <Route path="/edit/:id" component={EditItemForm}/>
-                        <Route path="/signin" exact component={SignIn}/>
-                        <Route path="/signup" exact component={SignUp}/>
-                        <Route path="/profile" exact component={Profile}/>
-                        <Route path="/completedOrders" exact component={CompletedOrders}/>
-                        <Route path="/newOrders" exact component={NewOrders}/>
-                        <Route path="/receivedOrders" exact component={ReceivedOrders}/>
-                        <Route path="/deliveries" exact component={Deliveries}/>
-                        <Route path="/cart" exact component={Cart}/>
-                        {/*/!*<Route path="/dish/:id" component={ItemDetail} />*!/*/}
-                        {/*<Route path="/profile" component={Profile} />*/}
-                        {/*<Route path="/cart" exact component={Cart} />*/}
-                        {/*/!*<Route path="/order/:id" component={Order} />*!/*/}
-                        {/*<Route component={NoMatchPage} />*/}
-                    </Switch>
-                </main>
+                {isDesktopOrLaptop && <LeftSideDesktopBar/>}
+                {isTabletOrMobile && <LeftSideMobileBar/>}
+
             </Suspense>
         </Router>
     );

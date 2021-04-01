@@ -1,0 +1,11 @@
+@import "../../../app";
+
+.leftSideBar-topDesktopSection {
+  width: 100%;
+  height: 4em;
+  background-color: $background-primary-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;  
+}

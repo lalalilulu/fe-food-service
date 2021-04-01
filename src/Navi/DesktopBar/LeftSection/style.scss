@@ -1,0 +1,15 @@
+@import "../../../app";
+
+$left-sidebar-width: 20em;
+
+.leftSideBar-leftDesktopSection {
+  position: fixed;
+  width: $left-sidebar-width;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $default-primary-color;
+  transition:all ease 0.5s;
+  z-index: 1;
+  overflow-y: auto;
+}
