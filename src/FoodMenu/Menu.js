@@ -8,14 +8,16 @@ import "./menu.scss";
 function Menu() {
 
     return (
-        <div>
-        <div className="container-md">
-            <Input type="text" name="search" id="search" labelContent="Search for favourite food"/>
-            <Filters/>
-        </div>
-        <div className="container-md">
-            <MenuList/>
-        </div>
+        <div className="container-fluid">
+            <div className="row">
+                <Input type="text" name="search" id="search" labelContent="Search for favourite food"/>
+            </div>
+            <div className="row">
+                <Filters/>
+            </div>
+            <div className="row">
+                <MenuList/>
+            </div>
         </div>
     );
 }

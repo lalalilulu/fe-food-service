@@ -1,5 +1,5 @@
 import React, {lazy, Suspense} from 'react';
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Loader from "react-loader-spinner";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.scss";
@@ -7,7 +7,7 @@ import "./app.scss";
 import {useMediaQuery} from "react-responsive";
 import LeftSideDesktopBar from "./Navi/DesktopBar/LeftSideDesktopBar";
 import LeftSideMobileBar from "./Navi/MobileBar/LeftSideMobileBar";
-
+import Menu from "./FoodMenu/Menu";
 
 const SignIn = lazy(() => import("./Autorisation/SignIn"));
 const SignUp = lazy(() => import("./Autorisation/SignUp"));
@@ -20,13 +20,6 @@ const Cart = lazy(() => import("./Cart/Cart"));
 const MenuItem = lazy(() => import("./FoodItem/Item"));
 const EditItemForm = lazy(() => import("./FoodItem/ItemForm"));
 
-
-// const Profile = lazy(() => import("./Profile"));
-// const Cart = lazy(() => import("./Cart"));
-// const CompleteOrder = lazy(() => import("./CompleteOrder"));
-// const NoMatchPage = lazy(() => import("./404Error"));
-
-
 function App() {
     const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'});
     const isTabletOrMobile = useMediaQuery({query: '(max-width: 1224px)'});
@@ -36,7 +29,21 @@ function App() {
                                         timeout={300}/>}>
                 {isDesktopOrLaptop && <LeftSideDesktopBar/>}
                 {isTabletOrMobile && <LeftSideMobileBar/>}
-
+                <main className={`main main-${isDesktopOrLaptop ? 'desktop' : 'mobile'}`}>
+                    <Switch>
+                        <Route path="/" exact component={Menu}/>
+                        <Route path="/menu/:id" component={MenuItem}/>
+                        <Route path="/edit/:id" component={EditItemForm}/>
+                        <Route path="/signin" exact component={SignIn}/>
+                        <Route path="/signup" exact component={SignUp}/>
+                        <Route path="/profile" exact component={Profile}/>
+                        <Route path="/completedOrders" exact component={CompletedOrders}/>
+                        <Route path="/newOrders" exact component={NewOrders}/>
+                        <Route path="/receivedOrders" exact component={ReceivedOrders}/>
+                        <Route path="/deliveries" exact component={Deliveries}/>
+                        <Route path="/cart" exact component={Cart}/>
+                    </Switch>
+                </main>
             </Suspense>
         </Router>
     );

@@ -8,6 +8,7 @@
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
+  padding-right: 15px;
 }
 
 .card-icons {
@@ -26,8 +27,7 @@
 }
 
 .card {
-  //width: calc(100% / 4 - 25px);
-  width: 220px;
+  width: 250px;
   height: 330px;
   display: flex;
   flex-direction: column;
@@ -39,14 +39,22 @@
   transition: .5s;
 }
 
-@media only screen and (max-width: 823px) {
+@media only screen and (max-width: 1024px) {
+  .cards {
+    padding-right: 0;
+  }
   .card {
+    width: 220px;
     margin: 4% auto;
   }
 }
 
-@media only screen and (max-width: 823px) and (orientation: landscape)  {
+@media only screen and (max-width: 1024px) and (orientation: landscape)  {
+  .cards {
+    padding-right: 0;
+  }
   .card {
+    width: 220px;
     margin: 1.5% auto;
   }
 }
@@ -82,7 +90,7 @@
   margin: 5% auto;
 }
 
-.card-content {
+.card-description {
   padding: 0 10px;
   font-size: 18px;
 }

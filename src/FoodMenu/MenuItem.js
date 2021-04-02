@@ -7,13 +7,10 @@ function MenuItem(props) {
 
     return (
         <Link to={`/menu/${props.id}`} className="card-container">
-            <div className="card-icons">
-                <img className="add" src={plus} alt="Add to cart"/>
-            </div>
             <div className="card-img">
                 <img src={props.image} alt="item-photo"/>
             </div>
-            <div className="card-content">
+            <div className="card-description">
                 <p>{props.name}</p>
                 <p className="itemPrice">{props.price}$</p>
             </div>
