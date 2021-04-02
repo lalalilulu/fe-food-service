@@ -5,7 +5,7 @@ import LeftSection from './LeftSection/LeftSection';
 const LeftSideDesktopBar = () => {
 
   return (
-      <div>
+      <div className="container-fluid">
         <TopSection />      
         <LeftSection />
       </div>

@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {CSSTransition} from "react-transition-group";
 import {ReactComponent as CogIcon} from "../assets/icons/configuration.svg";
 import {ReactComponent as OrdersIcon} from "../assets/icons/list-orders.svg";
-import {ReactComponent as LocationIcon} from "../assets/icons/location.svg";
+import {ReactComponent as UserLogInIcon} from "../assets/icons/user-login.svg";
 import {ReactComponent as ArrowIcon} from "../assets/icons/left-arrow.svg";
 import {ReactComponent as WatchIcon} from "../assets/icons/watch.svg";
 import {ReactComponent as CheckIcon} from "../assets/icons/check-mark.svg";
@@ -55,8 +55,8 @@ function DropdownMenu() {
                         Orders
                     </DropdownItem>
                     <DropdownItem
-                        leftIcon={<LocationIcon />}>
-                        Addresses
+                        leftIcon={<UserLogInIcon />}>
+                        <a href="/signin">LogIn/LogOut</a>
                     </DropdownItem>
                 </div>
             </CSSTransition>

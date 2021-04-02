@@ -8,14 +8,11 @@ import './style.scss';
 
 const TopRightSection = () => {
     return (
-            <div className="col-sm-2 right-section-container">
+            <div className="col-xl-2 right-section-container">
                 <div>
                     <NavItem icon={<UserIcon className="profile-icon"/>} link="#">
                         <DropdownMenu/>
                     </NavItem>
-                </div>
-                <div className="not-authorized">
-                    <a href="/signin" className="nav-button">Войти</a>
                 </div>
                 <a href="/cart" className="row cart-link-button">
                     <CartIcon className="icon"/>

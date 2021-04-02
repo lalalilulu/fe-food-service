@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  margin-left: 1em;
   z-index: 2;
 
   i {
@@ -16,8 +15,8 @@
   }
 }
 
-@media (max-width: 1024px) {
-  .leftSideBar-burgerButton{
-    margin-left: 5%;
-  }
-}
+//@media (max-width: 1024px) {
+//  .leftSideBar-burgerButton{
+//    margin-left: 15%;
+//  }
+//}

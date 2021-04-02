@@ -11,7 +11,7 @@ const LeftSideMobileBar = () => {
     <LeftSideBarContext.Provider
       value={{ isShowSidebar, setIsShowSidebar }}
     >
-      <div className="leftSideBar-container">
+      <div className="container-fluid leftSideBar-container">
         <div
           className={`leftSideBar-container-overlay leftSideBar-container-overlay-${isShowSidebar ? 'show' : 'hide'}`}
           role="button"
