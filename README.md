@@ -11,7 +11,7 @@ Go to the local directory/ terminal and run below commands
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.\
 The page will reload if you make edits.
 
-##Main Page Screenshots
+## Main Page Screenshots
 ![Screenshot](https://github.com/lalalilulu/fe-food-service/blob/main/screenshots/Screenshot3.JPG) 
 ![Screenshot](https://github.com/lalalilulu/fe-food-service/blob/main/screenshots/Screenshot2.JPG) 
 ![Screenshot](https://github.com/lalalilulu/fe-food-service/blob/main/screenshots/Screenshot4.JPG) 
