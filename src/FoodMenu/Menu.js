@@ -5,7 +5,6 @@ import MenuPart from "./MenuPart";
 import "./menu.scss";
 
 
-
 function Menu() {
 
     const allItems = require("../data/fooddata.json").data;
@@ -23,6 +22,9 @@ function Menu() {
     const findItems = () => {
         const searchQuery = query.toLowerCase();
         setResult(allItems.filter(item => item.name.toLowerCase().includes(searchQuery)).splice(0,10));
+        // setResult(allItems.filter(function(item) {
+        //     const {name, category, ingredients} = item;
+        //     return name.toLowerCase().includes(searchQuery) || category.toLowerCase().includes(searchQuery) }).splice(0,10));
     }
 
     const isSearchInputEmpty = query === '';
@@ -37,7 +39,7 @@ function Menu() {
             </div>
             {!isSearchInputEmpty && isResultNotEmpty && <MenuPart headerName="found items" items={result}/>}
             {!isSearchInputEmpty && !isResultNotEmpty && <MenuPart headerName="No results were found for your search. Try again"/>}
-            {isSearchInputEmpty && <MenuContainer/>}
+            {isSearchInputEmpty && <MenuContainer allItems={allItems}/>}
         </div>
     );
 }

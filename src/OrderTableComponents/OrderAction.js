@@ -4,10 +4,12 @@ import "./orders.scss";
 
 function OrderAction(props) {
 
+    const {description, number, icon} = props;
+
     return (
-        <div data-tip={props.description} data-for={props.number}>
-            <a href="" className="icon-button">{props.icon}</a>
-            <ReactTooltip id={props.number} type="info" place="bottom" backgroundColor="#7B1FA2" effect="float" event="mouseover" eventOff="mouseout"/>
+        <div data-tip={description} data-for={number}>
+            <a href="" className="icon-button">{icon}</a>
+            <ReactTooltip id={number} type="info" place="bottom" backgroundColor="#7B1FA2" effect="float" event="mouseover" eventOff="mouseout"/>
         </div>
     );
 }

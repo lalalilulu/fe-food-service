@@ -4,27 +4,29 @@ import "./orderRow.scss";
 
 function CartOrderRow(props) {
 
+    const {item, costsArray, index, onChange} = props;
+
     const [amount, setAmount] = useState(1);
     const changeAmount = (amount) => {
-        props.costsArray[props.index] = props.item.price*amount;
+        costsArray[index] = item.price*amount;
         setAmount(amount);
     }
 
-    props.onChange(props.costsArray.reduce((accumulator, currentItem) => accumulator + currentItem));
+    onChange(costsArray.reduce((accumulator, currentItem) => accumulator + currentItem));
 
     return (
         <tr>
             <th scope="row" className="align-middle item-image">
-                <img src={props.item.image}/>
+                <img src={item.image}/>
             </th>
             <td className="align-middle text-center">
-                {props.item.name}
+                {item.name}
             </td>
             <td className="align-middle">
                 <AmountCounter amount={amount} onChange={changeAmount}/>
             </td>
             <td className="align-middle text-center action-item">
-                {props.item.price*amount}$
+                {item.price*amount}$
             </td>
         </tr>
     )

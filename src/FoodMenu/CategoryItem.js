@@ -4,16 +4,18 @@ import "./menu.scss";
 
 function CategoryItem(props) {
 
+    const {id, image, name, price} = props;
+
     return (
-        <Link to={`/menu/${props.id}`} className="card-container">
+        <Link to={`/menu/${id}`} className="card-container">
             <div className="card-img">
-                <img src={props.image} alt="item-photo"/>
+                <img src={image} alt="item-photo"/>
             </div>
             <div className="card-body">
-                <p>{props.name}</p>
+                <p>{name}</p>
             </div>
             <div className="card-item-footer">
-                <p className="itemPrice">{props.price}$</p>
+                <p className="itemPrice">{price}$</p>
                 <button type="button" className="btn btn-primary add-to-cart-btn">Add to cart</button>
             </div>
         </Link>

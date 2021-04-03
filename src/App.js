@@ -25,8 +25,8 @@ function App() {
     const isTabletOrMobile = useMediaQuery({query: '(max-width: 1224px)'});
     return (
         <Router>
-            {/*<Suspense fallback={<Loader className="loader" type="Puff" color="#7B1FA2" height={500} width={300}*/}
-            {/*                            timeout={300}/>}>*/}
+            <Suspense fallback={<Loader className="loader" type="Puff" color="#7B1FA2" height={200} width={200}
+                                        timeout={300}/>}>
                 {isDesktopOrLaptop && <LeftSideDesktopBar/>}
                 {isTabletOrMobile && <LeftSideMobileBar/>}
                 <main className={`main main-${isDesktopOrLaptop ? 'desktop' : 'mobile'}`}>
@@ -44,7 +44,7 @@ function App() {
                         <Route path="/cart" exact component={Cart}/>
                     </Switch>
                 </main>
-            {/*</Suspense>*/}
+            </Suspense>
         </Router>
     );
 }

@@ -7,6 +7,8 @@ import "./menu.scss";
 
 function MenuPart(props) {
 
+    const {headerName, pageLink, arrowDown, arrowUp, items} = props;
+
     const capitalize = function(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
@@ -14,14 +16,14 @@ function MenuPart(props) {
     return (
             <div>
                 <div className="row row-header">
-                    <a name={props.headerName}/>
-                    <h3>{capitalize(props.headerName)}</h3>
-                    <a href={props.pageLink}>
-                        {props.arrowDown && <ArrowIcon className="arrow-button"/>}
-                        {props.arrowUp && <DoubleArrowIcon className="arrow-button"/>}
+                    <a name={headerName}/>
+                    <h3>{capitalize(headerName)}</h3>
+                    <a href={pageLink}>
+                        {arrowDown && <ArrowIcon className="arrow-button"/>}
+                        {arrowUp && <DoubleArrowIcon className="arrow-button"/>}
                     </a>
                 </div>
-                {props.items && <CategoryList items={props.items}/>}
+                {items && <CategoryList items={items}/>}
             </div>
     );
 }

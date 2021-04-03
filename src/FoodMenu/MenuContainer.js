@@ -2,9 +2,9 @@ import React from "react";
 import MenuPart from "./MenuPart";
 
 
-function MenuContainer() {
+function MenuContainer(props) {
 
-    const allItems = require("../data/fooddata.json").data;
+    const {allItems} = props;
 
     return (
         <div>

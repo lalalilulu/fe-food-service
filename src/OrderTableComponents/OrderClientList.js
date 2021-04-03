@@ -2,7 +2,7 @@ import React from "react";
 import OrderTable from "./OrderTable";
 import "./orders.scss";
 
-function OrderClientList(props) {
+function OrderClientList() {
 
     const oldItems = require("../data/oldorders.json").data;
     const oldOrdersPossibleActions = [{name: "giveFeedback", description: "Leave a feedback about the order"}];

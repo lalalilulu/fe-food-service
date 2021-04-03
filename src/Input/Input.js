@@ -94,15 +94,17 @@ function Input(props) {
 
 	addInputFiiledClass(window);
 
+	const {type, id, value, onInput, labelContent} = props;
+
     return (
         <span className="input input--hoshi">
 			<input className="input__field input__field--hoshi"
-				   type={props.type} id= {props.id}
-				   value={props.value}
-				   onInput={props.onInput}
+				   type={type} id= {id}
+				   value={value}
+				   onInput={onInput}
 			/>
-			<label className="input__label input__label--hoshi input__label--hoshi-color" htmlFor={props.id}>
-				<span className="input__label-content input__label-content--hoshi">{props.labelContent}</span>
+			<label className="input__label input__label--hoshi input__label--hoshi-color" htmlFor={id}>
+				<span className="input__label-content input__label-content--hoshi">{labelContent}</span>
 			</label>
         </span>
     );

@@ -10,6 +10,8 @@ import "./orders.scss";
 
 function OrderTable(props) {
 
+    const {items, actions} = props;
+
     function chooseIcon(action) {
         switch (action) {
             case "delete":
@@ -24,6 +26,8 @@ function OrderTable(props) {
                 return <FeedbackIcon/>
             case "reject":
                 return <RejectIcon/>
+            default:
+                return <DeleteIcon/>
         }
     }
 
@@ -38,7 +42,7 @@ function OrderTable(props) {
             </tr>
             </thead>
             <tbody>
-            {props.items.map((item) => (
+            {items.map((item) => (
                 <tr>
                     <th scope="row" className="text-center">
                         #{item.number}
@@ -50,7 +54,7 @@ function OrderTable(props) {
                         {item.date}
                     </td>
                     <td className="text-center action-item">
-                        {props.actions.map((action) => <OrderAction description={action.description} number={action.name + item.number} icon={chooseIcon(action.name)}/>)}
+                        {actions.map((action) => <OrderAction description={action.description} number={action.name + item.number} icon={chooseIcon(action.name)}/>)}
                     </td>
                 </tr>
             ))}

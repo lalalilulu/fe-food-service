@@ -2,13 +2,14 @@ import React, {useState} from "react";
 
 function NavItem(props) {
     const [open, setOpen] = useState(false);
+    const {link, icon, children} = props;
 
     return (
         <span>
-            <a href={props.link} className="icon" onClick={() => setOpen(!open)}>
-                {props.icon}
+            <a href={link} className="icon" onClick={() => setOpen(!open)}>
+                {icon}
             </a>
-            {open && props.children}
+            {open && children}
         </span>
     );
 }
