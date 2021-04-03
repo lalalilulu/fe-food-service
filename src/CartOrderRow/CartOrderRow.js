@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import AmountCounter from "../AmountCounter/AmountCounter";
+import {ReactComponent as DeleteIcon} from "../assets/icons/trash-bin.svg";
 import "./orderRow.scss";
 
 function CartOrderRow(props) {
@@ -16,17 +17,20 @@ function CartOrderRow(props) {
 
     return (
         <tr>
-            <th scope="row" className="align-middle item-image">
+            <td className="item-image">
                 <img src={item.image}/>
-            </th>
+            </td>
             <td className="align-middle text-center">
                 {item.name}
             </td>
             <td className="align-middle">
-                <AmountCounter amount={amount} onChange={changeAmount}/>
+                <AmountCounter amountInitial={amount} minValue={0} maxValue={100} onChange={changeAmount}/>
             </td>
             <td className="align-middle text-center action-item">
                 {item.price*amount}$
+            </td>
+            <td className="align-middle text-center action-item delete-icon">
+                <button type="button" className="icon-button"><DeleteIcon/></button>
             </td>
         </tr>
     )

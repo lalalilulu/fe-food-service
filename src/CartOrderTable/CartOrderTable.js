@@ -16,10 +16,11 @@ function CartOrderTable(props) {
         <table className="table table-hover custom-table">
             <thead>
             <tr>
-                <th scope="col"/>
+                <th scope="col" className="image-header"/>
                 <th scope="col" className="text-center">Dish</th>
                 <th scope="col" className="text-center">Amount</th>
                 <th scope="col" className="text-center">Cost</th>
+                <th scope="col"/>
             </tr>
             </thead>
             <tbody>
@@ -27,10 +28,11 @@ function CartOrderTable(props) {
                 <CartOrderRow item={item} index={index} costsArray={costsArray} onChange={changeTotal}/>
             ))}
             <tr>
-                <td/>
+                <td className="image-column"/>
                 <td/>
                 <td className="text-center order-total">TOTAL</td>
                 <td className="text-center order-total-price">{total}$</td>
+                <td/>
             </tr>
             </tbody>
         </table>

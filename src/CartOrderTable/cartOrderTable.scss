@@ -9,18 +9,6 @@
   justify-content: center;
 }
 
-.item-image {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.item-image img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-}
-
 .order-total, .order-total-price {
   color: $accent-color;
   font-size: 18px;
@@ -29,5 +17,11 @@
 
 .order-total, {
   text-align: end;
+}
+
+@media (max-width: 414px) {
+  .image-header, .image-column {
+    display: none;
+  }
 }
 

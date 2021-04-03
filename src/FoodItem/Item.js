@@ -39,7 +39,7 @@ function Item({match}) {
                             ))}
                         </ul>
                         <div className="mb-2 item-amount-container">
-                            <AmountCounter amount={amount} onChange={changeAmount}/>
+                            <AmountCounter amountInitial={amount} minValue={1} maxValue={100} onChange={changeAmount}/>
                             <span className="regular-price">{price*amount}$</span>
                         </div>
                             <button className="btn btn-primary form-btn product-btn">Add to cart</button>
