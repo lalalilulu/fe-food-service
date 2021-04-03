@@ -1,21 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import plus from "../assets/icons/plus.png";
+import {Link} from "react-router-dom";
 import "./menu.scss";
 
-function MenuItem(props) {
+function CategoryItem(props) {
 
     return (
         <Link to={`/menu/${props.id}`} className="card-container">
             <div className="card-img">
                 <img src={props.image} alt="item-photo"/>
             </div>
-            <div className="card-description">
+            <div className="card-body">
                 <p>{props.name}</p>
+            </div>
+            <div className="card-item-footer">
                 <p className="itemPrice">{props.price}$</p>
+                <button type="button" className="btn btn-primary add-to-cart-btn">Add to cart</button>
             </div>
         </Link>
     );
 }
 
-export default MenuItem;
+export default CategoryItem;

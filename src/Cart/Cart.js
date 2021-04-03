@@ -32,30 +32,14 @@ function Cart() {
 
     return (
 
-        <form name="cart-form" className="cart-form" action="#" method="post">
+        <form name="cart-form" className="container-fluid cart-form" action="#" method="post">
 
-            <div className="container-md justify-content-center">
+            <div className="container-sm justify-content-center">
                 <CartOrderTable items={items}/>
             </div>
 
-            <div className="container-md justify-content-center">
+            <div className="container-sm justify-content-center">
                 <h3>Delivery information</h3>
-                <div className="cart-info">
-                    <div className="cart-pickers">
-                        <TextField
-                            id="time"
-                            label="Delivery time"
-                            type="time"
-                            defaultValue="18:30"
-                            className="cart-time-picker"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            inputProps={{
-                                step: 1800, // 30 min
-                            }}
-                        />
-                    </div>
                     <div className="cart-inputs">
                         <Input type="address" name="address" id="address" labelContent="Address"/>
                         <Input type="phone" name="phone" id="phone" labelContent="Phone"/>
@@ -63,7 +47,7 @@ function Cart() {
 
                     {/*<label className="cutleryLabel" htmlFor="number-cutlery">Number of cutlery sets:</label>
                     <input className="cutleryInput" type="number" id="number-cutlery" name="number-cutlery" min="1" max="100" defaultValue={1}/>*/}
-                </div>
+
 
                 <h3>Comments</h3>
                 <div className="cart-info">

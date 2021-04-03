@@ -1,75 +1,83 @@
 @import "../app";
 
-.cards {
-  list-style-type: none;
-  padding-left: 0;
-  margin-left: 0;
+.row-header {
+  margin: 15px 0 10px;
+}
+
+.row-header h3 {
+  font-family: $secondary-font-family;
+  font-size: 22px;
+  color: $secondary-text-color;
+  margin: 5px 10px 5px 0;
+}
+
+.arrow-button {
+  width: 32px;
+  height: 32px;
+  background-color: $default-primary-color;
+  fill: $background-primary-color;
+  border-radius: 50%;
+  padding: 6px;
+  margin: 3px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  transition: filter 100ms;
+}
+
+.arrow-button:hover {
+  cursor: pointer;
+  filter: brightness(1.5);
+  transform: scale(1.05);
+}
+
+.cards {
+  padding: 0;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-right: 15px;
-}
-
-.card-icons {
-  position: fixed;
-  display: inline-flex;
-  margin: 4% 0 5% 31%;
-  visibility: hidden;
-}
-
-.add {
-  opacity: 0.3;
-}
-
-.add:hover, .add:focus {
-  opacity: 1;
 }
 
 .card {
-  width: 250px;
-  height: 330px;
+  width: 260px;
+  min-width: 180px;
+  height: 380px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
-  margin: 1%;
+
+  margin: 1% 2% 1% 0;
   box-shadow: $box-shadow;
   border-radius: 12px;
   transition: .5s;
 }
 
 @media only screen and (max-width: 1024px) {
-  .cards {
-    padding-right: 0;
-  }
   .card {
     width: 220px;
-    margin: 4% auto;
+    margin: 2% auto;
   }
 }
 
-@media only screen and (max-width: 1024px) and (orientation: landscape)  {
-  .cards {
-    padding-right: 0;
-  }
+@media only screen and (max-width: 667px) {
   .card {
-    width: 220px;
-    margin: 1.5% auto;
+    width: 245px;
+    margin: 2% auto;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .card {
+    width: 270px;
+    margin: 2% auto;
   }
 }
 
 .card:hover, .card:focus {
   transform: scale(1.1);
   cursor: pointer;
-}
-
-.card:hover .card-icons, .card:focus .card-icons{
-  visibility: visible;
-}
-
-.card-icons:hover, .card-icons:hover {
-  opacity: 1;
 }
 
 .card-container {
@@ -90,13 +98,31 @@
   margin: 5% auto;
 }
 
-.card-description {
+.card-body {
   padding: 0 10px;
   font-size: 18px;
 }
 
+.card-item-footer {
+  margin-top: auto;
+}
+
 .itemPrice {
   font-weight: bold;
+}
+
+.add-to-cart-btn {
+  background: $light-primary-color;
+  border-radius: 10px;
+  border: 0;
+  color: $dark-primary-color;
+  font-size: 18px;
+}
+
+.add-to-cart-btn:focus, .add-to-cart-btn:hover {
+  background: $default-primary-color;
+  color: $background-primary-color;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {

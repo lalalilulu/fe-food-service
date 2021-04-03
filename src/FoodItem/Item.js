@@ -31,7 +31,7 @@ function Item({match}) {
                         </div>
                         <p className="desc-content mb-5">{item.description}</p>
                         <ul className="product-ingredients">
-                            {item.ingredient.map((ingredient) => (
+                            {item.ingredients.map((ingredient) => (
                                 <li className="product-ingredient">
                                     {ingredient}
                                 </li>

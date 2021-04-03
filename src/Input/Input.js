@@ -96,7 +96,11 @@ function Input(props) {
 
     return (
         <span className="input input--hoshi">
-			<input className="input__field input__field--hoshi" type={props.type} id= {props.id}/>
+			<input className="input__field input__field--hoshi"
+				   type={props.type} id= {props.id}
+				   value={props.value}
+				   onInput={props.onInput}
+			/>
 			<label className="input__label input__label--hoshi input__label--hoshi-color" htmlFor={props.id}>
 				<span className="input__label-content input__label-content--hoshi">{props.labelContent}</span>
 			</label>

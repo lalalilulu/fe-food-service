@@ -5,7 +5,8 @@
 			"id": "456895675",
 			"description": "It's a delicious, healthy, textured soup made from an impossibly short list of ingredients. Simply green split peas and onions cooked with ham until tender, partially pureed, seasoned and flared out with toppings",
 			"image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-instant-pot-split-pea-soup-048-1543873041.jpg",
-			"ingredient": [
+			"category": "soups",
+			"ingredients": [
 				"extra-virgin olive oil",
 				"large leek",
 				"medium onion",
@@ -21,11 +22,12 @@
 			"price": 16
 		},
 		{
-			"name": "Miso, tofu & noodle soup",
+			"name": "Miso, Tofu & Noodle Soup",
 			"id": "456568934",
 			"description": "Slurpable noodles, hearty tofu, and vibrant veggies go into this cozy soba noodle soup. Super cozy, absolutely meal-worthy",
 			"image": "https://img.sunset02.com/sites/default/files/image/recipes/su/13/09/tofu-noodle-bowl-su-x.jpg",
-			"ingredient": [
+			"category": "soups",
+			"ingredients": [
 				"tablespoons miso paste",
 				"udon noodles",
 				"carrots",
@@ -37,11 +39,11 @@
 			"price": 13
 		},
 		{
-			"name": "Chicken soup",
+			"name": "Chicken Soup",
 			"id": "456533934",
 			"description": "The best chicken soup you'll ever eat is the best homemade nourishing healthy soup when you're feeling under the weather. Packed with anti-inflammatory ingredients like ginger, turmeric, garlic",
 			"image": "https://www.eatingonadime.com/wp-content/uploads/2015/02/chicken-noodle-soup-12-square-1.jpg",
-			"ingredient": [
+			"ingredients": [
 				"Yukon Gold potatoes",
 				"white onion",
 				"leeks",
@@ -58,7 +60,8 @@
 			"id": "456793934",
 			"description": "Of the winter soups, leek and potato is one of the most comforting and familiar - and this is the most of seasonal, local veg",
 			"image": "https://saltandwind.com/media/_versions/recipes/potato-leek-soup-recipe_h_medium_square.jpg",
-			"ingredient": [
+			"category": "soups",
+			"ingredients": [
 				"ground meat (beef, pork, or both), at least 20% fat",
 				"small onion",
 				"cauliflower rice",
@@ -78,7 +81,8 @@
 			"id": "456876510",
 			"description": "A healthier version of the classic dish that tastes just as good!",
 			"image": "https://i.pinimg.com/originals/16/57/1a/16571a24be51fdabbe06771915b20610.jpg",
-			"ingredient": [
+			"category": "pastas",
+			"ingredients": [
 				"turnip noodles",
 				"rashers bacon",
 				"eggs",
@@ -93,7 +97,8 @@
 			"id": "456921847",
 			"description": "It is very creamy with a nice lemony flavor. Every single ingredient is delicious and plays so very well with everything else in this pasta",
 			"image": "https://i.pinimg.com/originals/33/81/4f/33814fad613c6cd9698964834c52f50e.jpg",
-			"ingredient": [
+			"category": "pastas",
+			"ingredients": [
 				"penne pasta",
 				"asparagus",
 				"olive oil",
@@ -112,7 +117,8 @@
 			"id": "456869033",
 			"description": "Creamy ricotta pasta is topped with a red chili oil and buttery bread crumbs",
 			"image": "https://live-production.wcms.abc-cdn.net.au/094d13e37339166a3babad5b8b8bb877?impolicy=wcms_crop_resize&cropH=1988&cropW=1989&xPos=505&yPos=0&width=862&height=862",
-			"ingredient": [
+			"category": "pastas",
+			"ingredients": [
 				"rigatoni pasta",
 				"ricotta",
 				"mozzarella",
@@ -131,7 +137,8 @@
 			"id": "456791135",
 			"description": "This chilli, prawn and spinach linguine is full of flavour and it’s low in calories and fat but rich in vitamin C",
 			"image": "https://www.waitrose.com/content/dam/waitrose/recipes/images/c/2013wked-February-r2ll7.jpg/_jcr_content/renditions/cq5dam.thumbnail.400.400.png",
-			"ingredient": [
+			"category": "pastas",
+			"ingredients": [
 				"linguine pasta",
 				"tiger prawns",
 				"red chilli",
@@ -149,7 +156,8 @@
 			"id": "456436037",
 			"description": "This creamy Chicken Pesto Pasta is made with tasty chicken and tender pasta smothered in a luscious cream and basil pesto sauce",
 			"image": "https://www.oliviascuisine.com/wp-content/uploads/2015/10/One-Pan-Pasta-480x480.jpg",
-			"ingredient": [
+			"category": "pastas",
+			"ingredients": [
 				"penne pasta",
 				"chicken breast",
 				"cream cheese",
@@ -167,7 +175,8 @@
 			"id": "456788134",
 			"description": "Pizza Margherita is a typical Neapolitan pizza, made with San Marzano tomatoes, mozzarella cheese, fresh basil, salt and extra-virgin olive oil",
 			"image": "https://simply-delicious-food.com/wp-content/uploads/2020/06/Grilled-Pizza-Margherita-3.jpg",
-			"ingredient": [
+			"category": "pizzas",
+			"ingredients": [
 				"yeast dough",
 				"canned tomatoes",
 				"mozzarella",
@@ -183,7 +192,8 @@
 			"id": "456782234",
 			"description": "This is the classic version of one of the most wonderful combinations of bread and cheese imaginable. So rich and delicious you'll never have another pizza night without it!",
 			"image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2010%2F04%2F12%2Foh-four-cheese-pizza-x.jpg",
-			"ingredient": [
+			"category": "pizzas",
+			"ingredients": [
 				"yeast dough",
 				"shredded mozzarella",
 				"shredded parmesan",
@@ -201,7 +211,8 @@
 			"id": "456119234",
 			"description": "Greek Pizza is topped with feta, spinach, and olives for a colorful meal with Mediterranean inspiration. This is a white pizza that is simply brushed with olive oil – a fun way to mix up pizza night!",
 			"image": "https://www.cookingclassy.com/wp-content/uploads/2013/10/greek-pizza2+srgb.-450x500.jpg",
-			"ingredient": [
+			"category": "pizzas",
+			"ingredients": [
 				"yeast dough",
 				"feta cheese",
 				"kalamata olives",
@@ -217,7 +228,8 @@
 			"id": "456170234",
 			"description": "The absolute perfect weeknight meal that comes together in minutes! For it we use rotisserie chicken, fresh tomatoes, pesto and cheese",
 			"image": "https://3f4c2184e060ce99111b-f8c0985c8cb63a71df5cb7fd729edcab.ssl.cf2.rackcdn.com/media/6106/pesto-pizza_600.jpg",
-			"ingredient": [
+			"category": "pizzas",
+			"ingredients": [
 				"yeast dough",
 				"rotisserie chicken",
 				"homemade pesto",
@@ -234,7 +246,8 @@
 			"id": "456529138",
 			"description": "This New York style pizza is the famous real deal with it’s homemade dough that makes a thin and crispy crust, a quick homemade tomato sauce, and mozzarella cheese",
 			"image": "https://patch.com/img/cdn20/users/23306266/20201012/042419/styles/patch_image/public/pizzapie___12162338753.jpg",
-			"ingredient": [
+			"category": "pizzas",
+			"ingredients": [
 				"yeast dough",
 				"olive oil",
 				"mozzarella cheese",
@@ -251,7 +264,8 @@
 			"id": "456853481",
 			"description": "Simplicity at it's best with this Italian-style salami, bocconcini and basil pizza",
 			"image": "https://s1.eda.ru/StaticContent/Photos/141122084325/150111182332/p_O.jpg",
-			"ingredient": [
+			"category": "pizzas",
+			"ingredients": [
 				"yeast dough",
 				"homemade marinara sauce",
 				"parmesan",
@@ -269,7 +283,8 @@
 			"id": "456763239",
 			"description": "Juicy and very flavorful, this Chipotle Chicken Burger mixes finely chopped onion, red pepper, cilantro and a little kick from chipotles in adobo right into the ground chicken meat",
 			"image": "https://culinaryginger.com/wp-content/uploads/Chipotle-chicken-burger-12-768x512-2-480x480.jpg",
-			"ingredient": [
+			"category": "burgers",
+			"ingredients": [
 				"ground chicken",
 				"brioche burger rolls",
 				"chipotle peppers in adobe sauce",
@@ -287,7 +302,8 @@
 			"id": "456963284",
 			"description": "Tender, juicy, and flavorful. Reminiscent of our steaks for good reason, our 80/20 steakburger is unlike any you’ve ever had! Grab a couple packs and introduce your friends to a steakburger",
 			"image": "https://cdn.shopify.com/s/files/1/1133/3670/products/LAV_Steakburger2_Square_1200x630.jpg?v=1571439151",
-			"ingredient": [
+			"category": "burgers",
+			"ingredients": [
 				"sirloin steak",
 				"boneless short ribs",
 				"brioche burger rolls",
@@ -304,7 +320,8 @@
 			"id": "456770018",
 			"description": "Tender and juicy chicken in the most amazing creamy and delicious garlic mushroom sauce",
 			"image": "https://www.kitchensanctuary.com/wp-content/uploads/2015/03/Roast-Chicken-brioche-square-720.jpg",
-			"ingredient": [
+			"category": "burgers",
+			"ingredients": [
 				"brioche burger rolls",
 				"chicken breasts",
 				"streaky bacon",
@@ -322,7 +339,8 @@
 			"id": "456770556",
 			"description": "This is a delicious, juicy, classic burger recipe that brings a boatload of delicious flavor and nutrients to your plate",
 			"image": "https://cdn.veeg.co/app/uploads/2020/02/19143252/Pumpkin_Seed_Veggie_Burger_01_web_square.jpg",
-			"ingredient": [
+			"category": "burgers",
+			"ingredients": [
 				"burger rolls from organic oat flour",
 				"pumpkin seeds",
 				"flax seeds",
@@ -344,7 +362,8 @@
 			"id": "456656692",
 			"description": "Very moist, tasty and full of chocolate goodness. 3 muffins included",
 			"image": "https://kirbiecravings.com/wp-content/uploads/2020/08/eggless-chocolate-muffins-5.jpg",
-			"ingredient": [
+			"category": "desserts",
+			"ingredients": [
 				"chocolate",
 				"eggs",
 				"white sugar",
@@ -362,7 +381,8 @@
 			"id": "456654442",
 			"description": "A delicious baked dessert with delicious flavor",
 			"image": "http://forkgasm.com/images/bread-pudding.png",
-			"ingredient": [
+			"category": "desserts",
+			"ingredients": [
 				"tahini",
 				"eggs",
 				"baking powder",
@@ -379,7 +399,8 @@
 			"id": "456110875",
 			"image": "https://www.simplyrecipes.com/thmb/ugP5ChANbdU-L9xKBwHLo4GFKWM=/600x600/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2007__04__coffee-ice-cream-vertical-00dc174a766a4ff79f443e516e11fcb7.jpg",
 			"description": "3 scoops of delicious ice cream",
-			"ingredient": [
+			"category": "desserts",
+			"ingredients": [
 				"heavy cream",
 				"icing sugar or substitite",
 				"egg yolks",
@@ -393,8 +414,9 @@
 			"name": "Cheese pancakes",
 			"id": "456656872",
 			"description": "One word: scrumptious! Very moist, tasty and full of chocolate goodness",
-			"image": "https://www.keyingredient.com/uploads/media/d9/09/5e3c36303ff6110b1db8fc7a0764253bae6a.jpg?1560430724",
-			"ingredient": [
+			"image": "https://www.thespruceeats.com/thmb/AcH_-CKLZeJ3SOipe88nkYEAwXU=/2666x2666/smart/filters:no_upscale()/CottageCheesePancakes-Spruce-5c1e4c18c9e77c000125f554.jpg",
+			"category": "desserts",
+			"ingredients": [
 				"flour",
 				"baking powder",
 				"light brown sugar",
@@ -411,7 +433,8 @@
 			"id": "456220643",
 			"description": "It's extra creamy with a crunchy graham cracker crust and juicy strawberry topping",
 			"image": "https://realhousemoms.com/wp-content/uploads/Strawberry-Cheesecake-IG-700x700.jpg",
-			"ingredient": [
+			"category": "desserts",
+			"ingredients": [
 				"almond flour",
 				"mascarpone cheese",
 				"strawberries",

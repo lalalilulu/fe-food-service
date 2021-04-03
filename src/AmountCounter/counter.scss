@@ -2,9 +2,8 @@
 
 .counter {
   display: flex;
-  //width: 20%;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .icon-button {
@@ -36,7 +35,7 @@
   font-family: $secondary-font-family;
   color: $secondary-text-color;
   font-size: 18px;
-  margin: 5% 5% 0;
+  margin: 3% 5% 0;
 }
 
 @media only screen and (max-width: 411px) and (orientation: portrait)  {

@@ -20,7 +20,7 @@ function CartOrderRow(props) {
             <td className="align-middle text-center">
                 {props.item.name}
             </td>
-            <td className=" align-middle text-center">
+            <td className="align-middle">
                 <AmountCounter amount={amount} onChange={changeAmount}/>
             </td>
             <td className="align-middle text-center action-item">

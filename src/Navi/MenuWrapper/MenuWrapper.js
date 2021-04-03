@@ -18,19 +18,19 @@ const MenuWrapper = () => {
                     <a href="/">All Menu</a>
                 </li>
                 <li>
-                    <a href="/">Soups</a>
+                    <a href="/#soups">Soups</a>
                 </li>
                 <li>
-                    <a href="/">Pastas</a>
+                    <a href="/#pastas">Pastas</a>
                 </li>
                 <li>
-                    <a href="/">Pizzas</a>
+                    <a href="/#pizzas">Pizzas</a>
                 </li>
                 <li>
-                    <a href="/">Burgers</a>
+                    <a href="/#burgers">Burgers</a>
                 </li>
                 <li>
-                    <a href="/">Desserts</a>
+                    <a href="/#desserts">Desserts</a>
                 </li>
                 <li>
                     <div className="border-line"/>
