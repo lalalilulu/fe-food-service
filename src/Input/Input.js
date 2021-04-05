@@ -1,7 +1,7 @@
 import React from "react";
 import "./input.scss";
 
-function Input(props) {
+function Input({type, id, value, onInput, labelContent}) {
 
 	function addInputFiiledClass(window) {
         // class helper functions from bonzo https://github.com/ded/bonzo
@@ -93,8 +93,6 @@ function Input(props) {
 	}
 
 	addInputFiiledClass(window);
-
-	const {type, id, value, onInput, labelContent} = props;
 
     return (
         <span className="input input--hoshi">

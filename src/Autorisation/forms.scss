@@ -1,6 +1,7 @@
 @import "../app";
 
 .form-container {
+  max-width: 550px;
   color: $primary-text-color;
   font-family: $secondary-font-family;
 }
@@ -20,8 +21,8 @@
   border: 0;
   color: $dark-primary-color;
   font-size: 18px;
-  max-width: 330px;
-  width: calc(100% - 2em);
+  min-width: 300px;
+  width: 60%;
 }
 
 .form-btn:focus, .form-btn:hover {

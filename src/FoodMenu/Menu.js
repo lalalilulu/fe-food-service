@@ -21,7 +21,7 @@ function Menu() {
 
     const findItems = () => {
         const searchQuery = query.toLowerCase();
-        setResult(allItems.filter(item => item.name.toLowerCase().includes(searchQuery)).splice(0,10));
+        setResult(allItems.filter(item => Object.values(item).join(" ").toLowerCase().includes(searchQuery)).splice(0,10));
         // setResult(allItems.filter(function(item) {
         //     const {name, category, ingredients} = item;
         //     return name.toLowerCase().includes(searchQuery) || category.toLowerCase().includes(searchQuery) }).splice(0,10));

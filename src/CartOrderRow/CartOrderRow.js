@@ -5,15 +5,12 @@ import "./orderRow.scss";
 
 function CartOrderRow(props) {
 
-    const {item, costsArray, index, onChange} = props;
+    const {item} = props;
 
     const [amount, setAmount] = useState(1);
     const changeAmount = (amount) => {
-        costsArray[index] = item.price*amount;
         setAmount(amount);
     }
-
-    onChange(costsArray.reduce((accumulator, currentItem) => accumulator + currentItem));
 
     return (
         <tr>
