@@ -5,9 +5,7 @@ import {ReactComponent as DoubleArrowIcon} from "../assets/icons/double-up-arrow
 import "./menu.scss";
 
 
-function MenuPart(props) {
-
-    const {headerName, pageLink, arrowDown, arrowUp, items} = props;
+function MenuPart({headerName, pageLink, arrowDown, arrowUp, items} ) {
 
     const capitalize = function(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);

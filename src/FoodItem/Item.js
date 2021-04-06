@@ -21,7 +21,7 @@ function Item({match}) {
                 <div className="col-md-5 col-image">
                     <div className="product-details-img">
                             <a href={image}>
-                                <img src={image} alt="Product"/>
+                                <img src={image} alt=""/>
                             </a>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ function Item({match}) {
                         <p className="desc-content mb-5">{description}</p>
                         <ul className="product-ingredients">
                             {ingredients.map((ingredient) => (
-                                <li className="product-ingredient">
+                                <li key={ingredient} className="product-ingredient">
                                     {ingredient}
                                 </li>
                             ))}

@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import BurgerButton from '../../BurgerButton/BurgerButton';
 import {LeftSideBarContext} from '../LeftSideMobileBar';
 import MenuWrapper from "../../MenuWrapper/MenuWrapper";
 import './style.scss';

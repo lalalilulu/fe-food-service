@@ -43,7 +43,7 @@ function OrderTable(props) {
             </thead>
             <tbody>
             {items.map((item) => (
-                <tr>
+                <tr key={item.number}>
                     <th scope="row" className="text-center">
                         #{item.number}
                     </th>
@@ -54,7 +54,7 @@ function OrderTable(props) {
                         {item.date}
                     </td>
                     <td className="text-center action-item">
-                        {actions.map((action) => <OrderAction description={action.description} number={action.name + item.number} icon={chooseIcon(action.name)}/>)}
+                        {actions.map((action) => <OrderAction key={action.name} description={action.description} number={action.name + item.number} icon={chooseIcon(action.name)}/>)}
                     </td>
                 </tr>
             ))}

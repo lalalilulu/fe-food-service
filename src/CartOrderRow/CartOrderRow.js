@@ -15,7 +15,7 @@ function CartOrderRow(props) {
     return (
         <tr>
             <td className="item-image">
-                <img src={item.image}/>
+                <img src={item.image} alt=""/>
             </td>
             <td className="align-middle text-center">
                 {item.name}

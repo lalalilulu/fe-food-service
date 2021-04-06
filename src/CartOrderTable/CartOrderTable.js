@@ -25,7 +25,7 @@ function CartOrderTable(props) {
             </thead>
             <tbody>
             {cartItems.map((item, index) => (
-                <CartOrderRow item={item} index={index} costsArray={costsArray} onChange={changeTotal}/>
+                <CartOrderRow key={item.id} item={item} index={index} costsArray={costsArray} onChange={changeTotal}/>
             ))}
             <tr>
                 <td className="image-column"/>

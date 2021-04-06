@@ -58,9 +58,9 @@ const MenuWrapper = () => {
                 </li>
                 <li>
                     <div className="social-networks">
-                        <a href="https://www.facebook.com/buzzfeedtasty/" target="_blank"><FacebookIcon className="icon-social"/></a>
-                        <a href="https://www.youtube.com/channel/UCJFp8uSYCjXOMnkUyb3CQ3Q" target="_blank"><YoutubeIcon className="icon-social"/></a>
-                        <a href="https://www.instagram.com/buzzfeedtasty" target="_blank"><InstaIcon className="icon-social"/></a>
+                        <a href="https://www.facebook.com/buzzfeedtasty/" target="_blank" rel="noreferrer"><FacebookIcon className="icon-social"/></a>
+                        <a href="https://www.youtube.com/channel/UCJFp8uSYCjXOMnkUyb3CQ3Q" target="_blank" rel="noreferrer"><YoutubeIcon className="icon-social"/></a>
+                        <a href="https://www.instagram.com/buzzfeedtasty" target="_blank" rel="noreferrer"><InstaIcon className="icon-social"/></a>
                     </div>
                 </li>
                 <li>

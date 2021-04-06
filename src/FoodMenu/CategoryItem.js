@@ -2,14 +2,12 @@ import React from "react";
 import {Link} from "react-router-dom";
 import "./menu.scss";
 
-function CategoryItem(props) {
-
-    const {id, image, name, price} = props;
+function CategoryItem({id, image, name, price}) {
 
     return (
         <Link to={`/menu/${id}`} className="card-container">
             <div className="card-img">
-                <img src={image} alt="item-photo"/>
+                <img src={image} alt=""/>
             </div>
             <div className="card-body">
                 <p>{name}</p>

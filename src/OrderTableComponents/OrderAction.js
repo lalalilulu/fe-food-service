@@ -8,7 +8,7 @@ function OrderAction(props) {
 
     return (
         <div data-tip={description} data-for={number}>
-            <a href="" className="icon-button">{icon}</a>
+            <div className="icon-button">{icon}</div>
             <ReactTooltip id={number} type="info" place="bottom" backgroundColor="#7B1FA2" effect="float" event="mouseover" eventOff="mouseout"/>
         </div>
     );
