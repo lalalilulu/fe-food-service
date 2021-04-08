@@ -10,8 +10,7 @@ function CategoryList(props) {
         <ul className="cards">
             {props.items.map((item) => (
                 <li className="card" key={item.id}>
-                    <CategoryItem id={item.id} image={item.image} name={item.name} description={item.description}
-                                  price={item.price}/>
+                    <CategoryItem id={item.id} item={item}/>
                 </li>
             ))}
         </ul>

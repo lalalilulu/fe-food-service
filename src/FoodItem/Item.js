@@ -1,18 +1,28 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
+import {connect} from 'react-redux';
+import {addToCart} from '../_actions/CartActions'
+import {ReactComponent as MinusIcon} from "../assets/icons/minus.svg";
+import {ReactComponent as PlusIcon} from "../assets/icons/plus.svg";
 import "./item-details.scss";
 import "../Autorisation/forms.scss";
-import {Link} from "react-router-dom";
-import AmountCounter from "../AmountCounter/AmountCounter";
+import "./counter.scss";
 
-function Item({match}) {
+function Item(props) {
 
     const items = require("../data/fooddata.json").data;
-    const item = Array.from(items).find(dish => dish.id === match.params.id);
+    const item = Array.from(items).find(dish => dish.id === props.match.params.id);
     const {image, name, description, ingredients, price, id} = item;
 
     const [amount, setAmount] = useState(1);
-    const changeAmount = (amount) => {
-        setAmount(amount);
+    const increment = () => {
+        const tempResult = amount === 100 ? 100 : amount + 1;
+        setAmount(tempResult);
+    }
+
+    const decrement = () => {
+        const tempResult = amount === 1 ? 1 : amount - 1;
+        setAmount(tempResult);
     }
 
     return (
@@ -39,10 +49,15 @@ function Item({match}) {
                             ))}
                         </ul>
                         <div className="mb-2 item-amount-container">
-                            <AmountCounter amountInitial={amount} minValue={1} maxValue={100} onChange={changeAmount}/>
+                            <div className="counter">
+                                <button type="button" onClick={decrement} className="icon-button"><MinusIcon/></button>
+                                <span className="item-amount">{amount}</span>
+                                <button type="button" onClick={increment} className="icon-button"><PlusIcon/></button>
+                            </div>
                             <span className="regular-price">{price*amount}$</span>
                         </div>
-                            <button className="btn btn-primary form-btn product-btn">Add to cart</button>
+                            <button className="btn btn-primary form-btn product-btn" onClick={()=> {
+                                props.addToCart(item,amount);}}>Add to cart</button>
                         <div className="admin-buttons mb-4">
                             <Link to={`/edit/${id}`} className="btn btn-primary form-btn product-btn admin-button">Edit Dish (Admin)</Link>
                             <Link to={`/delete/${id}`} className="btn btn-primary form-btn product-btn admin-button">Delete Dish (Admin)</Link>
@@ -54,4 +69,10 @@ function Item({match}) {
     );
 }
 
-export default Item;
+ function  mapDispatchToProps(dispatch) {
+     return {
+         addToCart : (item, amount) => dispatch(addToCart(item, amount))
+     };
+}
+
+export default connect(null, mapDispatchToProps)(Item);

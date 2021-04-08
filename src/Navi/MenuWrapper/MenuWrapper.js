@@ -4,6 +4,7 @@ import {ReactComponent as FacebookIcon} from "../../assets/icons/facebook.svg";
 import {ReactComponent as YoutubeIcon} from "../../assets/icons/youtube.svg";
 import {ReactComponent as InstaIcon} from "../../assets/icons/instagram.svg";
 import './style.scss';
+import {Link} from "react-router-dom";
 
 const MenuWrapper = () => {
     return (
@@ -15,7 +16,7 @@ const MenuWrapper = () => {
                     <div className="border-logo-line"/>
                 </li>
                 <li>
-                    <a href="/">All Menu</a>
+                    <Link to={'/'}>All Menu</Link>
                 </li>
                 <li>
                     <a href="/#soups">Soups</a>
@@ -36,22 +37,22 @@ const MenuWrapper = () => {
                     <div className="border-line"/>
                 </li>
                 <li>
-                    <a href="/profile">Profile</a>
+                    <Link to={'/profile'}>Profile</Link>
                 </li>
                 <li>
-                    <a href="/cart">Cart</a>
+                    <Link to={'/cart'}>Cart</Link>
                 </li>
                 <li>
-                    <a href="/newOrders">Orders</a>
+                    <Link to={'/newOrders'}>Orders</Link>
                 </li>
                 <li>
                     <div className="border-line"/>
                 </li>
                 <li>
-                    <a href="/receivedOrders">Received Orders (Admin)</a>
+                    <Link to={'/receivedOrders'}>Received Orders (Admin)</Link>
                 </li>
                 <li>
-                    <a href="/deliveries">Deliveries (Courier)</a>
+                    <Link to={'/deliveries'}>Deliveries (Courier)</Link>
                 </li>
                 <li>
                     <div className="border-line"/>

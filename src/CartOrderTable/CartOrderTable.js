@@ -1,16 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import CartOrderRow from "../CartOrderRow/CartOrderRow";
+import {connect} from "react-redux";
 import "./cartOrderTable.scss";
 
 function CartOrderTable(props) {
-
-    const cartItems = [...props.items];
-    const [total, setTotal] = useState(cartItems.reduce((accumulator, currentItem) => accumulator + currentItem.price, 0));
-    const costsArray = cartItems.map(item => item.price);
-    const changeTotal = (total) => {
-        console.log(costsArray);
-        setTotal(total);
-    }
+    console.log(props);
 
     return (
         <table className="table table-hover custom-table">
@@ -24,14 +18,14 @@ function CartOrderTable(props) {
             </tr>
             </thead>
             <tbody>
-            {cartItems.map((item, index) => (
-                <CartOrderRow key={item.id} item={item} index={index} costsArray={costsArray} onChange={changeTotal}/>
+            {props.cartItems.map((cartItem, index) => (
+                <CartOrderRow key={cartItem.id} cartItem={cartItem}/>
             ))}
             <tr>
                 <td className="image-column"/>
                 <td/>
                 <td className="text-center order-total">TOTAL</td>
-                <td className="text-center order-total-price">{total}$</td>
+                <td className="text-center order-total-price">{props.total}$</td>
                 <td/>
             </tr>
             </tbody>
@@ -39,4 +33,12 @@ function CartOrderTable(props) {
     );
 }
 
-export default CartOrderTable;
+const mapStateToProps = state => {
+    return {
+        cartItems: state.cart.cartItems,
+        total: state.cart.total
+    }
+}
+
+export default connect(mapStateToProps, null)(CartOrderTable);
+

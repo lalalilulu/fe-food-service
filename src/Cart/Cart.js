@@ -3,15 +3,15 @@ import {TextField} from '@material-ui/core';
 import Select from 'react-select';
 import CartOrderTable from "../CartOrderTable/CartOrderTable";
 import Input from "../Input/Input";
-import "./cart.scss";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
+import "./cart.scss";
 
 function Cart() {
 
-    const json = require("../data/fooddata.json");
-    const items = json.data.slice(5, 8);
+    //const json = require("../data/fooddata.json");
+    //const items = json.data.slice(5, 8);
 
     const options = [
         {value: 'cash', label: 'Cash'},
@@ -47,7 +47,7 @@ function Cart() {
         <form name="cart-form" className="container-fluid cart-form" action="#">
 
             <div className="container-sm justify-content-center">
-                <CartOrderTable items={items}/>
+                <CartOrderTable/>
             </div>
 
             <div className="container-sm justify-content-center">
