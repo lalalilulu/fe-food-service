@@ -3,8 +3,9 @@ import {ReactComponent as LogoIcon} from "../../assets/icons/delivery-truck.svg"
 import {ReactComponent as FacebookIcon} from "../../assets/icons/facebook.svg";
 import {ReactComponent as YoutubeIcon} from "../../assets/icons/youtube.svg";
 import {ReactComponent as InstaIcon} from "../../assets/icons/instagram.svg";
-import './style.scss';
+import {HashLink} from "react-router-hash-link";
 import {Link} from "react-router-dom";
+import './style.scss';
 
 const MenuWrapper = () => {
     return (
@@ -16,22 +17,22 @@ const MenuWrapper = () => {
                     <div className="border-logo-line"/>
                 </li>
                 <li>
-                    <Link to={'/'}>All Menu</Link>
+                    <HashLink to={'/#top'}>All Menu</HashLink>
                 </li>
                 <li>
-                    <a href="/#soups">Soups</a>
+                    <HashLink to="/#soups">Soups</HashLink>
                 </li>
                 <li>
-                    <a href="/#pastas">Pastas</a>
+                    <HashLink to="/#pastas">Pastas</HashLink>
                 </li>
                 <li>
-                    <a href="/#pizzas">Pizzas</a>
+                    <HashLink to="/#pizzas">Pizzas</HashLink>
                 </li>
                 <li>
-                    <a href="/#burgers">Burgers</a>
+                    <HashLink to="/#burgers">Burgers</HashLink>
                 </li>
                 <li>
-                    <a href="/#desserts">Desserts</a>
+                    <HashLink to="/#desserts">Desserts</HashLink>
                 </li>
                 <li>
                     <div className="border-line"/>
