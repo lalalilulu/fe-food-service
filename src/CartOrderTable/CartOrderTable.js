@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import "./cartOrderTable.scss";
 
 function CartOrderTable(props) {
-    console.log(props);
 
     return (
         <table className="table table-hover custom-table">

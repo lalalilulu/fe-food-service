@@ -8,11 +8,17 @@ function CategoryItem(props) {
 
     const {id, item} = props;
 
+    const checkAmountForId = () => {
+        const cartItem = props.cartItems.find(cartItem => cartItem.id === id);
+        return cartItem ? cartItem.amount : 0;
+    }
+
     return (
         <div>
             <Link to={`/menu/${id}`} className="card-container">
                 <div className="card-img">
                     <img src={item.image} alt=""/>
+                    {checkAmountForId() > 0 && <p>{checkAmountForId()}</p>}
                 </div>
                 <div className="card-body">
                     <p>{item.name}</p>
@@ -28,10 +34,16 @@ function CategoryItem(props) {
     );
 }
 
+const mapStateToProps = state => {
+    return {
+        cartItems: state.cart.cartItems
+    }
+}
+
 function mapDispatchToProps(dispatch) {
     return {
         addToCart: (item, amount) => dispatch(addToCart(item, amount))
     };
 }
 
-export default connect(null, mapDispatchToProps)(CategoryItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);

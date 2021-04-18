@@ -91,6 +91,20 @@
   padding: 15px;
 }
 
+.card-img p {
+  display: block;
+  position: absolute;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  font-size: 36px;
+  line-height: 165px;
+  text-align: center;
+  color: $background-primary-color;
+  background: rgba(0, 0, 0, 0.6);
+  margin: auto 12%;
+}
+
 .card-img img {
   width: 165px;
   height: 165px;

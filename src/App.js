@@ -1,6 +1,7 @@
 import React, {lazy, Suspense} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Loader from "react-loader-spinner";
+import {ToastContainer} from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.scss";
 
@@ -44,6 +45,7 @@ function App() {
                         <Route path="/cart" exact component={Cart}/>
                     </Switch>
                 </main>
+                <ToastContainer/>
             </Suspense>
         </Router>
     );

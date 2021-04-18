@@ -16,7 +16,7 @@ function MenuContainer(props) {
                       items={allItems.filter(item => item.category === "pizzas")}/>
             <MenuPart headerName="burgers" pageLink="#desserts" arrowDown="true"
                       items={allItems.filter(item => item.category === "burgers")}/>
-            <MenuPart headerName="desserts" pageLink="#soups" arrowUp="true"
+            <MenuPart headerName="desserts" pageLink="#top" arrowUp="true"
                       items={allItems.filter(item => item.category === "desserts")}/>
         </div>
     );
