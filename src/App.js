@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Loader from "react-loader-spinner";
 import {ToastContainer} from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import "./app.scss";
 
 import {useMediaQuery} from "react-responsive";
@@ -45,7 +46,17 @@ function App() {
                         <Route path="/cart" exact component={Cart}/>
                     </Switch>
                 </main>
-                <ToastContainer/>
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </Suspense>
         </Router>
     );

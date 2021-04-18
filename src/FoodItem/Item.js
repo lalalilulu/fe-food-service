@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
+import {toast} from "react-toastify";
 import {addToCart} from '../_actions/CartActions'
 import {ReactComponent as MinusIcon} from "../assets/icons/minus.svg";
 import {ReactComponent as PlusIcon} from "../assets/icons/plus.svg";
@@ -24,6 +25,8 @@ function Item(props) {
         const tempResult = amount === 1 ? 1 : amount - 1;
         setAmount(tempResult);
     }
+
+    const addToCartNotify = () => toast.success(item.name + ' (' + amount +' item/s) added to the cart!');
 
     return (
         <div className="container-md item-details">
@@ -57,7 +60,9 @@ function Item(props) {
                             <span className="regular-price">{price*amount}$</span>
                         </div>
                             <button className="btn btn-primary form-btn product-btn" onClick={()=> {
-                                props.addToCart(item,amount);}}>Add to cart</button>
+                                props.addToCart(item,amount);
+                                addToCartNotify();
+                            }}>Add to cart</button>
                         <div className="admin-buttons mb-4">
                             <Link to={`/edit/${id}`} className="btn btn-primary form-btn product-btn admin-button">Edit Dish (Admin)</Link>
                             <Link to={`/delete/${id}`} className="btn btn-primary form-btn product-btn admin-button">Delete Dish (Admin)</Link>

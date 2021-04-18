@@ -47,9 +47,6 @@ const MenuWrapper = () => {
                     <Link to={'/newOrders'}>Orders</Link>
                 </li>
                 <li>
-                    <div className="border-line"/>
-                </li>
-                <li>
                     <Link to={'/receivedOrders'}>Received Orders (Admin)</Link>
                 </li>
                 <li>

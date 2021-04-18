@@ -1,24 +1,22 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
-import {addToCart} from '../_actions/CartActions'
+import {toast} from "react-toastify";
+import {addToCart} from "../_actions/CartActions";
 import "./menu.scss";
 
 function CategoryItem(props) {
 
     const {id, item} = props;
-
-    const checkAmountForId = () => {
-        const cartItem = props.cartItems.find(cartItem => cartItem.id === id);
-        return cartItem ? cartItem.amount : 0;
-    }
+    const cartItem = props.cartItems.find(cartItem => cartItem.id === id);
+    const addToCartNotify = () => toast.success(item.name + ' added to the cart!');
 
     return (
         <div>
             <Link to={`/menu/${id}`} className="card-container">
                 <div className="card-img">
                     <img src={item.image} alt=""/>
-                    {checkAmountForId() > 0 && <p>{checkAmountForId()}</p>}
+                    {cartItem && <p>{cartItem.amount}</p>}
                 </div>
                 <div className="card-body">
                     <p>{item.name}</p>
@@ -27,7 +25,9 @@ function CategoryItem(props) {
             <div className="card-item-footer">
                 <p className="itemPrice">{item.price}$</p>
                 <button type="button" className="btn btn-primary add-to-cart-btn" onClick={() => {
-                    props.addToCart(item,1);}}>Add to cart</button>
+                    props.addToCart(item,1);
+                    addToCartNotify();
+                }}>Add to cart</button>
             </div>
         </div>
 

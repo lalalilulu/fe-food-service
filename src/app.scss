@@ -80,6 +80,14 @@ a:hover, a:focus {
   color: $dark-primary-color;
 }
 
+.Toastify__toast--success {
+  background: $default-primary-color;
+}
+
+.Toastify__toast--error {
+  background: $ncs-red-color;
+}
+
 //::-webkit-scrollbar {
 //  width: 5px;
 //}
