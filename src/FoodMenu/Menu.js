@@ -4,7 +4,6 @@ import MenuContainer from "./MenuContainer";
 import MenuPart from "./MenuPart";
 import "./menu.scss";
 
-
 function Menu() {
 
     const allItems = require("../data/fooddata.json").data;
@@ -12,11 +11,15 @@ function Menu() {
     const [query, setQuery] = useState('');
     const [result, setResult] = useState([]);
 
-    const handleInput = (event) => {
-       setQuery(event.target.value);
+    function handleChange(e) {
+       setQuery(e.target.value);
         if (query && query.length > 0) {
             findItems();
         }
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
     }
 
     const findItems = () => {
@@ -33,8 +36,8 @@ function Menu() {
     return (
         <div className="container-fluid">
             <div className="row">
-                <form role="search">
-                    <Input type="search" name="search" id="search" labelContent="Search for favourite food" onInput={event => handleInput(event)} value={query}/>
+                <form role="search" onSubmit={handleSubmit}>
+                    <Input type="search" name="search" id="search" labelContent="Search for favourite food" onChange={handleChange} value={query}/>
                 </form>
             </div>
             {!isSearchInputEmpty && isResultNotEmpty && <MenuPart headerName="found items" items={result}/>}

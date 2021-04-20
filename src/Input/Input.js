@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import "./input.scss";
 
-function Input({type, id, value, onInput, labelContent}) {
+function Input({type, id, name, value, onChange, labelContent, invalidInput}) {
+
+	const [inputClass, setInputclass] = useState('input__field input__field--hoshi');
 
 	function addInputFiiledClass(window) {
         // class helper functions from bonzo https://github.com/ded/bonzo
@@ -97,9 +99,10 @@ function Input({type, id, value, onInput, labelContent}) {
     return (
         <span className="input input--hoshi">
 			<input className="input__field input__field--hoshi"
-				   type={type} id= {id}
+				   type={type} id={id}
+				   name={name}
 				   value={value}
-				   onInput={onInput}
+				   onChange={onChange}
 			/>
 			<label className="input__label input__label--hoshi input__label--hoshi-color" htmlFor={id}>
 				<span className="input__label-content input__label-content--hoshi">{labelContent}</span>
@@ -109,5 +112,13 @@ function Input({type, id, value, onInput, labelContent}) {
 }
 
 export default Input;
+
+
+// <input className="input__field input__field--hoshi"
+// 	   type={type} id={id}
+// 	   value={value === '' ? setInputclass('input__field input__field--hoshi') : setInputclass('input__field input__field--hoshi input__field')}
+// 	   onChange={onChange}
+// 	   onInput={setInputclass('input__field input__field--hoshi input__field')}
+// />
 
 

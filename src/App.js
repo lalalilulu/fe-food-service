@@ -1,5 +1,5 @@
 import React, {lazy, Suspense} from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {Router, Redirect, Route, Switch} from "react-router-dom";
 import Loader from "react-loader-spinner";
 import {ToastContainer} from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./app.scss";
 
 import {useMediaQuery} from "react-responsive";
+import { history } from './_helpers/History';
 import LeftSideDesktopBar from "./Navi/DesktopBar/LeftSideDesktopBar";
 import LeftSideMobileBar from "./Navi/MobileBar/LeftSideMobileBar";
 import Menu from "./FoodMenu/Menu";
@@ -26,7 +27,7 @@ function App() {
     const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'});
     const isTabletOrMobile = useMediaQuery({query: '(max-width: 1224px)'});
     return (
-        <Router>
+        <Router history={history}>
             <Suspense fallback={<Loader className="loader" type="Puff" color="#7B1FA2" height={200} width={200}
                                         timeout={300}/>}>
                 {isDesktopOrLaptop && <LeftSideDesktopBar/>}
@@ -44,6 +45,7 @@ function App() {
                         <Route path="/receivedOrders" exact component={ReceivedOrders}/>
                         <Route path="/deliveries" exact component={Deliveries}/>
                         <Route path="/cart" exact component={Cart}/>
+                        <Redirect from="*" to="/"/>
                     </Switch>
                 </main>
                 <ToastContainer
