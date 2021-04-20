@@ -1,6 +1,6 @@
 import React from "react";
 import {ReactComponent as DeleteIcon} from "../assets/icons/trash-bin.svg";
-import {connect} from "react-redux";
+import {useDispatch} from "react-redux";
 import {toast} from "react-toastify";
 import {addToCart, removeFromCart} from "../_actions/CartActions";
 import {ReactComponent as MinusIcon} from "../assets/icons/minus.svg";
@@ -13,6 +13,8 @@ function CartOrderRow(props) {
     const {image, name, price} = props.cartItem.item;
     const removeFromCartNotify = (itemName) => toast.success(itemName + ' removed from the cart!');
 
+    const dispatch = useDispatch();
+
     return (
         <tr>
             <td className="item-image">
@@ -23,11 +25,9 @@ function CartOrderRow(props) {
             </td>
             <td className="align-middle">
                 <div className="counter">
-                    <button type="button" onClick={()=> {
-                        props.removeFromCart(props.cartItem.item, 1);}} className="icon-button"><MinusIcon/></button>
+                    <button type="button" onClick={()=> dispatch(removeFromCart(props.cartItem.item, 1))} className="icon-button"><MinusIcon/></button>
                     <span className="item-amount">{props.cartItem.amount}</span>
-                    <button type="button" onClick={()=> {
-                        props.addToCart(props.cartItem.item, 1);}} className="icon-button"><PlusIcon/></button>
+                    <button type="button" onClick={()=> dispatch(addToCart(props.cartItem.item, 1))} className="icon-button"><PlusIcon/></button>
                 </div>
             </td>
             <td className="align-middle text-center action-item">
@@ -35,26 +35,11 @@ function CartOrderRow(props) {
             </td>
             <td className="align-middle text-center action-item delete-icon">
                 <button type="button" className="icon-button" onClick={()=> {
-                    props.removeFromCart(props.cartItem.item, props.cartItem.amount);
-                    removeFromCartNotify(props.cartItem.item.name)
-                }}><DeleteIcon/></button>
+                    dispatch(removeFromCart(props.cartItem.item, props.cartItem.amount));
+                    removeFromCartNotify(props.cartItem.item.name)}}><DeleteIcon/></button>
             </td>
         </tr>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        cartItems: state.cart.cartItems,
-        total: state.cart.total
-    }
-}
-
-function  mapDispatchToProps(dispatch) {
-    return {
-        removeFromCart : (item, amount) => dispatch(removeFromCart(item, amount)),
-        addToCart : (item, amount) => dispatch(addToCart(item, amount)),
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartOrderRow);
+export default CartOrderRow;

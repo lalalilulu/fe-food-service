@@ -4,7 +4,7 @@ import "./forms.scss";
 import facebook from "../assets/icons/facebook-logo.png";
 import vk from "../assets/icons/vk-social-logotype.png";
 import googlePlus from "../assets/icons/google-plus-social-logotype.png";
-import {useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useLocation} from "react-router";
 import {userActions} from "../_actions/UserActions";
 import {Link} from "react-router-dom";
@@ -18,6 +18,7 @@ function SignIn() {
     const { email, password } = inputs;
     const dispatch = useDispatch();
     const location = useLocation();
+    const notification = useSelector(state => state.notification);
 
     // reset login status
     useEffect(() => {
@@ -42,6 +43,7 @@ function SignIn() {
             // get return url from location state or default to home page
             const { from } = location.state || { from: { pathname: "/" } };
             dispatch(userActions.login(email, password, from));
+            notification.type !== 'success' ? toast.error(notification.message) : toast.success(notification.message);
         }
     }
 

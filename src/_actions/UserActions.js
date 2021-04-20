@@ -1,6 +1,7 @@
 import {userService} from "../_services/UserService";
 import { history } from '../_helpers/History';
 import { userConstants } from '../_constants/UserConstants';
+import { messagesActions } from './MessagesActions';
 
 export const userActions = {
     login,
@@ -20,9 +21,11 @@ function login(email, password, from) {
                 user => {
                     dispatch(success(user));
                     history.push(from);
+                    messagesActions.success('You have successfully logged in to food delivery app');
                 },
                 error => {
                     dispatch(failure(error.toString()));
+                    messagesActions.error(error.toString());
                 }
             );
     };
@@ -34,6 +37,7 @@ function login(email, password, from) {
 
 function logout() {
     userService.logout();
+    messagesActions.success('You have successfully logged out');
     return { type: userConstants.LOGOUT };
 }
 
@@ -45,12 +49,12 @@ function register(user) {
             .then(
                 () => {
                     dispatch(success());
-                    console.log("i am here")
                     history.push('/signin');
+                    return true;
                 },
                 error => {
-                    console.log(error)
                     dispatch(failure(error.toString()));
+                    return false;
                 }
             );
     };
@@ -82,8 +86,14 @@ function update(user) {
 
         userService.update(user)
             .then(
-                user => dispatch(success(user)),
-                error => dispatch(failure(error.toString()))
+                user => {
+                    dispatch(success(user));
+                    messagesActions.success('Your profile has been successfully updated');
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    messagesActions.error(error.toString());
+                }
             );
     };
 
@@ -99,7 +109,7 @@ function _delete(id) {
 
         userService.delete(id)
             .then(
-                user => dispatch(success(id)),
+                () => dispatch(success(id)),
                 error => dispatch(failure(id, error.toString()))
             );
     };

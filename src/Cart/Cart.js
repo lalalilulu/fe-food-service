@@ -6,7 +6,7 @@ import Input from "../Input/Input";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {toast} from "react-toastify";
 import "./cart.scss";
 
@@ -42,14 +42,13 @@ function Cart() {
         setCheckedState(event.target.checked);
     };
 
+    const currentUser = useSelector(state => state.authentication.user);
+
     const [orderInputs, setOrderInputs] = useState({
-        name: '',
-        phone: '',
-        address: '',
+        name: currentUser.name,
+        phone: currentUser.phone,
+        address: currentUser.address ? currentUser.address : ''
     });
-
-
-    const dispatch = useDispatch();
 
     function handleChange(e) {
         const { name, value } = e.target;

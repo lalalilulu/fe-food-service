@@ -32,7 +32,7 @@ function ItemForm({match}) {
 
                 <div className="modal-footer border-white justify-content-center">
                     <Link to={`/menu/${item.id}`} className="btn btn-primary form-btn">Preview</Link>
-                    <Link to={`/`} className="btn btn-primary form-btn">Add to the menu</Link>
+                    <Link to={`/menu/${item.id}`} className="btn btn-primary form-btn">Add to the menu</Link>
                 </div>
             </form>
 

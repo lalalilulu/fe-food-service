@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {toast} from "react-toastify";
 import {addToCart} from '../_actions/CartActions'
 import {ReactComponent as MinusIcon} from "../assets/icons/minus.svg";
@@ -8,11 +8,16 @@ import {ReactComponent as PlusIcon} from "../assets/icons/plus.svg";
 import "./item-details.scss";
 import "../Autorisation/forms.scss";
 import "./counter.scss";
+import {userConstants} from "../_constants/UserConstants";
 
 function Item(props) {
 
     const items = require("../data/fooddata.json").data;
     const item = Array.from(items).find(dish => dish.id === props.match.params.id);
+
+    const currentUser = useSelector(state => state.authentication.user);
+    const dispatch = useDispatch();
+
     const {image, name, description, ingredients, price, id} = item;
 
     const [amount, setAmount] = useState(1);
@@ -60,13 +65,15 @@ function Item(props) {
                             <span className="regular-price">{price*amount}$</span>
                         </div>
                             <button className="btn btn-primary form-btn product-btn" onClick={()=> {
-                                props.addToCart(item,amount);
+                                dispatch(addToCart(item,amount));
                                 addToCartNotify();
                             }}>Add to cart</button>
-                        <div className="admin-buttons mb-4">
-                            <Link to={`/edit/${id}`} className="btn btn-primary form-btn product-btn admin-button">Edit Dish (Admin)</Link>
-                            <Link to={`/delete/${id}`} className="btn btn-primary form-btn product-btn admin-button">Delete Dish (Admin)</Link>
-                        </div>
+                        {currentUser && currentUser.role === userConstants.ADMIN_ROLE && <div className="admin-buttons mb-4">
+                            <Link to={`/edit/${id}`} className="btn btn-primary form-btn product-btn admin-button">Edit
+                                Dish</Link>
+                            <Link to={`/delete/${id}`} className="btn btn-primary form-btn product-btn admin-button">Delete
+                                Dish</Link>
+                        </div>}
                     </div>
                 </div>
             </div>
@@ -74,10 +81,4 @@ function Item(props) {
     );
 }
 
- function  mapDispatchToProps(dispatch) {
-     return {
-         addToCart : (item, amount) => dispatch(addToCart(item, amount))
-     };
-}
-
-export default connect(null, mapDispatchToProps)(Item);
+export default Item;

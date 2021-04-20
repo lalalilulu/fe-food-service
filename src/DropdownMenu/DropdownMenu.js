@@ -8,6 +8,9 @@ import {ReactComponent as WatchIcon} from "../assets/icons/watch.svg";
 import {ReactComponent as CheckIcon} from "../assets/icons/check-mark.svg";
 import {ReactComponent as BoltIcon} from "../assets/icons/bolt.svg";
 import {ReactComponent as DeliveryIcon} from "../assets/icons/delivery.svg";
+import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {userConstants} from "../_constants/UserConstants";
 import "./dropdown.scss";
 
 
@@ -19,6 +22,9 @@ function DropdownMenu() {
     useEffect(() => {
         setMenuHeight(dropdownRef.current?.firstChild.offsetHeight + 30)
     }, [])
+
+    const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.authentication.user);
 
     function calcHeight(el) {
         const height = el.offsetHeight + 30;
@@ -50,7 +56,7 @@ function DropdownMenu() {
                 <div className="menu">
                     <DropdownItem
                         leftIcon={<CogIcon />}>
-                        <a href="/profile">Profile</a>
+                        <Link to="/profile">Profile</Link>
                     </DropdownItem>
                     <DropdownItem
                         leftIcon={<OrdersIcon />}
@@ -59,7 +65,8 @@ function DropdownMenu() {
                     </DropdownItem>
                     <DropdownItem
                         leftIcon={<UserLogInIcon />}>
-                        <a href="/signin">LogIn/LogOut</a>
+                        {!currentUser && <Link to="/signin">Sign In</Link>}
+                        {currentUser && <Link to="/signin">Sign Out</Link>}
                     </DropdownItem>
                 </div>
             </CSSTransition>
@@ -74,12 +81,12 @@ function DropdownMenu() {
                     <DropdownItem goToMenu="main" leftIcon={<ArrowIcon />}>
                         <h3>Back to settings</h3>
                     </DropdownItem>
-                    <DropdownItem leftIcon={<WatchIcon />}><a href="/newOrders">In Progress</a></DropdownItem>
-                    <DropdownItem leftIcon={<CheckIcon />}><a href="/completedOrders">Completed</a></DropdownItem>
-                    <hr className="dropdown-divider"/>
-                    <DropdownItem leftIcon={<BoltIcon />}><a href="/receivedOrders">Received (Admin)</a></DropdownItem>
-                    <hr className="dropdown-divider"/>
-                    <DropdownItem leftIcon={<DeliveryIcon />}><a href="/deliveries">Deliveries (Сourier)</a></DropdownItem>
+                    <DropdownItem leftIcon={<WatchIcon />}><Link to="/orders">In Progress</Link></DropdownItem>
+                    <DropdownItem leftIcon={<CheckIcon />}><Link to="/completedOrders">Completed</Link></DropdownItem>
+                    {currentUser && currentUser.role === userConstants.ADMIN_ROLE && <hr className="dropdown-divider"/> &&
+                    <DropdownItem leftIcon={<BoltIcon />}><Link to="/receivedOrders">Received </Link></DropdownItem>}
+                    {currentUser && currentUser.role === userConstants.COURIER_ROLE && <hr className="dropdown-divider"/> &&
+                    <DropdownItem leftIcon={<DeliveryIcon />}><Link to="/deliveries">Deliveries </Link></DropdownItem>}
                 </div>
             </CSSTransition>
 

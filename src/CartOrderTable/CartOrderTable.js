@@ -1,9 +1,12 @@
 import React from "react";
 import CartOrderRow from "../CartOrderRow/CartOrderRow";
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
 import "./cartOrderTable.scss";
 
-function CartOrderTable(props) {
+function CartOrderTable() {
+
+    const cartItems = useSelector(state => state.cart.cartItems);
+    const total = useSelector(state => state.cart.total);
 
     return (
         <table className="table table-hover custom-table">
@@ -17,14 +20,14 @@ function CartOrderTable(props) {
             </tr>
             </thead>
             <tbody>
-            {props.cartItems.map((cartItem, index) => (
+            {cartItems.map((cartItem) => (
                 <CartOrderRow key={cartItem.id} cartItem={cartItem}/>
             ))}
             <tr>
                 <td className="image-column"/>
                 <td/>
                 <td className="text-center order-total">TOTAL</td>
-                <td className="text-center order-total-price">{props.total}$</td>
+                <td className="text-center order-total-price">{total}$</td>
                 <td/>
             </tr>
             </tbody>
@@ -32,12 +35,5 @@ function CartOrderTable(props) {
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        cartItems: state.cart.cartItems,
-        total: state.cart.total
-    }
-}
-
-export default connect(mapStateToProps, null)(CartOrderTable);
+export default CartOrderTable;
 

@@ -5,8 +5,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {userActions} from "../_actions/UserActions";
 import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
+import {messagesActions} from "../_actions/MessagesActions";
+import { history } from '../_helpers/History';
+
 
 function SignUp() {
+
+    const notification = useSelector(state => state.notification);
+
     const [user, setUser] = useState({
         name: '',
         email: '',
@@ -19,18 +25,19 @@ function SignUp() {
 
     // reset login status
     useEffect(() => {
-        dispatch(userActions.logout());
+        history.listen(() => {
+            // clear alert on location change
+            dispatch(messagesActions.clear());
+        });
     }, []);
 
     function handleChange(e) {
         const { name, value } = e.target;
         setUser(user => ({ ...user, [name]: value }));
-        console.log(user);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-
 
         if (!user.name) {
             toast.error("Name is required");
@@ -52,6 +59,10 @@ function SignUp() {
         }
         else {
             dispatch(userActions.register(user));
+            console.log(notification);
+            console.log(notification.type);
+            console.log(notification.message);
+            notification.type !== 'success' ? toast.error(notification.message) : toast.success(notification.message);
         }
     }
 
@@ -90,5 +101,6 @@ function SignUp() {
         </div>
     );
 }
+
 
 export default SignUp;

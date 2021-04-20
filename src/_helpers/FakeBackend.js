@@ -42,7 +42,7 @@ export function configureFakeBackend() {
                 if (!user) return error('Email or password is incorrect');
                 return ok({
                     id: user.id,
-                    role: userConstants.USER_ROLE,
+                    role: user.role,
                     name: user.name,
                     email: user.email,
                     phone: user.phone,
@@ -52,6 +52,7 @@ export function configureFakeBackend() {
 
             function register() {
                 const user = body;
+                user.role = userConstants.USER_ROLE;
 
                 if (users.find(x => x.email === user.email)) {
                     return error(`User with email ${user.email} is already registered`);

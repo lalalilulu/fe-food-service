@@ -1,24 +1,27 @@
 import React, {useState} from "react";
 import Input from "../Input/Input";
 import "../Autorisation/forms.scss";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {userActions} from "../_actions/UserActions";
 import {toast} from "react-toastify";
 import {Link} from "react-router-dom";
 
 function Profile() {
-    const [user, setUser] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        address: ''
-    });
+
+    const currentUser = useSelector(state => state.authentication.user);
     const dispatch = useDispatch();
+    const notification = useSelector(state => state.notification);
+
+    const [user, setUser] = useState({
+        name: currentUser.name,
+        email: currentUser.email,
+        phone: currentUser.phone,
+        address: currentUser.address ? currentUser.address : ''
+    });
 
     function handleChange(e) {
         const { name, value } = e.target;
         setUser(user => ({ ...user, [name]: value }));
-        console.log(user);
     }
 
     function handleSubmit(e) {
@@ -32,9 +35,9 @@ function Profile() {
         }
         if (!user.phone) {
             toast.error("Phone is required");
-        }
-        else {
+        } else {
             dispatch(userActions.update(user));
+            notification.type !== 'success' ? toast.error(notification.message) : toast.success(notification.message);
         }
     }
 

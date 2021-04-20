@@ -5,9 +5,14 @@ import {ReactComponent as YoutubeIcon} from "../../assets/icons/youtube.svg";
 import {ReactComponent as InstaIcon} from "../../assets/icons/instagram.svg";
 import {HashLink} from "react-router-hash-link";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {userConstants} from "../../_constants/UserConstants";
 import './style.scss';
 
 const MenuWrapper = () => {
+
+    const currentUser = useSelector(state => state.authentication.user);
+
     return (
             <ul className="leftSideBar-leftSection-menuWrapper">
                 <li>
@@ -44,14 +49,18 @@ const MenuWrapper = () => {
                     <Link to={'/cart'}>Cart</Link>
                 </li>
                 <li>
-                    <Link to={'/newOrders'}>Orders</Link>
+                    <Link to={'/orders'}>Orders</Link>
                 </li>
+                {currentUser && currentUser.role === userConstants.ADMIN_ROLE &&
                 <li>
-                    <Link to={'/receivedOrders'}>Received Orders (Admin)</Link>
+                    <Link to={'/receivedOrders'}>Received Orders</Link>
                 </li>
+                }
+                {currentUser && currentUser.role === userConstants.COURIER_ROLE &&
                 <li>
-                    <Link to={'/deliveries'}>Deliveries (Courier)</Link>
+                    <Link to={'/receivedOrders'}>Deliveries</Link>
                 </li>
+                }
                 <li>
                     <div className="border-line"/>
                 </li>
