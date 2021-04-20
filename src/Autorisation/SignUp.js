@@ -12,7 +12,7 @@ function SignUp() {
         email: '',
         phone: '',
         password: '',
-        //password2: ''
+        password2: ''
     });
     const [submitted, setSubmitted] = useState(false);
     const dispatch = useDispatch();
@@ -25,17 +25,36 @@ function SignUp() {
     function handleChange(e) {
         const { name, value } = e.target;
         setUser(user => ({ ...user, [name]: value }));
-        console.log(user)
+        console.log(user);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
 
         setSubmitted(true);
-        if (user.name && user.email && user.phone && user.password) {
+        if (!user.name) {
+            toast.error("Name is required");
+        }
+        if (!user.email) {
+            toast.error("Email is required");
+        }
+        if (!user.phone) {
+            toast.error("Phone is required");
+        }
+        if (!user.password) {
+            toast.error("Password is required");
+        }
+        if(!user.password2) {
+            toast.error(" Password confirmation is required");
+        }
+        else if (user.password !== user.password2) {
+            toast.error("Passwords must match");
+        }
+        else {
             dispatch(userActions.register(user));
         }
     }
+
 
     return (
         <div className="container-md justify-content-center form-container">
@@ -47,25 +66,19 @@ function SignUp() {
                 <div className="modal-body text-center">
                     <div className="md-form md-5">
                         <Input type="text" name="name" value={user.name} id="name" onChange={handleChange} labelContent="Name"/>
-                        {submitted && !user.name && toast.error('Name is required')}
                     </div>
                     <div className="md-form md-5">
                         <Input type="email" name="email" value={user.email} id="email" onChange={handleChange} labelContent="Email"/>
-                        {submitted && !user.email && toast.error('Email is required')}
                     </div>
                     <div className="md-form md-5">
                         <Input type="phone" name="phone" value={user.phone} id="phone" onChange={handleChange} labelContent="Phone"/>
-                        {submitted && !user.phone && toast.error('Phone is required')}
                     </div>
                     <div className="md-form md-5">
                         <Input type="password" name="password" value={user.password} id="password" onChange={handleChange} labelContent="Password"/>
-                        {submitted && !user.password && toast.error('Password is required')}
                     </div>
-                    {/*<div className="md-form md-5">*/}
-                    {/*    <Input type="password" name="password2" value={user.password2} id="password2" onChange={handleChange} labelContent="Repeat password"/>*/}
-                    {/*    {submitted && !user.password2 && toast.error('Password confirmation is required')}*/}
-                    {/*    {submitted && user.password === user.password2 && toast.error('Passwords must match')}*/}
-                    {/*</div>*/}
+                    <div className="md-form md-5">
+                        <Input type="password" name="password2" value={user.password2} id="password2" onChange={handleChange} labelContent="Repeat password"/>
+                    </div>
                 </div>
 
                 <div className="modal-footer border-white justify-content-center">

@@ -6,12 +6,11 @@ import Input from "../Input/Input";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
+import {useDispatch} from "react-redux";
+import {toast} from "react-toastify";
 import "./cart.scss";
 
 function Cart() {
-
-    //const json = require("../data/fooddata.json");
-    //const items = json.data.slice(5, 8);
 
     const options = [
         {value: 'cash', label: 'Cash'},
@@ -43,8 +42,47 @@ function Cart() {
         setCheckedState(event.target.checked);
     };
 
+    const [orderInputs, setOrderInputs] = useState({
+        name: '',
+        phone: '',
+        address: '',
+    });
+
+    const [submitted, setSubmitted] = useState(false);
+    const dispatch = useDispatch();
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setOrderInputs(orderInputs => ({ ...orderInputs, [name]: value }));
+        console.log(orderInputs);
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        setSubmitted(true);
+        if (!orderInputs.name) {
+            toast.error("Name is required");
+        }
+        if (!orderInputs.phone) {
+            toast.error("Phone is required");
+        }
+        if (!orderInputs.address) {
+            toast.error("Address is required");
+        }
+        else {
+
+        }
+    }
+
+    function errorNotify(condition, text) {
+        if(submitted && condition) {
+            toast.error(text);
+        }
+    }
+
     return (
-        <form name="cart-form" className="container-fluid cart-form" action="#">
+        <form name="cart-form" className="container-fluid cart-form" onSubmit={handleSubmit}>
 
             <div className="container-sm justify-content-center">
                 <CartOrderTable/>
@@ -55,9 +93,9 @@ function Cart() {
                     <div className="col-sm">
                         <h3>Delivery information</h3>
                         <div className="cart-inputs">
-                            <Input type="text" name="name" id="name" labelContent="Name"/>
-                            <Input type="phone" name="phone" id="phone" labelContent="Phone"/>
-                            <Input type="address" name="address" id="address" labelContent="Address"/>
+                            <Input type="text" name="name" value={orderInputs.name} id="name" onChange={handleChange} labelContent="Name"/>
+                            <Input type="phone" name="phone" value={orderInputs.phone} id="phone" onChange={handleChange} labelContent="Phone"/>
+                            <Input type="address" name="address" value={orderInputs.address} id="address" onChange={handleChange} labelContent="Address"/>
                         </div>
                         <TextField
                             id="time"
@@ -110,7 +148,7 @@ function Cart() {
                 </div>
             </div>
 
-            <button className="btn form-btn cart-btn">Confirm/Pay</button>
+            <button type="submit" className="btn form-btn cart-btn">Confirm</button>
         </form>
     )
 }

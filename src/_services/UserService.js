@@ -67,7 +67,7 @@ function update(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`http://localhost:3000/users/${user.id}`, requestOptions).then(handleResponse);;
+    return fetch(`http://localhost:3000/users/${user.id}`, requestOptions).then(handleResponse);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript

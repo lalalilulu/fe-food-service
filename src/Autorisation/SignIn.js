@@ -12,8 +12,8 @@ import {toast} from "react-toastify";
 
 function SignIn() {
     const [inputs, setInputs] = useState({
-        email: '',
-        password: ''
+        email: "",
+        password: ""
     });
     const [submitted, setSubmitted] = useState(false);
     const { email, password } = inputs;
@@ -34,7 +34,13 @@ function SignIn() {
         e.preventDefault();
 
         setSubmitted(true);
-        if (email && password) {
+        if (!email) {
+            toast.error("Email is required");
+        }
+        if (!password) {
+            toast.error("Password is required");
+        }
+        else {
             // get return url from location state or default to home page
             const { from } = location.state || { from: { pathname: "/" } };
             dispatch(userActions.login(email, password, from));
@@ -49,17 +55,15 @@ function SignIn() {
                 </div>
                 <div className="modal-body text-center">
                     <div className="md-form md-5">
-                        <Input type="email" name="email" id="email" onChange={handleChange} labelContent="Enter email"/>
-                        {submitted && !email && toast.error('Email is required')}
+                        <Input type="email" name="email" value={inputs.email} id="email" onChange={handleChange} labelContent="Enter email"/>
                     </div>
                     <div className="md-form md-5">
-                        <Input type="password" name="password" id="password" onChange={handleChange} labelContent="Password"/>
-                        {submitted && !password && toast.error('Password is required')}
+                        <Input type="password" name="password" value={inputs.password} id="password" onChange={handleChange} labelContent="Password"/>
                     </div>
                 </div>
 
                 <div className="modal-footer border-white justify-content-center">
-                    <button className="btn btn-primary form-btn">Sign in</button>
+                    <button type="submit" className="btn btn-primary form-btn">Sign in</button>
                 </div>
 
                 <div className="login-social-networks">
