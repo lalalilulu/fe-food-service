@@ -14,7 +14,7 @@ function SignUp() {
         password: '',
         password2: ''
     });
-    const [submitted, setSubmitted] = useState(false);
+
     const dispatch = useDispatch();
 
     // reset login status
@@ -31,7 +31,7 @@ function SignUp() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        setSubmitted(true);
+
         if (!user.name) {
             toast.error("Name is required");
         }

@@ -13,7 +13,6 @@ function Profile() {
         phone: '',
         address: ''
     });
-    const [updated, setUpdated] = useState(false);
     const dispatch = useDispatch();
 
     function handleChange(e) {
@@ -25,7 +24,6 @@ function Profile() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        setUpdated(true);
         if (!user.name) {
             toast.error("Name is required");
         }

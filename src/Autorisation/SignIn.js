@@ -15,7 +15,6 @@ function SignIn() {
         email: "",
         password: ""
     });
-    const [submitted, setSubmitted] = useState(false);
     const { email, password } = inputs;
     const dispatch = useDispatch();
     const location = useLocation();
@@ -33,7 +32,6 @@ function SignIn() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        setSubmitted(true);
         if (!email) {
             toast.error("Email is required");
         }

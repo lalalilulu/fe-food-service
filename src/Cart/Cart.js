@@ -48,7 +48,7 @@ function Cart() {
         address: '',
     });
 
-    const [submitted, setSubmitted] = useState(false);
+
     const dispatch = useDispatch();
 
     function handleChange(e) {
@@ -60,7 +60,6 @@ function Cart() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        setSubmitted(true);
         if (!orderInputs.name) {
             toast.error("Name is required");
         }
@@ -75,11 +74,6 @@ function Cart() {
         }
     }
 
-    function errorNotify(condition, text) {
-        if(submitted && condition) {
-            toast.error(text);
-        }
-    }
 
     return (
         <form name="cart-form" className="container-fluid cart-form" onSubmit={handleSubmit}>
@@ -149,6 +143,7 @@ function Cart() {
             </div>
 
             <button type="submit" className="btn form-btn cart-btn">Confirm</button>
+
         </form>
     )
 }
