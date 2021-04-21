@@ -13,6 +13,7 @@ function Profile() {
     const notification = useSelector(state => state.notification);
 
     const [user, setUser] = useState({
+        id: currentUser.id,
         name: currentUser.name,
         email: currentUser.email,
         phone: currentUser.phone,

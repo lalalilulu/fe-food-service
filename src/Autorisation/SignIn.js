@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import Input from "../Input/Input";
-import "./forms.scss";
 import facebook from "../assets/icons/facebook-logo.png";
 import vk from "../assets/icons/vk-social-logotype.png";
 import googlePlus from "../assets/icons/google-plus-social-logotype.png";
@@ -9,6 +8,7 @@ import {useLocation} from "react-router";
 import {userActions} from "../_actions/UserActions";
 import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
+import "./forms.scss";
 
 function SignIn() {
     const [inputs, setInputs] = useState({
@@ -41,7 +41,7 @@ function SignIn() {
         }
         else {
             // get return url from location state or default to home page
-            const { from } = location.state || { from: { pathname: "/" } };
+            const { from } = location.state || { from: { pathname: "/menu" } };
             dispatch(userActions.login(email, password, from));
             notification.type !== 'success' ? toast.error(notification.message) : toast.success(notification.message);
         }

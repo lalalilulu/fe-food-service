@@ -26,6 +26,8 @@ export function configureFakeBackend() {
                         return getUsers();
                     case url.match(/\/users\/\d+$/) && method === 'DELETE':
                         return deleteUser();
+                    case url.match(/\/users\/\d+$/) && method === 'PUT':
+                        return updateUser();
                     default:
                         // pass through any requests not handled above
                         return realFetch(url, opts)
@@ -78,6 +80,22 @@ export function configureFakeBackend() {
                 users = users.filter(x => x.id !== idFromUrl());
                 localStorage.setItem('users', JSON.stringify(users));
                 return ok();
+            }
+
+            function updateUser() {
+                if (!isLoggedIn()) return unauthorized();
+
+                const {name, email, phone, address} = body;
+                const replacedUser = users.find(user => user.id === idFromUrl());
+
+                replacedUser.name = name;
+                replacedUser.email = email;
+                replacedUser.phone = phone;
+                replacedUser.address = address;
+
+                users = users.map(user => user.id === idFromUrl() ? replacedUser : user);
+                localStorage.setItem('users', JSON.stringify(users));
+                return ok(replacedUser);
             }
 
             // helper functions

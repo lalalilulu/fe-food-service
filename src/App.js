@@ -40,18 +40,18 @@ function App() {
                 {isTabletOrMobile && <LeftSideMobileBar/>}
                 <main className={`main main-${isDesktopOrLaptop ? 'desktop' : 'mobile'}`}>
                     <Switch>
-                        <Route path="/" exact component={Menu}/>
+                        <Route path="/menu" exact component={Menu}/>
                         <Route path="/menu/:id" component={MenuItem}/>
-                        <Route path="/edit/:id" component={EditItemForm}/>
                         <Route path="/signin" exact component={SignIn}/>
                         <Route path="/signup" exact component={SignUp}/>
                         <PrivateRoute path="/profile" exact component={Profile}/>
-                        <Route path="/completedOrders" exact component={CompletedOrders}/>
+                        <PrivateRoute path="/cart" exact component={Cart}/>
+                        <PrivateRoute path="/completedOrders" exact component={CompletedOrders}/>
                         <PrivateRoute path="/orders" exact component={NewOrders}/>
                         <AdminRoute path="/receivedOrders" exact component={ReceivedOrders}/>
+                        <AdminRoute path="/edit/:id" component={EditItemForm}/>
                         <CourierRoute path="/deliveries" exact component={Deliveries}/>
-                        <PrivateRoute path="/cart" exact component={Cart}/>
-                        <Redirect from="*" to="/"/>
+                        <Redirect from="*" to="/menu"/>
                     </Switch>
                 </main>
                 <ToastContainer
