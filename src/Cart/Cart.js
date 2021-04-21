@@ -44,7 +44,7 @@ function Cart() {
 
     const calculateInitialTime = () => {
         const today = new Date();
-        const hours = today.getHours() + 1;
+        const hours = today.getHours() === 23 ? '00' : today.getHours() + 1;
         return today.getMinutes() > 20 ?
             '' + hours + ':30' : '' + hours + ':00';
     }

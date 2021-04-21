@@ -16,7 +16,7 @@ const TopRightSection = () => {
     return (
             <div className="col-xl-2 right-section-container">
                 <div>
-                    <NavItem icon={<UserIcon className="profile-icon"/>} link="#">
+                    <NavItem icon={<UserIcon className="profile-icon"/>}>
                         <DropdownMenu/>
                     </NavItem>
                 </div>

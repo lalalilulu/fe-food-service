@@ -33,11 +33,15 @@
 
 .menu-item {
   height: 50px;
+  width: 100%;
   display: flex;
   align-items: center;
   border-radius: $border-radius;
   transition: background $speed;
   padding: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: $background-primary-color;
 }
 
 a {
