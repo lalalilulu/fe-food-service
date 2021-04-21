@@ -17,7 +17,9 @@ function Profile() {
         name: currentUser.name,
         email: currentUser.email,
         phone: currentUser.phone,
-        address: currentUser.address ? currentUser.address : ''
+        address: currentUser.address ? currentUser.address : '',
+        role: currentUser.role,
+        token: currentUser.token
     });
 
     function handleChange(e) {

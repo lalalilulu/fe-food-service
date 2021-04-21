@@ -94,6 +94,8 @@ export function configureFakeBackend() {
                 replacedUser.address = address;
 
                 users = users.map(user => user.id === idFromUrl() ? replacedUser : user);
+                //save changed values also after reloading page
+                localStorage.setItem('user', JSON.stringify(body));
                 localStorage.setItem('users', JSON.stringify(users));
                 return ok(replacedUser);
             }

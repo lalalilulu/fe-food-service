@@ -6,7 +6,7 @@ import Input from "../Input/Input";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
 import "./cart.scss";
 
@@ -34,13 +34,29 @@ function Cart() {
         })
     }
 
-    const [selectedOption, setSelectedOption] = useState(options[0]);
-    const handleChangeSelect = selectedOption => setSelectedOption(selectedOption);
+    const [selectedPaymentOption, setSelectedPaymentOption] = useState(options[0]);
+    const handleChangeSelect = selectedOption => setSelectedPaymentOption(selectedOption);
 
     const [checkedState, setCheckedState] = useState(false);
     const handleChangeChecked = (event) => {
         setCheckedState(event.target.checked);
     };
+
+    const calculateInitialTime = () => {
+        const today = new Date();
+        const hours = today.getHours() + 1;
+        return today.getMinutes() > 20 ?
+            '' + hours + ':30' : '' + hours + ':00';
+    }
+
+    const [deliveryTime, setDeliveryTime] = useState(calculateInitialTime);
+    const handleChangeTime = selectedValue => setDeliveryTime(selectedValue);
+
+    const [comment, setComment] = useState('');
+    const handleChangeComment = e => setComment(e.target.value);
+
+    const cartItems = useSelector(state => state.cart.cartItems);
+    const total = useSelector(state => state.cart.total);
 
     const currentUser = useSelector(state => state.authentication.user);
 
@@ -53,11 +69,11 @@ function Cart() {
     function handleChange(e) {
         const { name, value } = e.target;
         setOrderInputs(orderInputs => ({ ...orderInputs, [name]: value }));
-        console.log(orderInputs);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
+        const today = new Date();
 
         if (!orderInputs.name) {
             toast.error("Name is required");
@@ -69,7 +85,16 @@ function Cart() {
             toast.error("Address is required");
         }
         else {
-
+            const orderRequest = {
+                cartItems,
+                total,
+                ...orderInputs,
+                deliveryTime,
+                payment: selectedPaymentOption.value,
+                comment
+            }
+            console.log(orderRequest);
+            toast.success("Your order request is processed. We have started preparing it");
         }
     }
 
@@ -94,13 +119,14 @@ function Cart() {
                             id="time"
                             label="Delivery time"
                             type="time"
-                            defaultValue="18:30"
+                            defaultValue={deliveryTime}
+                            onChange={handleChangeTime}
                             className="cart-time-picker"
                             InputLabelProps={{
                                 shrink: true,
                             }}
                             inputProps={{
-                                step: 1800, // 30 min
+                                step: 600, // 10 min
                             }}
                         />
                     </div>
@@ -110,12 +136,12 @@ function Cart() {
                             <Select
                                 options={options}
                                 className="select-payment"
-                                value={selectedOption}
+                                value={selectedPaymentOption}
                                 onChange={handleChangeSelect}
                                 styles={colourStyles}
                             />
                         </div>
-                        {JSON.stringify(selectedOption) === JSON.stringify(options[0]) && <div className="change-part">
+                        {JSON.stringify(selectedPaymentOption) === JSON.stringify(options[0]) && <div className="change-part">
                             {checkedState &&
                             <Input type="number" name="change" id="change" labelContent="Amount of cash for change"/>}
                             <FormControlLabel
@@ -135,7 +161,7 @@ function Cart() {
                         <h3>Comments</h3>
                         <div className="cart-info">
                             <textarea className="cart-comment" id="order-comment" rows="2"
-                                      placeholder="Write your comment here"/>
+                                      placeholder="Write your comment here" value={comment} onChange={handleChangeComment}/>
                         </div>
                     </div>
                 </div>

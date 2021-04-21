@@ -31,7 +31,7 @@ function Item(props) {
         setAmount(tempResult);
     }
 
-    const addToCartNotify = () => toast.success(item.name + ' (' + amount +' item/s) added to the cart!');
+    const addToCartNotify = () => toast.success(item.name + ' (' + amount +' item/s) added to the cart');
 
     return (
         <div className="container-md item-details">

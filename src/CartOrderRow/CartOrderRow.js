@@ -11,7 +11,7 @@ import "./counter.scss";
 function CartOrderRow(props) {
 
     const {image, name, price} = props.cartItem.item;
-    const removeFromCartNotify = (itemName) => toast.success(itemName + ' removed from the cart!');
+    const removeFromCartNotify = (itemName) => toast.success(itemName + ' removed from the cart');
 
     const dispatch = useDispatch();
 

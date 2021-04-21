@@ -9,7 +9,7 @@ function CategoryItem(props) {
 
     const {id, item} = props;
     const cartItem = props.cartItems.find(cartItem => cartItem.id === id);
-    const addToCartNotify = () => toast.success(item.name + ' added to the cart!');
+    const addToCartNotify = () => toast.success(item.name + ' added to the cart');
 
     return (
         <div>
