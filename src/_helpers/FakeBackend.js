@@ -1,10 +1,14 @@
 import { userConstants } from '../_constants/UserConstants';
+import {cartInitialState} from "../_reducers/CartReducer";
 
 let users = JSON.parse(localStorage.getItem('users')) ||
-    [{ id: 1, role: userConstants.ADMIN_ROLE, name: 'admin', password: 'admin', email: 'admin@test.com' },
-     { id: 2, role: userConstants.COURIER_ROLE, name: 'courier_1', password: 'test', email: 'courier_1@test.com' },
-     { id: 3, role: userConstants.COURIER_ROLE, name: 'courier_2', password: 'test', email: 'courier_2@test.com' }
+    [{ id: 1, role: userConstants.ADMIN_ROLE, name: 'admin', password: 'admin', email: 'admin@test.com', orders: [], cart: {} },
+     { id: 2, role: userConstants.COURIER_ROLE, name: 'courier', password: 'test', email: 'courier@test.com', orders: [], cart: {} }
     ];
+
+let orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+let cart = JSON.parse(localStorage.getItem('cart')) || {cartItems: [], total: 0};
 
 export function configureFakeBackend() {
     let realFetch = window.fetch;
@@ -19,7 +23,7 @@ export function configureFakeBackend() {
             function handleRoute() {
                 switch (true) {
                     case url.endsWith('/users/authenticate') && method === 'POST':
-                        return authenticate();
+                        return login();
                     case url.endsWith('/users/register') && method === 'POST':
                         return register();
                     case url.endsWith('/users') && method === 'GET':
@@ -28,6 +32,8 @@ export function configureFakeBackend() {
                         return deleteUser();
                     case url.match(/\/users\/\d+$/) && method === 'PUT':
                         return updateUser();
+                    case url.endsWith('/orders/create') && method === 'POST':
+                        return createOrder();
                     default:
                         // pass through any requests not handled above
                         return realFetch(url, opts)
@@ -38,7 +44,7 @@ export function configureFakeBackend() {
 
             // route functions
 
-            function authenticate() {
+            function login() {
                 const { email, password } = body;
                 const user = users.find(x => x.email === email && x.password === password);
                 if (!user) return error('Email or password is incorrect');
@@ -48,6 +54,7 @@ export function configureFakeBackend() {
                     name: user.name,
                     email: user.email,
                     phone: user.phone,
+                    cart: cartInitialState,
                     token: 'fake-jwt-token'
                 });
             }
@@ -70,7 +77,6 @@ export function configureFakeBackend() {
 
             function getUsers() {
                 if (!isLoggedIn()) return unauthorized();
-
                 return ok(users);
             }
 
@@ -98,6 +104,15 @@ export function configureFakeBackend() {
                 localStorage.setItem('user', JSON.stringify(body));
                 localStorage.setItem('users', JSON.stringify(users));
                 return ok(replacedUser);
+            }
+
+            function createOrder() {
+                if (!isLoggedIn()) return unauthorized();
+
+                orders.push(body);
+                localStorage.setItem('orders', JSON.stringify(orders));
+                localStorage.removeItem('cart');
+                return ok();
             }
 
             // helper functions

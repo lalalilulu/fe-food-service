@@ -18,7 +18,9 @@ function SignUp() {
         email: '',
         phone: '',
         password: '',
-        password2: ''
+        password2: '',
+        cart: {},
+        orders: []
     });
 
     const dispatch = useDispatch();

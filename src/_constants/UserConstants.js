@@ -24,5 +24,4 @@ export const userConstants = {
     ADMIN_ROLE: 'ADMIN',
     COURIER_ROLE: 'COURIER',
     USER_ROLE: 'USER',
-
 };

@@ -28,7 +28,12 @@ function login(email, password) {
 }
 
 function logout() {
-    // remove user from local storage to log user out
+    // const requestOptions = {
+    //     method: 'GET',
+    //     headers: authHeader()
+    // };
+    //
+    // return fetch("http://localhost:3000/users/logout", requestOptions).then(handleResponse);
     localStorage.removeItem('user');
 }
 

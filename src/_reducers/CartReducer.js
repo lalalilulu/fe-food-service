@@ -1,12 +1,11 @@
-import {ADD, REMOVE} from '../_actions/CartActions';
+import {ADD, REMOVE, REMOVE_ALL} from '../_actions/CartActions';
 
-let initialState = {
-    inventory: require("../data/fooddata.json").data,
+export let cartInitialState = {
     cartItems: [],
     total: 0
 };
 
-export function cart(state = initialState, action) {
+export function cart(state = cartInitialState, action) {
     switch (action.type) {
         case ADD :
             console.log(state.cartItems);
@@ -64,6 +63,15 @@ export function cart(state = initialState, action) {
                 ...state,
                 [action.cartItems] : state.cartItems
             };
+
+        case REMOVE_ALL :
+            state.cartItems = [];
+            updateTotal(state);
+            return {
+                ...state,
+                [action.cartItems] : state.cartItems
+            };
+
         default :
             return state;
     }

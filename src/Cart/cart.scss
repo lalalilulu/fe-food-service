@@ -65,6 +65,11 @@
   font-size: 15px;
 }
 
+.cart-comment:focus {
+  border: 2px solid $accent-color;
+  outline: none;
+}
+
 .cutleryInput {
   font-size: 15px;
   outline: 0;
@@ -93,6 +98,23 @@
 
 .change-part {
   margin-top: 16px;
+}
+
+.empty-cart-text {
+  margin-top: 25%;
+  font-family: $secondary-font-family;
+  font-size: 22px;
+  color: $primary-text-color;
+}
+
+.link-text {
+  font-family: $secondary-font-family;
+  font-size: 15px;
+  color: $primary-text-color;
+}
+
+.link, .link:focus, .link:hover  {
+  color: $accent-color;
 }
 
 @media only screen and (max-width: 823px)  {
