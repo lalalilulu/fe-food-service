@@ -1,8 +1,8 @@
 import React from 'react';
-import {ReactComponent as LogoIcon} from "../../assets/icons/delivery-truck.svg";
-import {ReactComponent as FacebookIcon} from "../../assets/icons/facebook.svg";
-import {ReactComponent as YoutubeIcon} from "../../assets/icons/youtube.svg";
-import {ReactComponent as InstaIcon} from "../../assets/icons/instagram.svg";
+import {ReactComponent as LogoIcon} from "../../_assets/icons/delivery-truck.svg";
+import {ReactComponent as FacebookIcon} from "../../_assets/icons/facebook.svg";
+import {ReactComponent as YoutubeIcon} from "../../_assets/icons/youtube.svg";
+import {ReactComponent as InstaIcon} from "../../_assets/icons/instagram.svg";
 import {HashLink} from "react-router-hash-link";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";

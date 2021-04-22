@@ -3,8 +3,8 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import {toast} from "react-toastify";
 import {addToCart} from '../_actions/CartActions'
-import {ReactComponent as MinusIcon} from "../assets/icons/minus.svg";
-import {ReactComponent as PlusIcon} from "../assets/icons/plus.svg";
+import {ReactComponent as MinusIcon} from "../_assets/icons/minus.svg";
+import {ReactComponent as PlusIcon} from "../_assets/icons/plus.svg";
 import "./item-details.scss";
 import "../Autorisation/forms.scss";
 import "./counter.scss";

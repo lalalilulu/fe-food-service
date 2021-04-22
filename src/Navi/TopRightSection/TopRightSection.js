@@ -1,8 +1,8 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {ReactComponent as CartIcon} from "../../assets/icons/shopping-cart.svg";
-import {ReactComponent as LineIcon} from "../../assets/icons/vertical-line.svg";
-import {ReactComponent as UserIcon} from "../../assets/icons/user.svg";
+import {ReactComponent as CartIcon} from "../../_assets/icons/shopping-cart.svg";
+import {ReactComponent as LineIcon} from "../../_assets/icons/vertical-line.svg";
+import {ReactComponent as UserIcon} from "../../_assets/icons/user.svg";
 import DropdownMenu from "../../DropdownMenu/DropdownMenu";
 import NavItem from "../NavItem/NavItem";
 import {Link} from "react-router-dom";

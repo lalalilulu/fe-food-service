@@ -1,7 +1,7 @@
 import React from "react";
 import CategoryList from "./CategoryList";
-import {ReactComponent as ArrowIcon} from "../assets/icons/down-arrow.svg";
-import {ReactComponent as DoubleArrowIcon} from "../assets/icons/double-up-arrow.svg";
+import {ReactComponent as ArrowIcon} from "../_assets/icons/down-arrow.svg";
+import {ReactComponent as DoubleArrowIcon} from "../_assets/icons/double-up-arrow.svg";
 import {HashLink} from "react-router-hash-link";
 import "./menu.scss";
 

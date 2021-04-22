@@ -1,4 +1,4 @@
-import React, {lazy, Suspense, useEffect} from 'react';
+import React, {lazy, Suspense} from 'react';
 import {Router, Redirect, Route, Switch} from "react-router-dom";
 import Loader from "react-loader-spinner";
 import {ToastContainer} from "react-toastify";
@@ -11,7 +11,6 @@ import "./app.scss";
 import LeftSideDesktopBar from "./Navi/DesktopBar/LeftSideDesktopBar";
 import LeftSideMobileBar from "./Navi/MobileBar/LeftSideMobileBar";
 import Menu from "./FoodMenu/Menu";
-import {useSelector} from "react-redux";
 import {PrivateRoute} from "./_components/PrivateRoute";
 import {AdminRoute} from "./_components/AdminRoute";
 import {CourierRoute} from "./_components/CourierRoute";
@@ -19,9 +18,9 @@ const SignIn = lazy(() => import("./Autorisation/SignIn"));
 const SignUp = lazy(() => import("./Autorisation/SignUp"));
 const Profile = lazy(() => import("./Profile/Profile"));
 const CompletedOrders = lazy(() => import("./OrderTableComponents/OrderClientList"));
-const NewOrders = lazy(() => import("./OrderTableComponents/NewOrderClientList"));
-const ReceivedOrders = lazy(() => import("./OrderTableComponents/OrderAdminList"));
-const Deliveries = lazy(() => import("./OrderTableComponents/OrderCourierList"));
+const ClientOrders = lazy(() => import("./Orders/ClientOrders"));
+const AllOrders = lazy(() => import("./Orders/AdminOrders"));
+const Deliveries = lazy(() => import("./Orders/Deliveries"));
 const Cart = lazy(() => import("./Cart/Cart"));
 const MenuItem = lazy(() => import("./FoodItem/Item"));
 const EditItemForm = lazy(() => import("./FoodItem/ItemForm"));
@@ -29,8 +28,6 @@ const EditItemForm = lazy(() => import("./FoodItem/ItemForm"));
 function App() {
     const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'});
     const isTabletOrMobile = useMediaQuery({query: '(max-width: 1224px)'});
-
-    //const user = useSelector(state => state.authentication.user);
 
     return (
         <Router history={history}>
@@ -47,8 +44,8 @@ function App() {
                         <PrivateRoute path="/profile" exact component={Profile}/>
                         <PrivateRoute path="/cart" exact component={Cart}/>
                         <PrivateRoute path="/completedOrders" exact component={CompletedOrders}/>
-                        <PrivateRoute path="/orders" exact component={NewOrders}/>
-                        <AdminRoute path="/receivedOrders" exact component={ReceivedOrders}/>
+                        <PrivateRoute path="/orders" exact component={ClientOrders}/>
+                        <AdminRoute path="/receivedOrders" exact component={AllOrders}/>
                         <AdminRoute path="/edit/:id" component={EditItemForm}/>
                         <CourierRoute path="/deliveries" exact component={Deliveries}/>
                         <Redirect from="*" to="/menu"/>

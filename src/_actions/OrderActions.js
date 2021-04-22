@@ -4,7 +4,9 @@ import {orderConstants} from "../_constants/OrderConstants";
 import {orderService} from "../_services/OrderService";
 
 export const orderActions = {
-    create
+    create,
+    assign,
+    deliver
 };
 
 function create(order) {
@@ -14,7 +16,7 @@ function create(order) {
             .then(
                 () => {
                     dispatch(success());
-                    history.push("/orders");
+                    history.push("/menu");
                     messagesActions.success('Your order request is processed. We have started preparing it');
                 },
                 error => {
@@ -26,4 +28,44 @@ function create(order) {
 
     function success() { return { type: orderConstants.CREATE_ORDER_SUCCESS } }
     function failure(error) { return { type: orderConstants.CREATE_ORDER_FAILURE, error } }
+}
+
+function assign(id) {
+    return dispatch => {
+
+        orderService.assign(id)
+            .then(
+                () => {
+                    dispatch(success());
+                    messagesActions.success('Courier assigned');
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    messagesActions.error(error.toString());
+                }
+            );
+    };
+
+    function success() { return { type: orderConstants.ASSIGN_ORDER_SUCCESS } }
+    function failure(error) { return { type: orderConstants.ASSIGN_ORDER_FAILURE, error } }
+}
+
+function deliver(id) {
+    return dispatch => {
+
+        orderService.deliver(id)
+            .then(
+                () => {
+                    dispatch(success());
+                    messagesActions.success('Delivery confirmed');
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    messagesActions.error(error.toString());
+                }
+            );
+    };
+
+    function success() { return { type: orderConstants.DELIVER_ORDER_SUCCESS } }
+    function failure(error) { return { type: orderConstants.DELIVER_ORDER_FAILURE, error } }
 }

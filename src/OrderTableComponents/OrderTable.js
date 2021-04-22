@@ -1,11 +1,11 @@
 import React from "react";
 import OrderAction from "./OrderAction";
-import {ReactComponent as FeedbackIcon} from "../assets/icons/feedback.svg";
-import {ReactComponent as ConfirmIcon} from "../assets/icons/confirm.svg";
-import {ReactComponent as ContactIcon} from "../assets/icons/phone-call.svg";
-import {ReactComponent as DeliveryIcon} from "../assets/icons/logistics-delivery-truck-in-movement.svg";
-import {ReactComponent as RejectIcon} from "../assets/icons/reject.svg";
-import {ReactComponent as DeleteIcon} from "../assets/icons/trash-bin.svg";
+import {ReactComponent as FeedbackIcon} from "../_assets/icons/feedback.svg";
+import {ReactComponent as ConfirmIcon} from "../_assets/icons/confirm.svg";
+import {ReactComponent as ContactIcon} from "../_assets/icons/phone-call.svg";
+import {ReactComponent as DeliveryIcon} from "../_assets/icons/logistics-delivery-truck-in-movement.svg";
+import {ReactComponent as RejectIcon} from "../_assets/icons/reject.svg";
+import {ReactComponent as DeleteIcon} from "../_assets/icons/trash-bin.svg";
 import "./orders.scss";
 
 function OrderTable(props) {

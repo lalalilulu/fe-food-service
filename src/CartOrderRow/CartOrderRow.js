@@ -1,10 +1,10 @@
 import React from "react";
-import {ReactComponent as DeleteIcon} from "../assets/icons/trash-bin.svg";
+import {ReactComponent as DeleteIcon} from "../_assets/icons/trash-bin.svg";
 import {useDispatch} from "react-redux";
 import {toast} from "react-toastify";
 import {addToCart, removeFromCart} from "../_actions/CartActions";
-import {ReactComponent as MinusIcon} from "../assets/icons/minus.svg";
-import {ReactComponent as PlusIcon} from "../assets/icons/plus.svg";
+import {ReactComponent as MinusIcon} from "../_assets/icons/minus.svg";
+import {ReactComponent as PlusIcon} from "../_assets/icons/plus.svg";
 import "./orderRow.scss";
 import "./counter.scss";
 

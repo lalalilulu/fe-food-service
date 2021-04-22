@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {ReactComponent as MinusIcon} from "../assets/icons/minus.svg";
-import {ReactComponent as PlusIcon} from "../assets/icons/plus.svg";
+import {ReactComponent as MinusIcon} from "../_assets/icons/minus.svg";
+import {ReactComponent as PlusIcon} from "../_assets/icons/plus.svg";
 import "./counter.scss";
 
 function AmountCounter(props) {

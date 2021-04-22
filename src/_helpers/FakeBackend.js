@@ -1,5 +1,6 @@
 import { userConstants } from '../_constants/UserConstants';
 import {cartInitialState} from "../_reducers/CartReducer";
+import {orderConstants} from "../_constants/OrderConstants";
 
 let users = JSON.parse(localStorage.getItem('users')) ||
     [{ id: 1, role: userConstants.ADMIN_ROLE, name: 'admin', password: 'admin', email: 'admin@test.com', orders: [], cart: {} },
@@ -34,6 +35,10 @@ export function configureFakeBackend() {
                         return updateUser();
                     case url.endsWith('/orders/create') && method === 'POST':
                         return createOrder();
+                    case url.match(/orders\/assign\/d+$/) && method === 'PUT':
+                        return assignOrder();
+                    case url.match(/orders\/deliver\/d+$/) && method === 'PUT':
+                        return deliverOrder();
                     default:
                         // pass through any requests not handled above
                         return realFetch(url, opts)
@@ -109,9 +114,28 @@ export function configureFakeBackend() {
             function createOrder() {
                 if (!isLoggedIn()) return unauthorized();
 
+                body.id = orders.length ? Math.max(...orders.map(x => x.id)) + 1 : 29421;
+                const today = new Date()
+                body.deliveryDate = today.toISOString().substring(0, 10);
                 orders.push(body);
                 localStorage.setItem('orders', JSON.stringify(orders));
                 localStorage.removeItem('cart');
+                return ok();
+            }
+
+            function assignOrder() {
+
+                const assignedOrder = orders.find(x => x.id !== idFromUrl());
+                assignedOrder.status = orderConstants.IN_PROGRESS_STATUS;
+                localStorage.setItem('orders', JSON.stringify(orders));
+                return ok();
+            }
+
+            function deliverOrder() {
+
+                const assignedOrder = orders.find(x => x.id !== idFromUrl());
+                assignedOrder.status = orderConstants.DELIVERED_STATUS;
+                localStorage.setItem('orders', JSON.stringify(orders));
                 return ok();
             }
 

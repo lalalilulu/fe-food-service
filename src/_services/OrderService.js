@@ -1,7 +1,9 @@
 import {authHeader} from "../_helpers/AuthHeader";
 
 export const orderService = {
-    create
+    create,
+    assign,
+    deliver
 };
 
 function create(order) {
@@ -14,6 +16,24 @@ function create(order) {
 
     return fetch("http://localhost:3000/orders/create", requestOptions)
         .then(handleResponse);
+}
+
+function assign(id) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+    };
+
+    return fetch(`http://localhost:3000/orders/assign/${id}/`, requestOptions).then(handleResponse);
+}
+
+function deliver(id) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+    };
+
+    return fetch(`http://localhost:3000/orders/deliver/${id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
