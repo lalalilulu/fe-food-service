@@ -1,6 +1,24 @@
 {
 	"data": [
 		{
+			"name": "Dish name",
+			"id": "0",
+			"description": "Dish description",
+			"image": "https://i.pinimg.com/originals/41/d3/ff/41d3ffd56e5d6968a393ece81b20f428.jpg",
+			"category": "soups",
+			"ingredients": [
+				"ingredient_1",
+				"ingredient_2",
+				"ingredient_3",
+				"ingredient_4",
+				"ingredient_5",
+				"ingredient_6",
+				"ingredient_7"
+			],
+			"price": 0,
+			"status": "unpublished"
+		},
+		{
 			"name": "Split Pea Soup",
 			"id": "113",
 			"description": "It's a delicious, healthy, textured soup made from an impossibly short list of ingredients. Simply green split peas and onions cooked with ham until tender, partially pureed, seasoned and flared out with toppings",
@@ -19,7 +37,8 @@
 				"fresh thyme",
 				"low-sodium chicken broth"
 			],
-			"price": 16
+			"price": 16,
+			"status": "published"
 		},
 		{
 			"name": "Miso, Tofu & Noodle Soup",
@@ -36,7 +55,8 @@
 				"silken tofu",
 				"fresh chives"
 			],
-			"price": 13
+			"price": 13,
+			"status": "published"
 		},
 		{
 			"name": "Chicken Soup",
@@ -54,7 +74,8 @@
 				"vegetable stock",
 				"fresh thyme"
 			],
-			"price": 15
+			"price": 15,
+			"status": "published"
 		},
 		{
 			"name": "Classic Potato Leek Soup",
@@ -75,7 +96,8 @@
 				"garlic",
 				"concentrated chicken or vegetable stock"
 			],
-			"price": 11
+			"price": 11,
+			"status": "published"
 		},
 		{
 			"name": "Turnip Noodle Carbonara",
@@ -111,7 +133,8 @@
 				"parmesan",
 				"red pepper flakes"
 			],
-			"price": 29
+			"price": 29,
+			"status": "unpublished"
 		},
 		{
 			"name": "Red Chili Ricotta Pasta",
@@ -131,7 +154,8 @@
 				"garlic",
 				"thyme"
 			],
-			"price": 26
+			"price": 26,
+			"status": "published"
 		},
 		{
 			"name": "Chilli Prawn Spaghetti",
@@ -150,7 +174,8 @@
 				"garlic",
 				"balsamic vinegar"
 			],
-			"price": 34
+			"price": 34,
+			"status": "published"
 		},
 		{
 			"name": "Creamy Pesto Chicken Pasta",
@@ -169,7 +194,8 @@
 				"parmesan",
 				"butter"
 			],
-			"price": 29
+			"price": 29,
+			"status": "published"
 		},
 		{
 			"name": "Grilled Margherita",
@@ -186,7 +212,8 @@
 				"oregano",
 				"garlic"
 			],
-			"price": 23
+			"price": 23,
+			"status": "published"
 		},
 		{
 			"name": "Quattro Formaggi Pizza",
@@ -205,7 +232,8 @@
 				"oregano",
 				"garlic"
 			],
-			"price": 31
+			"price": 31,
+			"status": "published"
 		},
 		{
 			"name": "Greek Pizza",
@@ -222,7 +250,8 @@
 				"roasted red peppers",
 				"red onion"
 			],
-			"price": 27
+			"price": 27,
+			"status": "blocked"
 		},
 		{
 			"name": "Chicken & Pesto Pizza",
@@ -240,7 +269,8 @@
 				"olive oil",
 				"oregano"
 			],
-			"price": 28
+			"price": 28,
+			"status": "published"
 		},
 		{
 			"name": "New York-Style Pizza",
@@ -258,7 +288,8 @@
 				"basil",
 				"oregano"
 			],
-			"price": 29
+			"price": 29,
+			"status": "published"
 		},
 		{
 			"name": "Salami & Mushroom Pizza",
@@ -277,7 +308,8 @@
 				"olive oil",
 				"basil"
 			],
-			"price": 22
+			"price": 22,
+			"status": "published"
 		},
 		{
 			"name": "Spicy Chipotle Chicken Burger",
@@ -296,7 +328,8 @@
 				"bread crumbs",
 				"garlic"
 			],
-			"price": 26
+			"price": 26,
+			"status": "published"
 		},
 		{
 			"name": "Steakburger",
@@ -314,7 +347,8 @@
 				"American cheese",
 				"kosher salt"
 			],
-			"price": 31
+			"price": 31,
+			"status": "published"
 		},
 		{
 			"name": "Roast Chicken & Mushroom Burger",
@@ -333,7 +367,8 @@
 				"fat cream",
 				"garlic"
 			],
-			"price": 29
+			"price": 29,
+			"status": "published"
 		},
 		{
 			"name": "Pumpkin Seed Veggie Burger",
@@ -356,7 +391,8 @@
 				"chili powder",
 				"cumin"
 			],
-			"price": 24
+			"price": 24,
+			"status": "published"
 		},
 		{
 			"name": "Chocolate Muffins",
@@ -375,7 +411,8 @@
 				"milk",
 				"butter"
 			],
-			"price": 12
+			"price": 12,
+			"status": "published"
 		},
 		{
 			"name": "Tal’s Tahini “bread pudding”",
@@ -393,7 +430,8 @@
 				"cinammon",
 				"sesame seeds for garnish"
 			],
-			"price": 18
+			"price": 18,
+			"status": "published"
 		},
 		{
 			"name": "Grand Marnier & Coffee Ice Cream",
@@ -409,7 +447,8 @@
 				"espresso",
 				"vanilla extract"
 			],
-			"price": 15
+			"price": 15,
+			"status": "published"
 		},
 		{
 			"name": "Cheese pancakes",
@@ -427,7 +466,8 @@
 				"vanilla extract",
 				"strawberries"
 			],
-			"price": 17
+			"price": 17,
+			"status": "published"
 		},
 		{
 			"name": "Strawberry Cheesecake",
@@ -447,7 +487,8 @@
 				"cinnamon",
 				"vanilla extract"
 			],
-			"price": 23
+			"price": 23,
+			"status": "published"
 		}
 	]
 }

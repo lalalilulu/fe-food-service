@@ -1,6 +1,6 @@
 import { messagesConstants } from '../_constants/MessageConstants';
 
-export const messagesActions = {
+export const messageActions = {
     success,
     error,
     clear

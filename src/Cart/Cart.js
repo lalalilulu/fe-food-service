@@ -103,7 +103,6 @@ function Cart() {
             dispatch(orderActions.create(orderRequest));
             //should be removed after re-writing part with CartActions, CartReducer
             dispatch(removeAll());
-            toast.success("Your order request is processed. We have started preparing it");
         }
     }
 

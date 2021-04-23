@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
 
-import { authentication } from './AuthenticationReducer';
+import {authentication} from './CurrentUserReducer';
 import {registration} from "./RegistrationReducer";
-import { users } from './UsersReducer';
-import { notification } from './MessageReducer';
-import { cart } from './CartReducer';
-import {orders} from "./OrdersReducer";
+import {notification} from './MessageReducer';
+import {cart} from './CartReducer';
+import {orders} from "./OrderReducer";
+import {menu} from "./MenuReducer";
 
 const rootReducer = combineReducers({
     authentication,
     registration,
-    users,
+    menu,
     orders,
     notification,
     cart

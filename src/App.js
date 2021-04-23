@@ -1,7 +1,7 @@
-import React, {lazy, Suspense} from 'react';
+import React, {lazy, Suspense, useEffect} from 'react';
 import {Router, Redirect, Route, Switch} from "react-router-dom";
 import Loader from "react-loader-spinner";
-import {ToastContainer} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import {useMediaQuery} from "react-responsive";
 import { history } from './_helpers/History';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,6 +14,9 @@ import Menu from "./FoodMenu/Menu";
 import {PrivateRoute} from "./_components/PrivateRoute";
 import {AdminRoute} from "./_components/AdminRoute";
 import {CourierRoute} from "./_components/CourierRoute";
+import {useDispatch, useSelector} from "react-redux";
+import {messageActions} from "./_actions/MessageActions";
+import {messagesConstants} from "./_constants/MessageConstants";
 const SignIn = lazy(() => import("./Autorisation/SignIn"));
 const SignUp = lazy(() => import("./Autorisation/SignUp"));
 const Profile = lazy(() => import("./Profile/Profile"));
@@ -27,6 +30,16 @@ const EditItemForm = lazy(() => import("./FoodItem/ItemForm"));
 function App() {
     const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'});
     const isTabletOrMobile = useMediaQuery({query: '(max-width: 1224px)'});
+
+    const notification = useSelector(state => state.notification);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        history.listen((location, action) => {
+            // clear notifications on location change
+            dispatch(messageActions.clear());
+        });
+    }, []);
 
     return (
         <Router history={history}>
@@ -60,6 +73,8 @@ function App() {
                     draggable
                     pauseOnHover
                 />
+                {notification.type === messagesConstants.SUCCESS && toast.success(notification.message)}
+                {notification.type === messagesConstants.ERROR && toast.error(notification.message)}
             </Suspense>
         </Router>
     );

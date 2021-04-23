@@ -4,10 +4,7 @@ export const userService = {
         login,
         logout,
         register,
-        getAll,
-        getById,
-        update,
-        delete: _delete
+        update
     };
 
 function login(email, password) {
@@ -28,31 +25,7 @@ function login(email, password) {
 }
 
 function logout() {
-    // const requestOptions = {
-    //     method: 'GET',
-    //     headers: authHeader()
-    // };
-    //
-    // return fetch("http://localhost:3000/users/logout", requestOptions).then(handleResponse);
     localStorage.removeItem('user');
-}
-
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch("http://localhost:3000/users", requestOptions).then(handleResponse);
-}
-
-function getById(id) {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`http://localhost:3000"/users/${id}`, requestOptions).then(handleResponse);
 }
 
 function register(user) {
@@ -73,16 +46,6 @@ function update(user) {
     };
 
     return fetch(`http://localhost:3000/users/${user.id}`, requestOptions).then(handleResponse);
-}
-
-// prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
-    const requestOptions = {
-        method: 'DELETE',
-        headers: authHeader()
-    };
-
-    return fetch(`http://localhost:3000/users/${id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

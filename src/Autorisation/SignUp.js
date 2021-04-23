@@ -1,17 +1,12 @@
 import React, {useEffect, useState} from "react";
 import Input from "../Input/Input";
 import "./forms.scss";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {userActions} from "../_actions/UserActions";
 import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
-import {messagesActions} from "../_actions/MessagesActions";
-import { history } from '../_helpers/History';
-
 
 function SignUp() {
-
-    const notification = useSelector(state => state.notification);
 
     const [user, setUser] = useState({
         name: '',
@@ -24,14 +19,6 @@ function SignUp() {
     });
 
     const dispatch = useDispatch();
-
-    // reset login status
-    useEffect(() => {
-        history.listen(() => {
-            // clear alert on location change
-            dispatch(messagesActions.clear());
-        });
-    }, []);
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -61,10 +48,6 @@ function SignUp() {
         }
         else {
             dispatch(userActions.register(user));
-            console.log(notification);
-            console.log(notification.type);
-            console.log(notification.message);
-            notification.type !== 'success' ? toast.error(notification.message) : toast.success(notification.message);
         }
     }
 

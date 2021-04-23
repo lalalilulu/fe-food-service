@@ -1,5 +1,5 @@
 import { history } from '../_helpers/History';
-import { messagesActions } from './MessagesActions';
+import { messageActions } from './MessageActions';
 import {orderConstants} from "../_constants/OrderConstants";
 import {orderService} from "../_services/OrderService";
 
@@ -17,11 +17,11 @@ function create(order) {
                 () => {
                     dispatch(success());
                     history.push("/menu");
-                    messagesActions.success('Your order request is processed. We have started preparing it');
+                    dispatch(messageActions.success('Your order request is processed. We have started preparing it'));
                 },
                 error => {
                     dispatch(failure(error.toString()));
-                    messagesActions.error(error.toString());
+                    dispatch(messageActions.error(error.toString()));
                 }
             );
     };
@@ -37,11 +37,11 @@ function assign(id) {
             .then(
                 () => {
                     dispatch(success());
-                    messagesActions.success('Courier assigned');
+                    dispatch(messageActions.success('Courier assigned'));
                 },
                 error => {
                     dispatch(failure(error.toString()));
-                    messagesActions.error(error.toString());
+                    dispatch(messageActions.error(error.toString()));
                 }
             );
     };
@@ -57,11 +57,11 @@ function deliver(id) {
             .then(
                 () => {
                     dispatch(success());
-                    messagesActions.success('Delivery confirmed');
+                    dispatch(messageActions.success('Delivery confirmed'));
                 },
                 error => {
                     dispatch(failure(error.toString()));
-                    messagesActions.error(error.toString());
+                    dispatch(messageActions.error(error.toString()));
                 }
             );
     };

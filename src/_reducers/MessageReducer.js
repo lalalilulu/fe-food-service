@@ -4,12 +4,12 @@ export function notification(state = {}, action) {
     switch (action.type) {
         case messagesConstants.SUCCESS:
             return {
-                type: 'success',
+                type: messagesConstants.SUCCESS,
                 message: action.message
             };
         case messagesConstants.ERROR:
             return {
-                type: 'error',
+                type: messagesConstants.ERROR,
                 message: action.message
             };
         case messagesConstants.CLEAR:
