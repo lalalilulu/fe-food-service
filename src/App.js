@@ -17,7 +17,6 @@ import {CourierRoute} from "./_components/CourierRoute";
 const SignIn = lazy(() => import("./Autorisation/SignIn"));
 const SignUp = lazy(() => import("./Autorisation/SignUp"));
 const Profile = lazy(() => import("./Profile/Profile"));
-const CompletedOrders = lazy(() => import("./OrderTableComponents/OrderClientList"));
 const ClientOrders = lazy(() => import("./Orders/ClientOrders"));
 const AllOrders = lazy(() => import("./Orders/AdminOrders"));
 const Deliveries = lazy(() => import("./Orders/Deliveries"));
@@ -43,7 +42,6 @@ function App() {
                         <Route path="/signup" exact component={SignUp}/>
                         <PrivateRoute path="/profile" exact component={Profile}/>
                         <PrivateRoute path="/cart" exact component={Cart}/>
-                        <PrivateRoute path="/completedOrders" exact component={CompletedOrders}/>
                         <PrivateRoute path="/orders" exact component={ClientOrders}/>
                         <AdminRoute path="/receivedOrders" exact component={AllOrders}/>
                         <AdminRoute path="/edit/:id" component={EditItemForm}/>

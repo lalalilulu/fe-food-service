@@ -58,7 +58,7 @@ const MenuWrapper = () => {
                 }
                 {currentUser && currentUser.role === userConstants.COURIER_ROLE &&
                 <li>
-                    <Link to={'/receivedOrders'}>Deliveries</Link>
+                    <Link to={'/deliveries'}>Deliveries</Link>
                 </li>
                 }
                 <li>

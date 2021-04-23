@@ -101,7 +101,9 @@ function AdminOrders() {
                                 </div>
                             </div>
                             <div className="text-center mb-2">
-                                <button className="btn order-btn" onClick={() => dispatch(orderActions.assign(orders[val].id))}>Assign a courier</button>
+                                <button className="btn order-btn" onClick={() => {
+                                    dispatch(orderActions.assign(orders[val].id));
+                                }}>Assign a courier</button>
                             </div>
                         </div>
                     )
@@ -113,7 +115,7 @@ function AdminOrders() {
     const renderInProgressOrders = () => {
         if (orders) {
             return Object.keys(orders).map((val) => {
-                if (orders[val].status === orders[val].status === orderConstants.IN_PROGRESS_STATUS) {
+                if (orders[val].status === orderConstants.IN_PROGRESS_STATUS) {
                     return (
                         <div className="container-order border-bottom pb-2 px-lg-0 px-md-0 mb-4" key={orders[val].id}>
                             <div className="row mb-3">

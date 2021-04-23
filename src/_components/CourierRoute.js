@@ -8,7 +8,7 @@ function CourierRoute({ component: Component, roles, ...rest }) {
             if (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).role === userConstants.COURIER_ROLE) {
                 return <Component {...props} />
             }
-            return <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+            return <Redirect to={{ pathname: '/menu', state: { from: props.location } }} />
         }} />
     );
 }

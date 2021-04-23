@@ -3,8 +3,8 @@ import {cartInitialState} from "../_reducers/CartReducer";
 import {orderConstants} from "../_constants/OrderConstants";
 
 let users = JSON.parse(localStorage.getItem('users')) ||
-    [{ id: 1, role: userConstants.ADMIN_ROLE, name: 'admin', password: 'admin', email: 'admin@test.com', orders: [], cart: {} },
-     { id: 2, role: userConstants.COURIER_ROLE, name: 'courier', password: 'test', email: 'courier@test.com', orders: [], cart: {} }
+    [{ id: 1, role: userConstants.ADMIN_ROLE, name: 'admin', password: 'admin', email: 'admin@test.com' },
+     { id: 2, role: userConstants.COURIER_ROLE, name: 'courier', password: 'test', email: 'courier@test.com' }
     ];
 
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -35,9 +35,9 @@ export function configureFakeBackend() {
                         return updateUser();
                     case url.endsWith('/orders/create') && method === 'POST':
                         return createOrder();
-                    case url.match(/orders\/assign\/d+$/) && method === 'PUT':
+                    case url.match(/\/orders\/assign\/\d+$/) && method === 'GET':
                         return assignOrder();
-                    case url.match(/orders\/deliver\/d+$/) && method === 'PUT':
+                    case url.match(/\/orders\/deliver\/\d+$/) && method === 'GET':
                         return deliverOrder();
                     default:
                         // pass through any requests not handled above
@@ -124,17 +124,15 @@ export function configureFakeBackend() {
             }
 
             function assignOrder() {
-
-                const assignedOrder = orders.find(x => x.id !== idFromUrl());
+                const assignedOrder = orders.find(x => x.id === idFromUrl());
                 assignedOrder.status = orderConstants.IN_PROGRESS_STATUS;
                 localStorage.setItem('orders', JSON.stringify(orders));
                 return ok();
             }
 
             function deliverOrder() {
-
-                const assignedOrder = orders.find(x => x.id !== idFromUrl());
-                assignedOrder.status = orderConstants.DELIVERED_STATUS;
+                const deliveredOrder = orders.find(x => x.id === idFromUrl());
+                deliveredOrder.status = orderConstants.DELIVERED_STATUS;
                 localStorage.setItem('orders', JSON.stringify(orders));
                 return ok();
             }

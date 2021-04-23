@@ -20,16 +20,16 @@ function create(order) {
 
 function assign(id) {
     const requestOptions = {
-        method: 'PUT',
+        method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     };
 
-    return fetch(`http://localhost:3000/orders/assign/${id}/`, requestOptions).then(handleResponse);
+    return fetch(`http://localhost:3000/orders/assign/${id}`, requestOptions).then(handleResponse);
 }
 
 function deliver(id) {
     const requestOptions = {
-        method: 'PUT',
+        method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     };
 
