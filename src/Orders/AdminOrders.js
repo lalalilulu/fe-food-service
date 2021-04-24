@@ -47,7 +47,7 @@ function AdminOrders() {
         }
     }
 
-    const orders = useSelector(state => state.orders);
+    const orders = useSelector(state => state.orders.orders);
     const dispatch = useDispatch();
 
     const renderPendingOrders = () => {

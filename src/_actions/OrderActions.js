@@ -14,8 +14,8 @@ function create(order) {
 
         orderService.create(order)
             .then(
-                () => {
-                    dispatch(success());
+                (orders) => {
+                    dispatch(success(orders));
                     history.push("/menu");
                     dispatch(messageActions.success('Your order request is processed. We have started preparing it'));
                 },
@@ -26,7 +26,7 @@ function create(order) {
             );
     };
 
-    function success() { return { type: orderConstants.CREATE_ORDER_SUCCESS } }
+    function success(orders) { return { type: orderConstants.CREATE_ORDER_SUCCESS, orders } }
     function failure(error) { return { type: orderConstants.CREATE_ORDER_FAILURE, error } }
 }
 
@@ -35,8 +35,8 @@ function assign(id) {
 
         orderService.assign(id)
             .then(
-                () => {
-                    dispatch(success());
+                (orders) => {
+                    dispatch(success(orders));
                     dispatch(messageActions.success('Courier assigned'));
                 },
                 error => {
@@ -46,8 +46,8 @@ function assign(id) {
             );
     };
 
-    function success() { return { type: orderConstants.ASSIGN_ORDER_SUCCESS } }
-    function failure(error) { return { type: orderConstants.ASSIGN_ORDER_FAILURE, error } }
+    function success(orders) { return { type: orderConstants.ASSIGN_ORDER_SUCCESS, orders }}
+    function failure(error) { return { type: orderConstants.ASSIGN_ORDER_FAILURE, error }}
 }
 
 function deliver(id) {
@@ -55,8 +55,8 @@ function deliver(id) {
 
         orderService.deliver(id)
             .then(
-                () => {
-                    dispatch(success());
+                (orders) => {
+                    dispatch(success(orders));
                     dispatch(messageActions.success('Delivery confirmed'));
                 },
                 error => {
@@ -66,6 +66,6 @@ function deliver(id) {
             );
     };
 
-    function success() { return { type: orderConstants.DELIVER_ORDER_SUCCESS } }
+    function success(orders) { return { type: orderConstants.DELIVER_ORDER_SUCCESS, orders } }
     function failure(error) { return { type: orderConstants.DELIVER_ORDER_FAILURE, error } }
 }

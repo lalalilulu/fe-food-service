@@ -1,66 +1,57 @@
 import {menuConstants} from "../_constants/MenuConstants";
 
-export function menu(state = {}, action) {
+const dishes = JSON.parse(localStorage.getItem('items')) || require("../data/fooddata.json").data;
+const initialState = {items: dishes, publishedItems: dishes.filter(item => item.status !== menuConstants.UNPUBLISHED_STATUS)};
+
+export function menu(state = initialState, action) {
     switch (action.type) {
         case menuConstants.ADD_SUCCESS:
-            return {};
+            return {
+                items: action.items,
+                publishedItems: action.items.filter(item => item.status !== menuConstants.UNPUBLISHED_STATUS)
+            };
         case menuConstants.ADD_FAILURE:
             return {
                 error: action.error
             };
         case menuConstants.EDIT_SUCCESS:
-            return {};
+            return {
+                items: action.items,
+                publishedItems: action.items.filter(item => item.status !== menuConstants.UNPUBLISHED_STATUS)
+            };
         case menuConstants.EDIT_FAILURE:
             return {
                 error: action.error
             };
-        case menuConstants.GETALL_SUCCESS:
+        case menuConstants.PREVIEW_ITEM:
             return {
-                items: action.items
-            };
-        case menuConstants.GETALL_FAILURE:
-            return {
-                error: action.error
-            };
-        case menuConstants.GET_ITEM_SUCCESS:
-            return {
-                currentItem: state.items.find(item => item.id === action.id)
-            };
-        case menuConstants.GET_ITEM_FAILURE:
-            return {
-                error: action.error
-            };
-        case menuConstants.PUBLISH_SUCCESS:
-            return {
+                ...state,
                 currentItem: action.item
             };
-        case menuConstants.PUBLISH_FAILURE:
+        case menuConstants.RESET_ITEM:
             return {
-                error: action.error
+                items: action.items,
+                publishedItems: action.items.filter(item => item.status !== menuConstants.UNPUBLISHED_STATUS)
             };
-        case menuConstants.UNPUBLISH_SUCCESS:
+        case menuConstants.SET_PUBLISH:
             return {
-                currentItem: action.item
+                items: action.items,
+                publishedItems: action.items.filter(item => item.status !== menuConstants.UNPUBLISHED_STATUS)
             };
-        case menuConstants.UNPUBLISH_FAILURE:
+        case menuConstants.SET_UNPUBLISH:
             return {
-                error: action.error
+                items: action.items,
+                publishedItems: action.items.filter(item => item.status !== menuConstants.UNPUBLISHED_STATUS)
             };
-        case menuConstants.BLOCK_SUCCESS:
+        case menuConstants.SET_BLOCK:
             return {
-                currentItem: action.item
+                items: action.items,
+                publishedItems: action.items.filter(item => item.status !== menuConstants.UNPUBLISHED_STATUS)
             };
-        case menuConstants.BLOCK_FAILURE:
+        case menuConstants.SET_UNBLOCK:
             return {
-                error: action.error
-            };
-        case menuConstants.UNBLOCK_SUCCESS:
-            return {
-                currentItem: action.item
-            };
-        case menuConstants.UNBLOCK_FAILURE:
-            return {
-                error: action.error
+                items: action.items,
+                publishedItems: action.items.filter(item => item.status !== menuConstants.UNPUBLISHED_STATUS)
             };
         default:
             return state

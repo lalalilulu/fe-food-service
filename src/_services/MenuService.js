@@ -2,8 +2,8 @@
 export const menuService = {
     add,
     edit,
-    getById,
-    getAll,
+    preview,
+    reset,
     publish,
     unpublish,
     block,
@@ -30,20 +30,21 @@ function edit(item) {
     return fetch(`http://localhost:3000/menu/edit/${item.id}`, requestOptions).then(handleResponse);
 }
 
-function getById(id) {
+function preview(item) {
     const requestOptions = {
-        method: 'GET'
+        method: 'POST',
+        body: JSON.stringify(item)
     };
 
-    return fetch(`http://localhost:3000/menu/${id}`, requestOptions).then(handleResponse);
+    return fetch(`http://localhost:3000/menu/preview`, requestOptions).then(handleResponse);
 }
 
-function getAll() {
+function reset() {
     const requestOptions = {
         method: 'GET'
     };
 
-    return fetch("http://localhost:3000/menu", requestOptions).then(handleResponse);
+    return fetch("http://localhost:3000/menu/reset", requestOptions).then(handleResponse);
 }
 
 function publish(item) {

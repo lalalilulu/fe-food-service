@@ -2,14 +2,12 @@ import { history } from '../_helpers/History';
 import {messageActions} from './MessageActions';
 import {menuService} from "../_services/MenuService";
 import {menuConstants} from "../_constants/MenuConstants";
-import {userService} from "../_services/UserService";
-import {userConstants} from "../_constants/UserConstants";
 
 export const menuActions = {
     addItem,
     editItem,
-    getItem,
-    getAll,
+    resetEditing,
+    previewItem,
     publish,
     unpublish,
     block,
@@ -21,8 +19,8 @@ function addItem(item) {
 
         menuService.add(item)
             .then(
-                item => {
-                    dispatch(success(item));
+                items => {
+                    dispatch(success(items));
                     history.push('/menu');
                     dispatch(messageActions.success(`${item.name} successfully added to the menu`));
                     return true;
@@ -35,7 +33,7 @@ function addItem(item) {
             );
     };
 
-    function success(item) { return { type: menuConstants.ADD_SUCCESS, item }}
+    function success(items) { return { type: menuConstants.ADD_SUCCESS, items }}
     function failure(error) { return { type: menuConstants.ADD_FAILURE, error }}
 }
 
@@ -44,8 +42,8 @@ function editItem(item) {
 
         menuService.edit(item)
             .then(
-                item => {
-                    dispatch(success(item));
+                items => {
+                    dispatch(success(items));
                     history.push('/menu');
                     dispatch(messageActions.success(`${item.name} successfully updated`));
                 },
@@ -56,28 +54,26 @@ function editItem(item) {
             );
     };
 
-    function success(item) { return { type: menuConstants.EDIT_SUCCESS, item }}
+    function success(items) { return { type: menuConstants.EDIT_SUCCESS, items }}
     function failure(error) { return { type: menuConstants.EDIT_FAILURE, error }}
 }
 
-function getAll() {
+function resetEditing() {
     return dispatch => {
 
-        menuService.getAll()
+        menuService.reset()
             .then(
                 items => dispatch(success(items)),
-                error => dispatch(failure(error.toString()))
             );
     };
 
-    function success(items) { return { type: menuConstants.GETALL_SUCCESS, items } }
-    function failure(error) { return { type: menuConstants.GETALL_FAILURE, error } }
+    function success(items) { return { type: menuConstants.RESET_ITEM, items } }
 }
 
-function getItem(id) {
+function previewItem(item) {
     return dispatch => {
 
-        menuService.getById(id)
+        menuService.preview(item)
             .then(
                 item => {
                     dispatch(success(item));
@@ -88,8 +84,8 @@ function getItem(id) {
             );
     };
 
-    function success(item) { return { type: menuConstants.GET_ITEM_SUCCESS, item }}
-    function failure(error) { return { type: menuConstants.GET_ITEM_FAILURE, error }}
+    function success(item) { return { type: menuConstants.PREVIEW_ITEM, item }}
+    function failure(error) { return { type: menuConstants.PREVIEW_ITEM, error }}
 }
 
 function publish(item) {
@@ -97,19 +93,14 @@ function publish(item) {
 
         menuService.publish(item)
             .then(
-                item => {
-                    dispatch(success(item));
+                items => {
+                    dispatch(success(items));
                     dispatch(messageActions.success(`${item.name} successfully published`));
-                },
-                error => {
-                    dispatch(failure(error.toString()));
-                    dispatch(messageActions.error(error.toString()));
                 }
             );
     };
 
-    function success(item) { return { type: menuConstants.PUBLISH_SUCCESS, item } }
-    function failure(error) { return { type: menuConstants.PUBLISH_FAILURE, error } }
+    function success(items) { return { type: menuConstants.SET_PUBLISH, items } }
 }
 
 function unpublish(item) {
@@ -117,19 +108,14 @@ function unpublish(item) {
 
         menuService.unpublish(item)
             .then(
-                item => {
-                    dispatch(success(item));
+                items => {
+                    dispatch(success(items));
                     dispatch(messageActions.success(`${item.name} successfully unpublished`));
-                },
-                error => {
-                    dispatch(failure(error.toString()));
-                    dispatch(messageActions.error(error.toString()));
                 }
             );
     };
 
-    function success(item) { return { type: menuConstants.UNPUBLISH_SUCCESS, item } }
-    function failure(error) { return { type: menuConstants.UNPUBLISH_FAILURE, error } }
+    function success(items) { return { type: menuConstants.SET_UNPUBLISH, items } }
 }
 
 function block(item) {
@@ -137,19 +123,14 @@ function block(item) {
 
         menuService.block(item)
             .then(
-                item => {
-                    dispatch(success(item));
+                items => {
+                    dispatch(success(items));
                     dispatch(messageActions.success(`${item.name} successfully blocked`));
-                },
-                error => {
-                    dispatch(failure(error.toString()));
-                    dispatch(messageActions.error(error.toString()));
                 }
             );
     };
 
-    function success(item) { return { type: menuConstants.BLOCK_SUCCESS, item } }
-    function failure(error) { return { type: menuConstants.BLOCK_FAILURE, error } }
+    function success(items) { return { type: menuConstants.SET_BLOCK, items } }
 }
 
 function unblock(item) {
@@ -157,18 +138,13 @@ function unblock(item) {
 
         menuService.unblock(item)
             .then(
-                item => {
-                    dispatch(success(item));
+                items => {
+                    dispatch(success(items));
                     dispatch(messageActions.success(`${item.name} successfully unblocked`));
-                },
-                error => {
-                    dispatch(failure(error.toString()));
-                    dispatch(messageActions.error(error.toString()));
                 }
             );
     };
 
-    function success(item) { return { type: menuConstants.UNBLOCK_SUCCESS, item } }
-    function failure(error) { return { type: menuConstants.UNBLOCK_FAILURE, error } }
+    function success(items) { return { type: menuConstants.SET_UNBLOCK, items } }
 }
 

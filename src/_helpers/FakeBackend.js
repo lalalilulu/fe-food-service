@@ -1,6 +1,6 @@
 import { userConstants } from '../_constants/UserConstants';
-import {cartInitialState} from "../_reducers/CartReducer";
 import {orderConstants} from "../_constants/OrderConstants";
+import {menuConstants} from "../_constants/MenuConstants";
 
 let users = JSON.parse(localStorage.getItem('users')) ||
     [{ id: 1, role: userConstants.ADMIN_ROLE, name: 'admin', password: 'admin', email: 'admin@test.com' },
@@ -8,6 +8,7 @@ let users = JSON.parse(localStorage.getItem('users')) ||
     ];
 
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
+let menuItems = JSON.parse(localStorage.getItem('items')) || require("../data/fooddata.json").data;
 
 let cart = JSON.parse(localStorage.getItem('cart')) || {cartItems: [], total: 0};
 
@@ -27,10 +28,6 @@ export function configureFakeBackend() {
                         return login();
                     case url.endsWith('/users/register') && method === 'POST':
                         return register();
-                    case url.endsWith('/users') && method === 'GET':
-                        return getUsers();
-                    case url.match(/\/users\/\d+$/) && method === 'DELETE':
-                        return deleteUser();
                     case url.match(/\/users\/\d+$/) && method === 'PUT':
                         return updateUser();
                     case url.endsWith('/orders/create') && method === 'POST':
@@ -39,6 +36,22 @@ export function configureFakeBackend() {
                         return assignOrder();
                     case url.match(/\/orders\/deliver\/\d+$/) && method === 'GET':
                         return deliverOrder();
+                    case url.endsWith('/menu/addItem') && method === 'POST':
+                        return addMenuItem();
+                    case url.match(/\/menu\/edit\/\d+$/) && method === 'PUT':
+                        return editMenuItem();
+                    case url.endsWith('/menu/preview') && method === 'POST':
+                        return preview();
+                    case url.endsWith('menu/reset') && method === 'GET':
+                        return reset();
+                    case url.match(/\/menu\/publish\/\d+$/) && method === 'PUT':
+                        return publishItem();
+                    case url.match(/\/menu\/unpublish\/\d+$/) && method === 'PUT':
+                        return unpublishItem();
+                    case url.match(/\/menu\/block\/\d+$/) && method === 'PUT':
+                        return blockItem();
+                    case url.match(/\/menu\/unblock\/\d+$/) && method === 'PUT':
+                        return unblockItem();
                     default:
                         // pass through any requests not handled above
                         return realFetch(url, opts)
@@ -59,7 +72,6 @@ export function configureFakeBackend() {
                     name: user.name,
                     email: user.email,
                     phone: user.phone,
-                    cart: cartInitialState,
                     token: 'fake-jwt-token'
                 });
             }
@@ -77,19 +89,6 @@ export function configureFakeBackend() {
                 users.push(user);
                 localStorage.setItem('users', JSON.stringify(users));
 
-                return ok();
-            }
-
-            function getUsers() {
-                if (!isLoggedIn()) return unauthorized();
-                return ok(users);
-            }
-
-            function deleteUser() {
-                if (!isLoggedIn()) return unauthorized();
-
-                users = users.filter(x => x.id !== idFromUrl());
-                localStorage.setItem('users', JSON.stringify(users));
                 return ok();
             }
 
@@ -120,25 +119,91 @@ export function configureFakeBackend() {
                 orders.push(body);
                 localStorage.setItem('orders', JSON.stringify(orders));
                 localStorage.removeItem('cart');
-                return ok();
+                return ok(orders);
             }
 
             function assignOrder() {
                 const assignedOrder = orders.find(x => x.id === idFromUrl());
                 assignedOrder.status = orderConstants.IN_PROGRESS_STATUS;
                 localStorage.setItem('orders', JSON.stringify(orders));
-                return ok();
+                return ok(orders);
             }
 
             function deliverOrder() {
                 const deliveredOrder = orders.find(x => x.id === idFromUrl());
                 deliveredOrder.status = orderConstants.DELIVERED_STATUS;
                 localStorage.setItem('orders', JSON.stringify(orders));
-                return ok();
+                return ok(orders);
+            }
+
+            function addMenuItem() {
+                const item = body;
+
+                if (menuItems.find(x => x.name === item.name)) {
+                    return error(`Dish ${item.name} is already in the menu`);
+                }
+
+                const itemId = menuItems.length ? Math.max(...menuItems.map(x => x.id)) + 1 : 1;
+                item.id = itemId.toString();
+                item.status = menuConstants.PUBLISHED_STATUS;
+                menuItems.push(item);
+                localStorage.setItem('items', JSON.stringify(menuItems));
+                return ok(menuItems);
+            }
+
+            function editMenuItem() {
+                const {id, name, description, category, ingredients, price, image} = body;
+                const replacedItem = menuItems.find(item => item.id === id);
+
+                replacedItem.name = name;
+                replacedItem.description = description;
+                replacedItem.category = category;
+                replacedItem.ingredients = ingredients;
+                replacedItem.price = price;
+                replacedItem.image = image;
+
+                menuItems = menuItems.map(item => item.id === idFromUrl() ? replacedItem : item);
+                localStorage.setItem('items', JSON.stringify(menuItems));
+                return ok(menuItems);
+            }
+
+            function preview() {
+                return ok(body);
+            }
+
+            function reset() {
+                return ok(menuItems);
+            }
+
+            function publishItem() {
+                const menuItem = menuItems.find(item => item.id === body.id);
+                menuItem.status = menuConstants.PUBLISHED_STATUS;
+                localStorage.setItem('items', JSON.stringify(menuItems));
+                return ok(menuItems);
+            }
+
+            function unpublishItem() {
+                const menuItem = menuItems.find(item => item.id === body.id);
+                menuItem.status = menuConstants.UNPUBLISHED_STATUS;
+                localStorage.setItem('items', JSON.stringify(menuItems));
+                return ok(menuItems);
+            }
+
+            function blockItem() {
+                const menuItem = menuItems.find(item => item.id === body.id);
+                menuItem.status = menuConstants.BLOCKED_STATUS;
+                localStorage.setItem('items', JSON.stringify(menuItems));
+                return ok(menuItems);
+            }
+
+            function unblockItem() {
+                const menuItem = menuItems.find(item => item.id === body.id);
+                menuItem.status = menuConstants.PUBLISHED_STATUS;
+                localStorage.setItem('items', JSON.stringify(menuItems));
+                return ok(menuItems);
             }
 
             // helper functions
-
             function ok(body) {
                 resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(body)) });
             }

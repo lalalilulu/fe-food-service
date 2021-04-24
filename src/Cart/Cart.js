@@ -11,8 +11,8 @@ import {toast} from "react-toastify";
 import {orderConstants} from "../_constants/OrderConstants";
 import {orderActions} from "../_actions/OrderActions";
 import {removeAll} from "../_actions/CartActions";
-import "./cart.scss";
 import {Link} from "react-router-dom";
+import "./cart.scss";
 
 function Cart() {
 

@@ -25,6 +25,7 @@ const AllOrders = lazy(() => import("./Orders/AdminOrders"));
 const Deliveries = lazy(() => import("./Orders/Deliveries"));
 const Cart = lazy(() => import("./Cart/Cart"));
 const MenuItem = lazy(() => import("./FoodItem/Item"));
+const Preview = lazy(() => import("./FoodItem/ItemPreview"));
 const EditItemForm = lazy(() => import("./FoodItem/ItemForm"));
 
 function App() {
@@ -49,21 +50,22 @@ function App() {
                 {isTabletOrMobile && <LeftSideMobileBar/>}
                 <main className={`main main-${isDesktopOrLaptop ? 'desktop' : 'mobile'}`}>
                     <Switch>
-                        <Route path="/menu" exact component={Menu}/>
-                        <Route path="/menu/:id" component={MenuItem}/>
-                        <Route path="/signin" exact component={SignIn}/>
-                        <Route path="/signup" exact component={SignUp}/>
-                        <PrivateRoute path="/profile" exact component={Profile}/>
-                        <PrivateRoute path="/cart" exact component={Cart}/>
-                        <PrivateRoute path="/orders" exact component={ClientOrders}/>
-                        <AdminRoute path="/receivedOrders" exact component={AllOrders}/>
-                        <AdminRoute path="/edit/:id" component={EditItemForm}/>
-                        <CourierRoute path="/deliveries" exact component={Deliveries}/>
-                        <Redirect from="*" to="/menu"/>
+                        <Route path='/menu' exact component={Menu}/>
+                        <Route path='/menu/:id' exact component={MenuItem}/>
+                        <Route path='/signin' exact component={SignIn}/>
+                        <Route path='/signup' exact component={SignUp}/>
+                        <PrivateRoute path='/profile' exact component={Profile}/>
+                        <PrivateRoute path='/cart' exact component={Cart}/>
+                        <PrivateRoute path='/orders' exact component={ClientOrders}/>
+                        <AdminRoute path='/receivedOrders' exact component={AllOrders}/>
+                        <AdminRoute path='/edit/:id' exact component={EditItemForm}/>
+                        <AdminRoute path='/menu/preview/:id' exact component={Preview}/>
+                        <CourierRoute path='/deliveries' exact component={Deliveries}/>
+                        <Redirect from='*' to='/menu'/>
                     </Switch>
                 </main>
                 <ToastContainer
-                    position="bottom-right"
+                    position='bottom-right'
                     autoClose={5000}
                     hideProgressBar={false}
                     newestOnTop={false}

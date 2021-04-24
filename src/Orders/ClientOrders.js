@@ -32,7 +32,7 @@ function ClientOrders() {
     }
 
     const currentUser = useSelector(state => state.authentication.user);
-    const orders = useSelector(state => state.orders);
+    const orders = useSelector(state => state.orders.orders);
     const userOrders = orders.filter(order => order.clientId === currentUser.id);
 
     const renderInProgressOrders = () => {

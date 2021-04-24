@@ -2,11 +2,18 @@ import React, {useState} from "react";
 import Input from "../Input/Input";
 import MenuContainer from "./MenuContainer";
 import MenuPart from "./MenuPart";
+import {useSelector} from "react-redux";
+import {userConstants} from "../_constants/UserConstants";
 import "./menu.scss";
 
 function Menu() {
 
-    const allItems = require("../data/fooddata.json").data;
+    const allItems = useSelector(state => state.menu.items);
+    const publishedItems = useSelector(state => state.menu.publishedItems);
+    const currentUser = useSelector(state => state.authentication.user);
+    const menuItems = currentUser && currentUser.role === userConstants.ADMIN_ROLE ? allItems : publishedItems;
+    console.log(allItems);
+    console.log(publishedItems);
 
     const [query, setQuery] = useState('');
     const [result, setResult] = useState([]);
@@ -24,10 +31,7 @@ function Menu() {
 
     const findItems = () => {
         const searchQuery = query.toLowerCase();
-        setResult(allItems.filter(item => Object.values(item).join(" ").toLowerCase().includes(searchQuery)).splice(0,10));
-        // setResult(allItems.filter(function(item) {
-        //     const {name, category, ingredients} = item;
-        //     return name.toLowerCase().includes(searchQuery) || category.toLowerCase().includes(searchQuery) }).splice(0,10));
+        setResult(menuItems.filter(item => Object.values(item).join(" ").toLowerCase().includes(searchQuery)).splice(0,10));
     }
 
     const isSearchInputEmpty = query === '';
@@ -42,7 +46,7 @@ function Menu() {
             </div>
             {!isSearchInputEmpty && isResultNotEmpty && <MenuPart headerName="found items" items={result}/>}
             {!isSearchInputEmpty && !isResultNotEmpty && <MenuPart headerName="No results were found for your search. Try again"/>}
-            {isSearchInputEmpty && <MenuContainer allItems={allItems}/>}
+            {isSearchInputEmpty && <MenuContainer allItems={menuItems}/>}
         </div>
     );
 }

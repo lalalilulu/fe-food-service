@@ -1,18 +1,23 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {toast} from "react-toastify";
 import {addToCart} from "../_actions/CartActions";
+import {menuConstants} from "../_constants/MenuConstants";
+import { history } from '../_helpers/History';
 import "./menu.scss";
 
 function CategoryItem(props) {
 
+    const cartItems = useSelector(state => state.cart.cartItems);
+    const dispatch = useDispatch();
+
     const {id, item} = props;
-    const cartItem = props.cartItems.find(cartItem => cartItem.id === id);
+    const cartItem = cartItems.find(cartItem => cartItem.id === id);
     const addToCartNotify = () => toast.success(item.name + ' added to the cart');
 
     return (
-        <div>
+        <div className={item.status === menuConstants.BLOCKED_STATUS || item.status === menuConstants.UNPUBLISHED_STATUS  ? "opacity50" : "opacity100"}>
             <Link to={`/menu/${id}`} className="card-container">
                 <div className="card-img">
                     <img src={item.image} alt=""/>
@@ -24,26 +29,19 @@ function CategoryItem(props) {
             </Link>
             <div className="card-item-footer">
                 <p className="itemPrice">{item.price}$</p>
-                <button type="button" className="btn btn-primary add-to-cart-btn" onClick={() => {
-                    props.addToCart(item,1);
+                {item.id === '0' && <button type="button" className="btn btn-primary cart-item-btn" onClick={() => {
+                   history.push(`/edit/${item.id}`);
+                }}>Add new dish</button>}
+                {item.status === menuConstants.PUBLISHED_STATUS && <button type="button" className="btn btn-primary cart-item-btn" onClick={() => {
+                    dispatch(addToCart(item,1));
                     addToCartNotify();
-                }}>Add to cart</button>
+                }}>Add to cart</button>}
+                {item.status === menuConstants.BLOCKED_STATUS && <p className="itemPrice">Not Available</p>}
             </div>
         </div>
 
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        cartItems: state.cart.cartItems
-    }
-}
 
-function mapDispatchToProps(dispatch) {
-    return {
-        addToCart: (item, amount) => dispatch(addToCart(item, amount))
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);
+export default CategoryItem;

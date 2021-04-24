@@ -126,7 +126,7 @@
   font-weight: bold;
 }
 
-.add-to-cart-btn {
+.cart-item-btn {
   background: $light-primary-color;
   border-radius: 10px;
   border: 0;
@@ -134,10 +134,18 @@
   font-size: 18px;
 }
 
-.add-to-cart-btn:focus, .add-to-cart-btn:hover {
+.cart-item-btn:focus, .cart-item-btn:hover {
   background: $default-primary-color;
   color: $background-primary-color;
   cursor: pointer;
+}
+
+.opacity100 {
+  opacity: 1;
+}
+
+.opacity50 {
+  opacity: 0.5;
 }
 
 ::-webkit-scrollbar {

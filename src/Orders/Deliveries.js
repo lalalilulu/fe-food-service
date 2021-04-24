@@ -32,7 +32,7 @@ function Deliveries() {
         }
     }
 
-    const orders = useSelector(state => state.orders);
+    const orders = useSelector(state => state.orders.orders);
     const dispatch = useDispatch();
 
     const renderAssignedOrders = () => {

@@ -1,24 +1,20 @@
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
-import {toast} from "react-toastify";
-import {addToCart} from '../_actions/CartActions'
 import {ReactComponent as MinusIcon} from "../_assets/icons/minus.svg";
 import {ReactComponent as PlusIcon} from "../_assets/icons/plus.svg";
-import {userConstants} from "../_constants/UserConstants";
-import {history} from "../_helpers/History";
+import {Link} from "react-router-dom";
 import {menuConstants} from "../_constants/MenuConstants";
 import {menuActions} from "../_actions/MenuActions";
 import "./item-details.scss";
 import "./counter.scss";
 
-function Item({match}) {
+function ItemPreview({match}) {
 
     const items = useSelector(state => state.menu.items);
-    const currentUser = useSelector(state => state.authentication.user);
+    const currentItem = useSelector(state => state.menu.currentItem);
+    const item = currentItem && currentItem.id === match.params.id ? currentItem : items.find(dish => dish.id === match.params.id);
     const dispatch = useDispatch();
 
-    const item = items.find(dish => dish.id === match.params.id);
     const {image, name, description, ingredients, price, id} = item;
 
     const [amount, setAmount] = useState(1);
@@ -31,8 +27,6 @@ function Item({match}) {
         const tempResult = amount === 1 ? 1 : amount - 1;
         setAmount(tempResult);
     }
-
-    const addToCartNotify = () => toast.success(item.name + ' (' + amount + ' item/s) added to the cart');
 
     return (
         <div className="container-md item-details">
@@ -66,33 +60,20 @@ function Item({match}) {
                             <span className="regular-price">{price * amount}$</span>
                         </div>
                         <div className="row-buttons">
-                            {item.status === menuConstants.PUBLISHED_STATUS &&
-                            <button className="btn btn-primary product-btn" onClick={() => {
-                                dispatch(addToCart(item, amount));
-                                addToCartNotify();
-                            }}>Add to cart</button>}
-                            <button className="btn btn-primary product-btn" onClick={() => {
-                                history.push('/menu');
-                            }}>Back to menu
-                            </button>
+                            <button className="btn btn-primary product-btn" onClick={() => {}}>Add to cart</button>
                         </div>
-                        {currentUser && currentUser.role === userConstants.ADMIN_ROLE &&
+
                         <div className="row-buttons admin-buttons">
                             <Link to={`/edit/${id}`} className="btn btn-primary admin-button">Edit
                                 dish</Link>
-                            {item.status !== menuConstants.UNPUBLISHED_STATUS &&
+                            {item.id !== '0' &&
                             <button type="button" className="btn btn-primary admin-button"
-                                    onClick={() => dispatch(menuActions.unpublish(item))}>Unpublish</button>}
-                            {item.status === menuConstants.UNPUBLISHED_STATUS &&
+                                    onClick={() => dispatch(menuActions.editItem(item))}>Save changes</button>}
+                            {item.id === '0' &&
                             <button type="button" className="btn btn-primary admin-button"
-                                    onClick={() => dispatch(menuActions.publish(item))}>Publish</button>}
-                            {item.status === menuConstants.BLOCKED_STATUS &&
-                            <button type="button" className="btn btn-primary admin-button"
-                                    onClick={() => dispatch(menuActions.unblock(item))}>Unblock</button>}
-                            {item.status !== menuConstants.BLOCKED_STATUS &&
-                            <button type="button" className="btn btn-primary admin-button"
-                                    onClick={() => dispatch(menuActions.block(item))}>Block</button>}
-                        </div>}
+                                    onClick={() => dispatch(menuActions.addItem(item))}>Add to menu</button>}
+                            <Link to="/menu" className="btn btn-primary admin-button" onClick={() => dispatch(menuActions.resetEditing())}>Back to menu</Link>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,4 +81,4 @@ function Item({match}) {
     );
 }
 
-export default Item;
+export default ItemPreview;
