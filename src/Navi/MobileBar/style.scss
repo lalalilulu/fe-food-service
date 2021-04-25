@@ -5,8 +5,8 @@
   width: 100vw;
   height: 100vh;
   background-color: $primary-text-color;
-  transition:all ease 0.5s;  
-  z-index: 1;
+  transition:all ease 0.5s;
+  z-index: 3;
 }
 
 .leftSideBar-container-overlay-show {
@@ -17,4 +17,8 @@
 .leftSideBar-container-overlay-hide {
   opacity: 0;
   visibility: hidden;
+}
+
+.leftSideBar-container {
+  margin: 0 2%;
 }

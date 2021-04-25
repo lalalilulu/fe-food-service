@@ -21,7 +21,7 @@ function CartOrderRow(props) {
                 {name}
             </td>
             <td className="align-middle">
-                <div className="counter">
+                <div className="cart-counter">
                     <button type="button" onClick={() => dispatch(cartActions.removeFromCart(props.cartItem.item, 1))}
                             className="icon-button"><MinusIcon/></button>
                     <span className="item-amount">{props.cartItem.amount}</span>

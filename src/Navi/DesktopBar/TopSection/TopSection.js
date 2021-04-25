@@ -5,7 +5,7 @@ import './style.scss';
 const TopSection = () => {
 
     return (
-        <div className="row leftSideBar-topDesktopSection">
+        <div className="row leftSideBar-topDesktopSection grid-item2">
             <TopRightSection/>
         </div>
     );

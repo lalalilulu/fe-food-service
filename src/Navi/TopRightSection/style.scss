@@ -1,7 +1,7 @@
 @import "../../app";
 
 .right-section-container {
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: row;
   justify-self: flex-end;
@@ -11,19 +11,25 @@
 
 @media (max-width: 1024px) {
   .right-section-container {
-    width: 30%;
-  }
-}
-
-@media (max-width: 1024px) and (orientation: landscape) {
-  .right-section-container {
     width: 35%;
   }
 }
 
-@media (max-width: 568px) and (orientation: landscape) {
+@media (max-width: 768px) {
   .right-section-container {
     width: 40%;
+  }
+}
+
+@media (max-width: 640px) {
+  .right-section-container {
+    width: 45%;
+  }
+}
+
+@media (max-width: 568px) {
+  .right-section-container {
+    width: 50%;
   }
 }
 

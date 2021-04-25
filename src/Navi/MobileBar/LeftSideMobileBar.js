@@ -11,13 +11,13 @@ const LeftSideMobileBar = () => {
     <LeftSideBarContext.Provider
       value={{ isShowSidebar, setIsShowSidebar }}
     >
-      <div className="container-fluid leftSideBar-container">
+      <div className="leftSideBar-container grit-item-mobile1">
         <div
           className={`leftSideBar-container-overlay leftSideBar-container-overlay-${isShowSidebar ? 'show' : 'hide'}`}
           role="button"
           onClick={() => setIsShowSidebar(false)}
         />
-        <TopSection />      
+        <TopSection />
         <LeftSection />
       </div>
     </LeftSideBarContext.Provider>

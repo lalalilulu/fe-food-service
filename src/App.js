@@ -3,12 +3,11 @@ import {Router, Redirect, Route, Switch} from "react-router-dom";
 import Loader from "react-loader-spinner";
 import {toast, ToastContainer} from "react-toastify";
 import {useMediaQuery} from "react-responsive";
-import { history } from './_helpers/History';
+import {history} from './_helpers/History';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./app.scss";
 
-import LeftSideDesktopBar from "./Navi/DesktopBar/LeftSideDesktopBar";
 import LeftSideMobileBar from "./Navi/MobileBar/LeftSideMobileBar";
 import Menu from "./FoodMenu/Menu";
 import {PrivateRoute} from "./_components/PrivateRoute";
@@ -17,6 +16,9 @@ import {CourierRoute} from "./_components/CourierRoute";
 import {useDispatch, useSelector} from "react-redux";
 import {messageActions} from "./_actions/MessageActions";
 import {messagesConstants} from "./_constants/MessageConstants";
+import LeftSection from "./Navi/DesktopBar/LeftSection/LeftSection";
+import TopSection from "./Navi/DesktopBar/TopSection/TopSection";
+
 const SignIn = lazy(() => import("./Autorisation/SignIn"));
 const SignUp = lazy(() => import("./Autorisation/SignUp"));
 const Profile = lazy(() => import("./Profile/Profile"));
@@ -46,39 +48,43 @@ function App() {
         <Router history={history}>
             <Suspense fallback={<Loader className="loader" type="Puff" color="#7B1FA2" height={200} width={200}
                                         timeout={300}/>}>
-                {isDesktopOrLaptop && <LeftSideDesktopBar/>}
-                {isTabletOrMobile && <LeftSideMobileBar/>}
-                <main className={`main main-${isDesktopOrLaptop ? 'desktop' : 'mobile'}`}>
-                    <Switch>
-                        <Route path='/menu' exact component={Menu}/>
-                        <Route path='/menu/:id' exact component={MenuItem}/>
-                        <Route path='/signin' exact component={SignIn}/>
-                        <Route path='/signup' exact component={SignUp}/>
-                        <PrivateRoute path='/profile' exact component={Profile}/>
-                        <PrivateRoute path='/cart' exact component={Cart}/>
-                        <PrivateRoute path='/orders' exact component={ClientOrders}/>
-                        <AdminRoute path='/receivedOrders' exact component={AllOrders}/>
-                        <AdminRoute path='/edit/:id' exact component={EditItemForm}/>
-                        <AdminRoute path='/menu/preview/:id' exact component={Preview}/>
-                        <CourierRoute path='/deliveries' exact component={Deliveries}/>
-                        <Redirect from='*' to='/menu'/>
-                    </Switch>
-                </main>
-                <ToastContainer
-                    position='bottom-right'
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                />
+                <div className="grid">
+                    {isDesktopOrLaptop && <LeftSection/>}
+                    {isDesktopOrLaptop && <TopSection/>}
+                    {isTabletOrMobile && <LeftSideMobileBar/>}
+                    <main className={`main main-${isDesktopOrLaptop ? 'desktop grid-item3' : 'mobile grid-item3'}`}>
+                        <Switch>
+                            <Route path='/menu' exact component={Menu}/>
+                            <Route path='/menu/:id' exact component={MenuItem}/>
+                            <Route path='/signin' exact component={SignIn}/>
+                            <Route path='/signup' exact component={SignUp}/>
+                            <PrivateRoute path='/profile' exact component={Profile}/>
+                            <PrivateRoute path='/cart' exact component={Cart}/>
+                            <PrivateRoute path='/orders' exact component={ClientOrders}/>
+                            <AdminRoute path='/receivedOrders' exact component={AllOrders}/>
+                            <AdminRoute path='/edit/:id' exact component={EditItemForm}/>
+                            <AdminRoute path='/menu/preview/:id' exact component={Preview}/>
+                            <CourierRoute path='/deliveries' exact component={Deliveries}/>
+                            <Redirect from='*' to='/menu'/>
+                        </Switch>
+                    </main>
+                    <ToastContainer
+                        position='bottom-right'
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
+                </div>
                 {notification.type === messagesConstants.SUCCESS && toast.success(notification.message)}
                 {notification.type === messagesConstants.ERROR && toast.error(notification.message)}
             </Suspense>
         </Router>
+
     );
 }
 

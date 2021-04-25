@@ -37,7 +37,7 @@ function Menu() {
 
     return (
         <div className="container-fluid">
-            <div className="row">
+            <div className="row search-row">
                 <form role="search" onSubmit={handleSubmit}>
                     <Input type="search" name="search" id="search" labelContent="Search for favourite food" onChange={handleChange} value={query}/>
                 </form>

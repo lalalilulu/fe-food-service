@@ -4,7 +4,7 @@ import './style.scss';
 
 const LeftSection = () => {
     return (
-        <div className="leftSideBar-leftDesktopSection">
+        <div className="leftSideBar-leftDesktopSection grid-item1">
            <MenuWrapper/>
         </div>
     );

@@ -31,7 +31,7 @@
   transform: scale(1.05);
 }
 
-.cards {
+.my-cards {
   padding: 0;
   margin: auto;
   display: flex;
@@ -40,47 +40,48 @@
   flex-wrap: wrap;
 }
 
-.card {
-  width: 260px;
-  min-width: 180px;
-  height: 380px;
-  display: flex;
+.my-card {
+  //width: 260px;
+  display: flex !important;
   flex-direction: column;
+  flex: 1 0 12%; //flex-grow, flex-shrink, flex-basis
+  max-width: 280px;
+  min-width: 220px;
+  height: 385px;
   text-align: center;
-
-  margin: 1% 2% 1% 0;
+  margin: 0 1% 1% 0;
   box-shadow: $box-shadow;
   border-radius: 12px;
   transition: .5s;
 }
+//
+//@media only screen and (max-width: 1024px) {
+//  .card {
+//    width: 220px;
+//    margin: 2% auto;
+//  }
+//}
+//
+//@media only screen and (max-width: 667px) {
+//  .card {
+//    width: 245px;
+//    margin: 2% auto;
+//  }
+//}
+//
+//@media only screen and (max-width: 414px) {
+//  .card {
+//    width: 270px;
+//    margin: 2% auto;
+//  }
+//}
 
-@media only screen and (max-width: 1024px) {
-  .card {
-    width: 220px;
-    margin: 2% auto;
-  }
-}
-
-@media only screen and (max-width: 667px) {
-  .card {
-    width: 245px;
-    margin: 2% auto;
-  }
-}
-
-@media only screen and (max-width: 414px) {
-  .card {
-    width: 270px;
-    margin: 2% auto;
-  }
-}
-
-.card:hover, .card:focus {
-  transform: scale(1.1);
+.my-card:hover, .my-card:focus {
+  transform: scale(1.05);
   cursor: pointer;
 }
 
-.card-container {
+.custom-card-container {
   text-decoration: none;
   color: $primary-text-color;
 }
@@ -89,20 +90,20 @@
   display: flex;
   align-items: center;
   padding: 15px;
+  justify-content: center;
 }
 
 .card-img p {
-  display: block;
+  display: flex;
+  justify-content: center;
   position: absolute;
   width: 165px;
   height: 165px;
   border-radius: 50%;
   font-size: 36px;
-  line-height: 165px;
-  text-align: center;
+  line-height: 175px;
   color: $background-primary-color;
-  background: rgba(0, 0, 0, 0.6);
-  margin: auto 12%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .card-img img {
@@ -117,7 +118,17 @@
   font-size: 18px;
 }
 
-.card-item-footer {
+.card-body p {
+  white-space: pre-wrap;
+}
+
+.card-wrapper {
+  display: flex;
+  height: 380px;
+  flex-direction: column;
+}
+
+.my-card-footer {
   margin-top: auto;
   font-family: $secondary-font-family;
 }
@@ -132,6 +143,7 @@
   border: 0;
   color: $dark-primary-color;
   font-size: 18px;
+  margin-bottom: 18px;
 }
 
 .cart-item-btn:focus, .cart-item-btn:hover {
@@ -146,6 +158,10 @@
 
 .opacity50 {
   opacity: 0.5;
+}
+
+.search-row {
+  margin-left: 3px;
 }
 
 ::-webkit-scrollbar {

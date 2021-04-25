@@ -15,19 +15,18 @@ function CategoryItem(props) {
     const cartItem = cartItems.find(cartItem => cartItem.id === id);
 
     return (
-        <div
-            className={item.status === menuConstants.BLOCKED_STATUS || item.status === menuConstants.UNPUBLISHED_STATUS ? "opacity50" : "opacity100"}>
-            <Link to={`/menu/${id}`} className="card-container">
+        <div className="card-wrapper">
+            <Link to={`/menu/${id}`}>
                 <div className="card-img">
                     <img src={item.image} alt=""/>
                     {cartItem && <p>{cartItem.amount}</p>}
                 </div>
                 <div className="card-body">
                     <p>{item.name}</p>
+                    <p className="itemPrice">{item.price}$</p>
                 </div>
             </Link>
-            <div className="card-item-footer">
-                <p className="itemPrice">{item.price}$</p>
+            <div className="my-card-footer">
                 {item.id === '0' && <button type="button" className="btn btn-primary cart-item-btn" onClick={() => {
                     history.push(`/edit/${item.id}`);
                 }}>Add new dish</button>}
@@ -37,7 +36,6 @@ function CategoryItem(props) {
                 {item.status === menuConstants.BLOCKED_STATUS && <p className="itemPrice">Not Available</p>}
             </div>
         </div>
-
     );
 }
 

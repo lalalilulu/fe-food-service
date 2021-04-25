@@ -32,7 +32,7 @@ function Item({match}) {
     }
 
     return (
-        <div className="container-md item-details">
+        <div className="container">
             <div className="row item-row">
                 <div className="col-md-5 col-image">
                     <div className="product-details-img">
@@ -41,7 +41,7 @@ function Item({match}) {
                         </a>
                     </div>
                 </div>
-                <div className="col-md-7 col-custom">
+                <div className="col-md-6 col-custom">
                     <div className="product-summery position-relative">
                         <div className="product-head mb-3">
                             <h2 className="product-title">{name}</h2>
