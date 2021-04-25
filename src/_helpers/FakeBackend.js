@@ -9,7 +9,6 @@ let users = JSON.parse(localStorage.getItem('users')) ||
 
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
 let menuItems = JSON.parse(localStorage.getItem('items')) || require("../data/fooddata.json").data;
-
 let cart = JSON.parse(localStorage.getItem('cart')) || {cartItems: [], total: 0};
 
 export function configureFakeBackend() {
@@ -52,6 +51,10 @@ export function configureFakeBackend() {
                         return blockItem();
                     case url.match(/\/menu\/unblock\/\d+$/) && method === 'PUT':
                         return unblockItem();
+                    case url.endsWith('/menu/addToCart') && method === 'POST':
+                        return addToCart();
+                    case url.endsWith('/menu/removeFromCart') && method === 'POST':
+                        return removeFromCart();
                     default:
                         // pass through any requests not handled above
                         return realFetch(url, opts)
@@ -88,7 +91,6 @@ export function configureFakeBackend() {
                 user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
                 users.push(user);
                 localStorage.setItem('users', JSON.stringify(users));
-
                 return ok();
             }
 
@@ -118,7 +120,6 @@ export function configureFakeBackend() {
                 body.deliveryDate = today.toISOString().substring(0, 10);
                 orders.push(body);
                 localStorage.setItem('orders', JSON.stringify(orders));
-                localStorage.removeItem('cart');
                 return ok(orders);
             }
 
@@ -203,6 +204,57 @@ export function configureFakeBackend() {
                 return ok(menuItems);
             }
 
+            function addToCart() {
+                const {item, amount} = body;
+                let alreadyInCart = false;
+
+                if (cart.cartItems.length > 0) {
+                    cart.cartItems = cart.cartItems.map((cartItem) => {
+                        if (cartItem.id === item.id) {
+                            cartItem.amount += amount;
+                            alreadyInCart=true;
+                        }
+                        return cartItem;
+                    });
+                }
+
+                if (!alreadyInCart) {
+                    cart.cartItems.push({
+                        id: item.id,
+                        item: item,
+                        price: item.price,
+                        amount: amount
+                    });
+                }
+
+                cart.total = updateTotal(cart.cartItems);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                return ok(cart.cartItems);
+            }
+
+            function removeFromCart() {
+                const {item, amount} = body;
+                let index = -1;
+                cart.cartItems.every((cartItem) => {
+                    if(cartItem.id === item.id) {
+                        index = cart.cartItems.indexOf(cartItem);
+                    }
+                    return index;
+                });
+
+                if(index !== -1) {
+                    const foundItem = cart.cartItems[index];
+                    if(foundItem.amount > amount) {
+                        foundItem.amount -= amount;
+                    } else {
+                        cart.cartItems.splice(index, 1);
+                    }
+                }
+                cart.total = updateTotal(cart.cartItems);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                return ok(cart.cartItems);
+            }
+
             // helper functions
             function ok(body) {
                 resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(body)) });
@@ -223,6 +275,20 @@ export function configureFakeBackend() {
             function idFromUrl() {
                 const urlParts = url.split('/');
                 return parseInt(urlParts[urlParts.length - 1]);
+            }
+
+            function updateTotal(items) {
+                if (items.length > 0) {
+                    let total = 0;
+                    items.every((item)=>
+                    {
+                        total += (item.price*item.amount);
+                        return total;
+                    });
+                    return total;
+                } else {
+                    return 0;
+                }
             }
         });
     }

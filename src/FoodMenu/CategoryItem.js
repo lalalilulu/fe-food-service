@@ -1,10 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
-import {toast} from "react-toastify";
-import {addToCart} from "../_actions/CartActions";
+import {cartActions} from "../_actions/CartActions";
 import {menuConstants} from "../_constants/MenuConstants";
-import { history } from '../_helpers/History';
+import {history} from '../_helpers/History';
 import "./menu.scss";
 
 function CategoryItem(props) {
@@ -14,10 +13,10 @@ function CategoryItem(props) {
 
     const {id, item} = props;
     const cartItem = cartItems.find(cartItem => cartItem.id === id);
-    const addToCartNotify = () => toast.success(item.name + ' added to the cart');
 
     return (
-        <div className={item.status === menuConstants.BLOCKED_STATUS || item.status === menuConstants.UNPUBLISHED_STATUS  ? "opacity50" : "opacity100"}>
+        <div
+            className={item.status === menuConstants.BLOCKED_STATUS || item.status === menuConstants.UNPUBLISHED_STATUS ? "opacity50" : "opacity100"}>
             <Link to={`/menu/${id}`} className="card-container">
                 <div className="card-img">
                     <img src={item.image} alt=""/>
@@ -30,12 +29,11 @@ function CategoryItem(props) {
             <div className="card-item-footer">
                 <p className="itemPrice">{item.price}$</p>
                 {item.id === '0' && <button type="button" className="btn btn-primary cart-item-btn" onClick={() => {
-                   history.push(`/edit/${item.id}`);
+                    history.push(`/edit/${item.id}`);
                 }}>Add new dish</button>}
-                {item.status === menuConstants.PUBLISHED_STATUS && <button type="button" className="btn btn-primary cart-item-btn" onClick={() => {
-                    dispatch(addToCart(item,1));
-                    addToCartNotify();
-                }}>Add to cart</button>}
+                {item.status === menuConstants.PUBLISHED_STATUS &&
+                <button type="button" className="btn btn-primary cart-item-btn"
+                        onClick={() => dispatch(cartActions.addToCart(item, 1))}>Add to cart</button>}
                 {item.status === menuConstants.BLOCKED_STATUS && <p className="itemPrice">Not Available</p>}
             </div>
         </div>

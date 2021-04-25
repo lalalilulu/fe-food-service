@@ -9,6 +9,7 @@ import {userActions} from "../_actions/UserActions";
 import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
 import "./forms.scss";
+import {cartActions} from "../_actions/CartActions";
 
 function SignIn() {
     const [inputs, setInputs] = useState({
@@ -22,6 +23,7 @@ function SignIn() {
     // reset login status
     useEffect(() => {
         dispatch(userActions.logout());
+        dispatch(cartActions.clear());
     }, []);
 
     function handleChange(e) {

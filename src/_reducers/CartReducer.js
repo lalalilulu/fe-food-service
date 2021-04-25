@@ -1,96 +1,49 @@
-import {ADD, REMOVE, REMOVE_ALL} from '../_actions/CartActions';
+import {cartConstants} from "../_constants/CartConstants";
+import {userConstants} from "../_constants/UserConstants";
 
-export let cartInitialState = {
-    cartItems: [],
-    total: 0
-};
+const cartStorage = JSON.parse(localStorage.getItem('cart'));
+const emptyCart = { cartItems: [], total: 0 };
+const cartInitialState = cartStorage ?  cartStorage : emptyCart;
 
 export function cart(state = cartInitialState, action) {
     switch (action.type) {
-        case ADD :
-            console.log(state.cartItems);
-            let alreadyInCart = false;
-            if(state.cartItems.length>0) {
-                state.cartItems = state.cartItems.map((item) => {
-                    console.log(item.id + " " + action.item.id);
-                    if (item.id === action.item.id) {
-                        item.amount += action.amount;
-                        alreadyInCart=true;
-                    }
-                    return item;
-                });
-
-                console.log(state.cartItems);
-            }
-
-            if(!alreadyInCart)
-            {
-                state.cartItems.push({
-                    id: action.item.id,
-                    item: action.item,
-                    price: action.item.price,
-                    amount: action.amount
-                });
-            }
-            updateTotal(state);
-            //apart from cart state all objects of state remains same
+        case cartConstants.ADD_TO_CART_SUCCESS:
             return {
-                ...state,
-                [action.cartItems] : state.cartItems
+                cartItems: action.items,
+                total: updateTotal(action.items)
             };
-
-        case REMOVE :
-            console.log("Food Item to be removed: "+ action.item.id);
-            let index = -1;
-            state.cartItems.every((item) => {
-                if(item.id === action.item.id) {
-                    index= state.cartItems.indexOf(item);
-                }
-                return index;
-            });
-            if(index !== -1) {
-                const foundItem = state.cartItems[index];
-                if(foundItem.amount > action.amount) {
-                    foundItem.amount -= action.amount;
-                    console.log(state.cartItems);
-                } else {
-                    state.cartItems.splice(index, 1);
-                    console.log(state.cartItems);
-                }
-            }
-            updateTotal(state);
+        case cartConstants.ADD_TO_CART_FAILURE:
             return {
-                ...state,
-                [action.cartItems] : state.cartItems
+                error: action.error
             };
-
-        case REMOVE_ALL :
-            state.cartItems = [];
-            updateTotal(state);
+        case cartConstants.REMOVE_FROM_CART_SUCCESS:
             return {
-                ...state,
-                [action.cartItems] : state.cartItems
+                cartItems: action.items,
+                total: updateTotal(action.items)
             };
-
+        case cartConstants.REMOVE_FROM_CART_FAILURE:
+            return {
+                error: action.error
+            };
+        case userConstants.LOGOUT:
+            return {
+                ...emptyCart
+            };
         default :
             return state;
     }
 }
 
-function updateTotal(state) {
-    if (state.cartItems.length > 0) {
-        console.log(state.cartItems);
-        console.log(state.cartItems.length);
+function updateTotal(items) {
+    if (items.length > 0) {
         let total = 0;
-        state.cartItems.every((item)=>
+        items.every((item)=>
         {
             total += (item.price*item.amount);
             return total;
         });
-        console.log("total amount: " + total);
-        state.total = total;
+        return total;
     } else {
-        state.total = 0;
+        return 0;
     }
-    return state;
 }

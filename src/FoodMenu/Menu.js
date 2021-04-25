@@ -12,8 +12,6 @@ function Menu() {
     const publishedItems = useSelector(state => state.menu.publishedItems);
     const currentUser = useSelector(state => state.authentication.user);
     const menuItems = currentUser && currentUser.role === userConstants.ADMIN_ROLE ? allItems : publishedItems;
-    console.log(allItems);
-    console.log(publishedItems);
 
     const [query, setQuery] = useState('');
     const [result, setResult] = useState([]);

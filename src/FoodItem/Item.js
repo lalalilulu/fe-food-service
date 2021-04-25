@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
-import {toast} from "react-toastify";
-import {addToCart} from '../_actions/CartActions'
+import {cartActions} from '../_actions/CartActions'
 import {ReactComponent as MinusIcon} from "../_assets/icons/minus.svg";
 import {ReactComponent as PlusIcon} from "../_assets/icons/plus.svg";
 import {userConstants} from "../_constants/UserConstants";
@@ -31,8 +30,6 @@ function Item({match}) {
         const tempResult = amount === 1 ? 1 : amount - 1;
         setAmount(tempResult);
     }
-
-    const addToCartNotify = () => toast.success(item.name + ' (' + amount + ' item/s) added to the cart');
 
     return (
         <div className="container-md item-details">
@@ -67,10 +64,9 @@ function Item({match}) {
                         </div>
                         <div className="row-buttons">
                             {item.status === menuConstants.PUBLISHED_STATUS &&
-                            <button className="btn btn-primary product-btn" onClick={() => {
-                                dispatch(addToCart(item, amount));
-                                addToCartNotify();
-                            }}>Add to cart</button>}
+                            <button className="btn btn-primary product-btn" onClick={() =>
+                                dispatch(cartActions.addToCart(item, amount))
+                            }>Add to cart</button>}
                             <button className="btn btn-primary product-btn" onClick={() => {
                                 history.push('/menu');
                             }}>Back to menu

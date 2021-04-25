@@ -10,9 +10,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {toast} from "react-toastify";
 import {orderConstants} from "../_constants/OrderConstants";
 import {orderActions} from "../_actions/OrderActions";
-import {removeAll} from "../_actions/CartActions";
 import {Link} from "react-router-dom";
 import "./cart.scss";
+import {cartActions} from "../_actions/CartActions";
 
 function Cart() {
 
@@ -48,7 +48,7 @@ function Cart() {
 
     const calculateInitialTime = () => {
         const today = new Date();
-        const hours = today.getHours() === 23 ? '00' : today.getHours() + 1;
+        const hours = today.getHours() < 10 ? '10' : today.getHours() === 23 ? '00' : today.getHours() + 1;
         return today.getMinutes() > 20 ?
             '' + hours + ':30' : '' + hours + ':00';
     }
@@ -78,7 +78,6 @@ function Cart() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        //const today = new Date();
 
         if (!orderInputs.name) {
             toast.error("Name is required");
@@ -100,9 +99,9 @@ function Cart() {
                 clientId: currentUser.id
             }
 
+            console.log(orderRequest);
+            dispatch(cartActions.clear());
             dispatch(orderActions.create(orderRequest));
-            //should be removed after re-writing part with CartActions, CartReducer
-            dispatch(removeAll());
         }
     }
 
