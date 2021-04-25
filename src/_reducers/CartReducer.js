@@ -1,5 +1,4 @@
 import {cartConstants} from "../_constants/CartConstants";
-import {userConstants} from "../_constants/UserConstants";
 
 const cartStorage = JSON.parse(localStorage.getItem('cart'));
 const emptyCart = { cartItems: [], total: 0 };
@@ -25,9 +24,9 @@ export function cart(state = cartInitialState, action) {
             return {
                 error: action.error
             };
-        case userConstants.LOGOUT:
+        case cartConstants.CLEAR_CART:
             return {
-                ...emptyCart
+               ...emptyCart
             };
         default :
             return state;

@@ -100,8 +100,8 @@ function Cart() {
             }
 
             console.log(orderRequest);
-            dispatch(cartActions.clear());
             dispatch(orderActions.create(orderRequest));
+            dispatch(cartActions.clear());
         }
     }
 

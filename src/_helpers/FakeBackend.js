@@ -9,7 +9,6 @@ let users = JSON.parse(localStorage.getItem('users')) ||
 
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
 let menuItems = JSON.parse(localStorage.getItem('items')) || require("../data/fooddata.json").data;
-let cart = JSON.parse(localStorage.getItem('cart')) || {cartItems: [], total: 0};
 
 export function configureFakeBackend() {
     let realFetch = window.fetch;
@@ -206,6 +205,7 @@ export function configureFakeBackend() {
 
             function addToCart() {
                 const {item, amount} = body;
+                const cart = JSON.parse(localStorage.getItem('cart')) || {cartItems: [], total: 0};
                 let alreadyInCart = false;
 
                 if (cart.cartItems.length > 0) {
@@ -234,6 +234,7 @@ export function configureFakeBackend() {
 
             function removeFromCart() {
                 const {item, amount} = body;
+                const cart = JSON.parse(localStorage.getItem('cart')) || {cartItems: [], total: 0};
                 let index = -1;
                 cart.cartItems.every((cartItem) => {
                     if(cartItem.id === item.id) {
