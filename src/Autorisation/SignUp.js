@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Input from "../Input/Input";
 import "./forms.scss";
 import {useDispatch} from "react-redux";
 import {userActions} from "../_actions/UserActions";
 import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
+import {isCorrectEmail, isNumeric} from "../_helpers/Utils";
 
 function SignUp() {
 
@@ -40,6 +41,12 @@ function SignUp() {
         }
         if(!user.password2) {
             toast.error(" Password confirmation is required");
+        }
+        else if (!isNumeric(user.phone)) {
+            toast.error("Please enter only numeric characters for phone field");
+        }
+        else if (!isCorrectEmail(user.email)) {
+            toast.error("Please enter correct email address");
         }
         else if (user.password !== user.password2) {
             toast.error("Passwords must match");

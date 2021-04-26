@@ -36,7 +36,7 @@ function Menu() {
     const isResultNotEmpty = result.length > 0;
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid menu-container">
             <div className="row search-row">
                 <form role="search" onSubmit={handleSubmit}>
                     <Input type="search" name="search" id="search" labelContent="Search for favourite food" onChange={handleChange} value={query}/>

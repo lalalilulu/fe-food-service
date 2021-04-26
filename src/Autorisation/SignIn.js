@@ -10,6 +10,7 @@ import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
 import "./forms.scss";
 import {cartActions} from "../_actions/CartActions";
+import {isCorrectEmail} from "../_helpers/Utils";
 
 function SignIn() {
     const [inputs, setInputs] = useState({
@@ -24,7 +25,7 @@ function SignIn() {
     useEffect(() => {
         dispatch(userActions.logout());
         dispatch(cartActions.clear());
-    }, []);
+    }, [dispatch]);
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -40,7 +41,9 @@ function SignIn() {
         if (!password) {
             toast.error("Password is required");
         }
-        else {
+        else if (!isCorrectEmail(email)) {
+            toast.error("Please enter correct email address");
+        } else {
             // get return url from location state or default to home page
             const { from } = location.state || { from: { pathname: "/menu" } };
             dispatch(userActions.login(email, password, from));

@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 import Input from "../Input/Input";
-import "../Autorisation/forms.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {userActions} from "../_actions/UserActions";
 import {toast} from "react-toastify";
 import {Link} from "react-router-dom";
+import {isCorrectEmail, isNumeric} from "../_helpers/Utils";
+import "../Autorisation/forms.scss";
 
 function Profile() {
 
     const currentUser = useSelector(state => state.authentication.user);
     const dispatch = useDispatch();
-    const notification = useSelector(state => state.notification);
 
     const [user, setUser] = useState({
         id: currentUser.id,
@@ -38,9 +38,13 @@ function Profile() {
         }
         if (!user.phone) {
             toast.error("Phone is required");
+        } else if (!isNumeric(user.phone)) {
+            toast.error("Please enter only numeric characters for phone field");
+        }
+        else if (!isCorrectEmail(user.email)) {
+            toast.error("Please enter correct email address");
         } else {
             dispatch(userActions.update(user));
-            notification.type !== 'success' ? toast.error(notification.message) : toast.success(notification.message);
         }
     }
 

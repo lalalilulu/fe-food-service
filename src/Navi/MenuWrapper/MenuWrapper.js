@@ -23,43 +23,43 @@ const MenuWrapper = () => {
                     <div className="border-logo-line"/>
                 </li>
                 <li>
-                    <HashLink to={'/#top'} onClick={() => setIsShowSidebar(false)}>All Menu</HashLink>
+                    <HashLink to={'/#top'}>All Menu</HashLink>
                 </li>
                 <li>
-                    <HashLink to="/#soups" onClick={() => setIsShowSidebar(false)}>Soups</HashLink>
+                    <HashLink to="/#soups">Soups</HashLink>
                 </li>
                 <li>
-                    <HashLink to="/#pastas" onClick={() => setIsShowSidebar(false)}>Pastas</HashLink>
+                    <HashLink to="/#pastas">Pastas</HashLink>
                 </li>
                 <li>
-                    <HashLink to="/#pizzas" onClick={() => setIsShowSidebar(false)}>Pizzas</HashLink>
+                    <HashLink to="/#pizzas">Pizzas</HashLink>
                 </li>
                 <li>
-                    <HashLink to="/#burgers" onClick={() => setIsShowSidebar(false)}>Burgers</HashLink>
+                    <HashLink to="/#burgers">Burgers</HashLink>
                 </li>
                 <li>
-                    <HashLink to="/#desserts" onClick={() => setIsShowSidebar(false)}>Desserts</HashLink>
+                    <HashLink to="/#desserts">Desserts</HashLink>
                 </li>
                 <li>
                     <div className="border-line"/>
                 </li>
                 <li>
-                    <Link to={'/profile'} onClick={() => setIsShowSidebar(false)}>Profile</Link>
+                    <Link to={'/profile'}>Profile</Link>
                 </li>
                 <li>
-                    <Link to={'/cart'} onClick={() => setIsShowSidebar(false)}>Cart</Link>
+                    <Link to={'/cart'}>Cart</Link>
                 </li>
                 <li>
-                    <Link to={'/orders'} onClick={() => setIsShowSidebar(false)}>Orders</Link>
+                    <Link to={'/orders'}>Orders</Link>
                 </li>
                 {currentUser && currentUser.role === userConstants.ADMIN_ROLE &&
                 <li>
-                    <Link to={'/receivedOrders'} onClick={() => setIsShowSidebar(false)}>Received Orders</Link>
+                    <Link to={'/receivedOrders'}>Received Orders</Link>
                 </li>
                 }
                 {currentUser && currentUser.role === userConstants.COURIER_ROLE &&
                 <li>
-                    <Link to={'/deliveries'} onClick={() => setIsShowSidebar(false)}>Deliveries</Link>
+                    <Link to={'/deliveries'}>Deliveries</Link>
                 </li>
                 }
                 <li>

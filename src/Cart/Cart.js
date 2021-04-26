@@ -13,6 +13,7 @@ import {orderActions} from "../_actions/OrderActions";
 import {Link} from "react-router-dom";
 import "./cart.scss";
 import {cartActions} from "../_actions/CartActions";
+import {isNumeric} from "../_helpers/Utils";
 
 function Cart() {
 
@@ -82,12 +83,14 @@ function Cart() {
         if (!orderInputs.name) {
             toast.error("Name is required");
         }
-        if (!orderInputs.phone) {
-            toast.error("Phone is required");
-        }
         if (!orderInputs.address) {
             toast.error("Address is required");
-        } else {
+        }
+        if (!orderInputs.phone) {
+            toast.error("Phone is required");
+        } else if (!isNumeric(orderInputs.phone)) {
+            toast.error("Please enter only numeric characters for phone field");
+        } else if (orderInputs.name && orderInputs.phone && orderInputs.address) {
             const orderRequest = {
                 cartItems,
                 total,

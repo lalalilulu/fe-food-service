@@ -31,11 +31,15 @@
   transform: scale(1.05);
 }
 
+.menu-container {
+  padding-right: 0;
+}
+
 .my-cards {
   padding: 0;
   margin: auto;
   display: flex;
-  justify-content: flex-start;
+  //justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
 }
@@ -49,7 +53,7 @@
   min-width: 220px;
   height: 385px;
   text-align: center;
-  margin: 0 1% 1% 0;
+  margin: 0 1.5% 1.5% 0;
   box-shadow: $box-shadow;
   border-radius: 12px;
   transition: .5s;
@@ -133,8 +137,13 @@
   font-family: $secondary-font-family;
 }
 
-.itemPrice {
+.itemPrice, .notAvailable {
   font-weight: bold;
+}
+
+.notAvailable {
+  font-size: 18px;
+  padding-bottom: 6px;
 }
 
 .cart-item-btn {

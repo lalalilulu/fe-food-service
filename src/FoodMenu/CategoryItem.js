@@ -33,7 +33,7 @@ function CategoryItem(props) {
                 {item.status === menuConstants.PUBLISHED_STATUS &&
                 <button type="button" className="btn btn-primary cart-item-btn"
                         onClick={() => dispatch(cartActions.addToCart(item, 1))}>Add to cart</button>}
-                {item.status === menuConstants.BLOCKED_STATUS && <p className="itemPrice">Not Available</p>}
+                {item.status === menuConstants.BLOCKED_STATUS && <p className="notAvailable">Not Available</p>}
             </div>
         </div>
     );

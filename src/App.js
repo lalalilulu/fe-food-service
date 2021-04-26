@@ -32,7 +32,7 @@ const EditItemForm = lazy(() => import("./FoodItem/ItemForm"));
 
 function App() {
     const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'});
-    const isTabletOrMobile = useMediaQuery({query: '(max-width: 1224px)'});
+    const isTabletOrMobile = useMediaQuery({query: '(max-width: 1223px)'});
 
     const notification = useSelector(state => state.notification);
     const dispatch = useDispatch();
@@ -42,7 +42,7 @@ function App() {
             // clear notifications on location change
             dispatch(messageActions.clear());
         });
-    }, []);
+    }, [dispatch]);
 
     return (
         <Router history={history}>
