@@ -25,7 +25,8 @@ $secondary-font-family: Roboto;
 $box-shadow: 0px 0px 6px $divider-color;
 
 body {
-  width: 98vw;
+  //width: 98vw;
+  min-width: 320px;
   max-width: 1890px;
   margin: 0 auto;
   background: $background-primary-color;
@@ -108,18 +109,18 @@ a:hover, a:focus {
   grid-row: span 1;
 }
 
-//::-webkit-scrollbar {
-//  width: 5px;
-//}
-//
-//::-webkit-scrollbar-track {
-//  margin: 10px;
-//  background-color: $dark-primary-color;
-//  border-radius: 2px;
-//}
-//
-//::-webkit-scrollbar-thumb {
-//  border: 1px solid $dark-primary-color;
-//  border-radius: 2px;
-//}
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  margin: 10px;
+  background-color: $dark-primary-color;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 1px solid $accent-color;
+  border-radius: 2px;
+}
 

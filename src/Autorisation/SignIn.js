@@ -4,7 +4,6 @@ import facebook from "../_assets/icons/facebook-logo.png";
 import vk from "../_assets/icons/vk-social-logotype.png";
 import googlePlus from "../_assets/icons/google-plus-social-logotype.png";
 import {useDispatch} from "react-redux";
-import {useLocation} from "react-router";
 import {userActions} from "../_actions/UserActions";
 import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
@@ -19,7 +18,6 @@ function SignIn() {
     });
     const { email, password } = inputs;
     const dispatch = useDispatch();
-    const location = useLocation();
 
     // reset login status
     useEffect(() => {
@@ -44,9 +42,7 @@ function SignIn() {
         else if (!isCorrectEmail(email)) {
             toast.error("Please enter correct email address");
         } else {
-            // get return url from location state or default to home page
-            const { from } = location.state || { from: { pathname: "/menu" } };
-            dispatch(userActions.login(email, password, from));
+            dispatch(userActions.login(email, password));
         }
     }
 

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {orderConstants} from "../_constants/OrderConstants";
-import AdminTemplate from "./AdminTemplate";
+import AdminTemplate from "./templates/AdminTemplate";
 import './style.scss';
 
 function AdminOrders() {

@@ -1,30 +1,30 @@
 import React, {useState} from "react";
 import {orderConstants} from "../_constants/OrderConstants";
-import ClientTemplate from "./ClientTemplate";
+import ClientTemplate from "./templates/ClientTemplate";
 import './style.scss';
 
-function ClientOrders() {
+function ClientOrders(props) {
 
     const activeTab = "col-12 col-lg-6 col-md-6 text-center order-req-tab-active";
     const notActiveTab = "col-12 col-lg-6 col-md-6 text-center order-req-tab-notActive";
 
     const [tabState, setTabState] =
         useState({
-            tab1: activeTab,
-            tab2: notActiveTab,
-            tab1Content: true,
-            tab2Content: false
+            tab1: props.location.activeTab === 'tab2' ? notActiveTab : activeTab,
+            tab2:  props.location.activeTab === 'tab2' ? activeTab : notActiveTab,
+            tab1Content: props.location.activeTab !== 'tab2' || props.location.activeTab === undefined,
+            tab2Content: props.location.activeTab === 'tab2'
         });
 
     const handleTabs = (e) => {
-        if (e === "tab1") {
+        if (e === 'tab1') {
             setTabState({
                 tab1: activeTab,
                 tab2: notActiveTab,
                 tab1Content: true,
                 tab2Content: false
             })
-        } else if (e === "tab2") {
+        } else if (e === 'tab2') {
             setTabState({
                 tab1: notActiveTab,
                 tab2: activeTab,

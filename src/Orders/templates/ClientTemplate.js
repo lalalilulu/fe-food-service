@@ -1,17 +1,17 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {orderActions} from "../_actions/OrderActions";
-import {editDate} from "../_helpers/Utils";
-import './style.scss';
+import {useSelector} from "react-redux";
+import {editDate} from "../../_helpers/Utils";
+import '../style.scss';
 
-function AdminTemplate(props) {
+function ClientTemplate(props) {
 
-    const orders = useSelector(state => state.orders.orders);
-    const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.authentication.user);
+    const allOrders = useSelector(state => state.orders.orders);
+    const orders = allOrders.filter(order => order.clientId === currentUser.id);
 
     return (
         Object.keys(orders).map((val) => {
-                if (orders[val].status === props.status) {
+                if (orders[val].status === props.status || orders[val].status === props.status2) {
                     return (
                         <div className="container-order border-bottom pb-2 px-lg-0 px-md-0 mb-4" key={orders[val].id}>
                             <div className="row mb-3">
@@ -39,11 +39,11 @@ function AdminTemplate(props) {
                                                 <img className="order-image" src={orders[val].cartItems[val2].item.image}
                                                      alt=""/>
                                             </div>
-                                            <div className="col-lg-7 col-md-6 col-sm-12">
+                                            <div className="col-lg-7 col-md-6 col-12">
                                                 <h6>{orders[val].cartItems[val2].item.name + ' x ' + orders[val].cartItems[val2].amount}</h6>
                                                 <p className="mb-1 order-ingredients">{orders[val].cartItems[val2].item.ingredients.join(", ")}</p>
                                             </div>
-                                            <div className="col-lg-3 col-md-3 col-sm-12 px-0 text-right">
+                                            <div className="col-lg-3 col-md-3 col-12 px-0 text-right">
                                                 <span
                                                     className="mx-3 order-item-price"><b>{orders[val].cartItems[val2].price}$</b></span>
                                             </div>
@@ -59,12 +59,6 @@ function AdminTemplate(props) {
                                         className="order-price">{orders[val].total}$</span></p>
                                 </div>
                             </div>
-                            {props.showButton && <div className="text-center mb-2">
-                                <button className="btn order-btn" onClick={() => {
-                                    dispatch(orderActions.assign(orders[val].id));
-                                }}>Assign a courier
-                                </button>
-                            </div>}
                         </div>
                     )
                 } else {
@@ -74,4 +68,4 @@ function AdminTemplate(props) {
         ));
 }
 
-export default AdminTemplate;
+export default ClientTemplate;

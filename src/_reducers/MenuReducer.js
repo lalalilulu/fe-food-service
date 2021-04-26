@@ -1,6 +1,6 @@
 import {menuConstants} from "../_constants/MenuConstants";
 
-const dishes = JSON.parse(localStorage.getItem('items')) || require("../data/fooddata.json").data;
+const dishes = JSON.parse(localStorage.getItem('items')) || require("../_data/fooddata.json").data;
 const initialState = {items: dishes, publishedItems: dishes.filter(item => item.status !== menuConstants.UNPUBLISHED_STATUS)};
 
 export function menu(state = initialState, action) {

@@ -1,10 +1,10 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {editDate} from "../_helpers/Utils";
-import './style.scss';
-import {orderActions} from "../_actions/OrderActions";
+import {orderActions} from "../../_actions/OrderActions";
+import {editDate} from "../../_helpers/Utils";
+import '../style.scss';
 
-function CourierTemplate(props) {
+function AdminTemplate(props) {
 
     const orders = useSelector(state => state.orders.orders);
     const dispatch = useDispatch();
@@ -30,6 +30,27 @@ function CourierTemplate(props) {
                                 <p className="col-12 order-info"><strong>Left comment:</strong> {orders[val].comment}</p>
                                 <p className="col-12 order-info"><strong>Payment method:</strong> {orders[val].payment}</p>
                             </div>
+                            {
+                                Object.keys(orders[val].cartItems).map((val2) => {
+                                    return (
+                                        <div className="row mb-3 ingredients-container" key={orders[val].cartItems[val2].id}>
+                                            <div
+                                                className="col-lg-2 col-md-3 col-8 offset-2 offset-lg-0 offset-md-0 px-0 mb-3 text-center order-image-container">
+                                                <img className="order-image" src={orders[val].cartItems[val2].item.image}
+                                                     alt=""/>
+                                            </div>
+                                            <div className="col-lg-7 col-md-6 col-sm-12">
+                                                <h6>{orders[val].cartItems[val2].item.name + ' x ' + orders[val].cartItems[val2].amount}</h6>
+                                                <p className="mb-1 order-ingredients">{orders[val].cartItems[val2].item.ingredients.join(", ")}</p>
+                                            </div>
+                                            <div className="col-lg-3 col-md-3 col-sm-12 px-0 text-right">
+                                                <span
+                                                    className="mx-3 order-item-price"><b>{orders[val].cartItems[val2].price}$</b></span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
                             <div className="row mb-3 mb-md-0 mb-lg-0">
                                 <div className="col-lg-6 col-md-6 col-12 order-lg-first order-md-first order-last ">
                                 </div>
@@ -38,9 +59,12 @@ function CourierTemplate(props) {
                                         className="order-price">{orders[val].total}$</span></p>
                                 </div>
                             </div>
-                            <div className="text-center mb-2">
-                                {props.showButton && <button className="btn order-btn" onClick={() => dispatch(orderActions.deliver(orders[val].id))}>Сonfirm delivery</button>}
-                            </div>
+                            {props.showButton && <div className="text-center mb-2">
+                                <button className="btn order-btn" onClick={() => {
+                                    dispatch(orderActions.assign(orders[val].id));
+                                }}>Assign a courier
+                                </button>
+                            </div>}
                         </div>
                     )
                 } else {
@@ -50,4 +74,4 @@ function CourierTemplate(props) {
         ));
 }
 
-export default CourierTemplate;
+export default AdminTemplate;

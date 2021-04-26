@@ -8,7 +8,7 @@ let users = JSON.parse(localStorage.getItem('users')) ||
     ];
 
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
-let menuItems = JSON.parse(localStorage.getItem('items')) || require("../data/fooddata.json").data;
+let menuItems = JSON.parse(localStorage.getItem('items')) || require("../_data/fooddata.json").data;
 
 export function configureFakeBackend() {
     let realFetch = window.fetch;

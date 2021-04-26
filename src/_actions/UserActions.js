@@ -35,7 +35,7 @@ function register(user) {
     function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
 }
 
-function login(email, password, from) {
+function login(email, password) {
     return dispatch => {
         dispatch(request({ email }));
 
@@ -43,7 +43,8 @@ function login(email, password, from) {
             .then(
                 user => {
                     dispatch(success(user));
-                    history.push(from);
+                    const to = user.role === userConstants.ADMIN_ROLE ? '/receivedOrders' : user.role === userConstants.COURIER_ROLE ? '/deliveries' : '/menu';
+                    history.push(to);
                     dispatch(messageActions.success('You have successfully logged in to food delivery app'));
                 },
                 error => {

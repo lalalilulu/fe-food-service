@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {orderConstants} from "../_constants/OrderConstants";
-import CourierTemplate from "./CourierTemplate";
+import CourierTemplate from "./templates/CourierTemplate";
 import './style.scss';
 
 function Deliveries() {

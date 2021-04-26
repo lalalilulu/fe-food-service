@@ -83,7 +83,7 @@ function DropdownMenu() {
                         <h3>Back to settings</h3>
                     </DropdownItem>
                     <DropdownItem leftIcon={<WatchIcon />}><Link to="/orders" onClick={() => setOpened(!opened)}>In Progress</Link></DropdownItem>
-                    <DropdownItem leftIcon={<CheckIcon />}><Link to="/completedOrders" onClick={() => setOpened(!opened)}>Completed</Link></DropdownItem>
+                    <DropdownItem leftIcon={<CheckIcon />}><Link to={{pathname: "/orders", activeTab: "tab2"}} onClick={() => setOpened(!opened)}>Completed</Link></DropdownItem>
                     {currentUser && currentUser.role === userConstants.ADMIN_ROLE && <hr className="dropdown-divider"/> &&
                     <DropdownItem leftIcon={<BoltIcon />}><Link to="/receivedOrders" onClick={() => setOpened(!opened)}>Received </Link></DropdownItem>}
                     {currentUser && currentUser.role === userConstants.COURIER_ROLE && <hr className="dropdown-divider"/> &&
