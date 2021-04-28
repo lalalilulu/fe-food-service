@@ -1,0 +1,6 @@
+# this is file to ignored changes for git
+
+*.idea
+**/node_modules
+.env
+

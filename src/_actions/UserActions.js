@@ -6,6 +6,7 @@ import { messageActions } from './MessageActions';
 export const userActions = {
     register,
     login,
+    loginSocialNetworks: login2,
     logout,
     update
 };
@@ -45,6 +46,29 @@ function login(email, password) {
                     dispatch(success(user));
                     const to = user.role === userConstants.ADMIN_ROLE ? '/receivedOrders' : user.role === userConstants.COURIER_ROLE ? '/deliveries' : '/menu';
                     history.push(to);
+                    dispatch(messageActions.success('You have successfully logged in to food delivery app'));
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    dispatch(messageActions.error(error.toString()));
+                }
+            );
+    };
+
+    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
+    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+}
+
+function login2(name, email) {
+    return dispatch => {
+        dispatch(request({ email }));
+
+        userService.login2(name, email)
+            .then(
+                user => {
+                    dispatch(success(user));
+                    history.push('/menu');
                     dispatch(messageActions.success('You have successfully logged in to food delivery app'));
                 },
                 error => {

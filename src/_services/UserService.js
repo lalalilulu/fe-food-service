@@ -2,6 +2,7 @@ import { authHeader } from '../_helpers/AuthHeader';
 
 export const userService = {
         login,
+        login2,
         logout,
         register,
         update
@@ -18,6 +19,21 @@ function login(email, password) {
         .then(handleResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('user', JSON.stringify(user));
+            return user;
+        });
+}
+
+function login2(name, email) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email })
+    };
+
+    return fetch("http://localhost:3000/authenticate/socialNetworks", requestOptions)
+        .then(handleResponse)
+        .then(user => {
             localStorage.setItem('user', JSON.stringify(user));
             return user;
         });

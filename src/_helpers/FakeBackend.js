@@ -29,6 +29,8 @@ export function configureFakeBackend() {
                         return register();
                     case url.match(/\/users\/\d+$/) && method === 'PUT':
                         return updateUser();
+                    case url.endsWith('/authenticate/socialNetworks') && method === 'POST':
+                        return loginSN();
                     case url.endsWith('/orders/create') && method === 'POST':
                         return createOrder();
                     case url.match(/\/orders\/assign\/\d+$/) && method === 'GET':
@@ -110,6 +112,32 @@ export function configureFakeBackend() {
                 localStorage.setItem('user', JSON.stringify(body));
                 localStorage.setItem('users', JSON.stringify(users));
                 return ok(replacedUser);
+            }
+
+            function loginSN() {
+                const { name, email } = body;
+                let user = users.find(x => x.email === email);
+                if (!user) {
+                    user = {
+                        role: userConstants.USER_ROLE,
+                        name: name,
+                        email: email,
+                        phone: '',
+                        token: 'fake-jwt-token'
+                    }
+                    user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
+                    users.push(user);
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+
+                return ok({
+                    id: user.id,
+                    role: user.role,
+                    name: user.name,
+                    email: user.email,
+                    phone: user.phone,
+                    token: 'fake-jwt-token'
+                });
             }
 
             function createOrder() {

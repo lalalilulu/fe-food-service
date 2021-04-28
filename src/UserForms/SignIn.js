@@ -10,6 +10,7 @@ import {toast} from "react-toastify";
 import {cartActions} from "../_actions/CartActions";
 import {isCorrectEmail} from "../_helpers/Utils";
 import {messageActions} from "../_actions/MessageActions";
+import GoogleAuth from "../Auth/GoogleAuth";
 import "./style.scss";
 
 function SignIn() {
@@ -19,7 +20,7 @@ function SignIn() {
         email: "",
         password: ""
     });
-    const { email, password } = inputs;
+    const {email, password} = inputs;
     const dispatch = useDispatch();
     const notification = useSelector(state => state.notification);
 
@@ -27,15 +28,15 @@ function SignIn() {
     useEffect(() => {
         dispatch(userActions.logout());
         dispatch(cartActions.clear());
-        if(notification.message) {
+        if (notification.message) {
             setLoading(false);
             dispatch(messageActions.clear());
         }
     }, [notification.message, dispatch]);
 
     function handleChange(e) {
-        const { name, value } = e.target;
-        setInputs(inputs => ({ ...inputs, [name]: value }));
+        const {name, value} = e.target;
+        setInputs(inputs => ({...inputs, [name]: value}));
     }
 
     function handleSubmit(e) {
@@ -46,13 +47,20 @@ function SignIn() {
         }
         if (!password) {
             toast.error("Password is required");
-        }
-        else if (!isCorrectEmail(email)) {
+        } else if (!isCorrectEmail(email)) {
             toast.error("Please enter correct email address");
         } else {
             setLoading(true);
             setTimeout(() => dispatch(userActions.login(email, password)), 50);
         }
+    }
+
+    function handleFacebookLogin() {
+        dispatch(messageActions.error('Facebook Login is not implemented'));
+    }
+
+    function handleVKLogin() {
+        dispatch(messageActions.error('VK Login is not implemented'));
     }
 
     return (
@@ -63,10 +71,12 @@ function SignIn() {
                 </div>
                 <div className="modal-body text-center">
                     <div className="md-form md-5">
-                        <Input type="email" name="email" value={inputs.email} id="email" onChange={handleChange} labelContent="Enter email"/>
+                        <Input type="email" name="email" value={inputs.email} id="email" onChange={handleChange}
+                               labelContent="Enter email"/>
                     </div>
                     <div className="md-form md-5">
-                        <Input type="password" name="password" value={inputs.password} id="password" onChange={handleChange} labelContent="Password"/>
+                        <Input type="password" name="password" value={inputs.password} id="password"
+                               onChange={handleChange} labelContent="Password"/>
                     </div>
                 </div>
 
@@ -77,13 +87,14 @@ function SignIn() {
                     </button>
                 </div>
 
-                {/*<div className="login-social-networks">*/}
-                {/*    <img className="social-n" src={facebook} alt="Facebook"/>*/}
-                {/*    <img className="social-n" src={vk} alt="VK"/>*/}
-                {/*    <img className="social-n" src={googlePlus} alt="G+"/>*/}
-                {/*</div>*/}
+                <div className="login-social-networks">
+                    <button type="button" className="sn-button" onClick={handleFacebookLogin}><img className="social-n" src={facebook} alt="Facebook"/></button>
+                    <button type="button" className="sn-button" onClick={handleVKLogin}><img className="social-n" src={vk} alt="VK"/></button>
+                    <GoogleAuth children=<img className="social-n" src={googlePlus} alt="G+"/>/>
+                </div>
 
-                <p className="form-text text-center">New Here? <Link to="/signup" className="custom-link">Create a free account</Link></p>
+                <p className="form-text text-center">New Here? <Link to="/signup" className="custom-link">Create a free
+                    account</Link></p>
             </form>
         </div>
     );

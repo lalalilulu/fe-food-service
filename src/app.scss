@@ -152,6 +152,17 @@ a:hover, a:focus {
   margin: 3% 5% 0;
 }
 
+button,
+button:active,
+button:focus {
+  outline: none;
+}
+
+.sn-button {
+  background-color: $background-primary-color;
+  border: none;
+}
+
 @media only screen and (max-width: 411px) and (orientation: portrait)  {
   .counter{
     margin-left: 5%;
