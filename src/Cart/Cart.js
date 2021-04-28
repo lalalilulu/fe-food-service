@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {TextField} from '@material-ui/core';
 import Select from 'react-select';
-import CartOrderTable from "../CartOrderTable/CartOrderTable";
+import CartOrderTable from "./CartOrderTable/CartOrderTable";
 import Input from "../Input/Input";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -11,9 +11,9 @@ import {toast} from "react-toastify";
 import {orderConstants} from "../_constants/OrderConstants";
 import {orderActions} from "../_actions/OrderActions";
 import {Link} from "react-router-dom";
-import "./cart.scss";
 import {cartActions} from "../_actions/CartActions";
 import {isNumeric} from "../_helpers/Utils";
+import "./style.scss";
 
 function Cart() {
 

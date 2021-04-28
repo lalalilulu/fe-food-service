@@ -1,0 +1,27 @@
+@import "../../app";
+
+.custom-table {
+  margin-top: 3%;
+  width: 100%;
+  font-family: $secondary-font-family;
+  font-size: 15px;
+  color: $primary-text-color;
+  justify-content: center;
+}
+
+.order-total, .order-total-price {
+  color: $accent-color;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.order-total, {
+  text-align: end;
+}
+
+@media (max-width: 414px) {
+  .image-header, .image-column {
+    display: none;
+  }
+}
+

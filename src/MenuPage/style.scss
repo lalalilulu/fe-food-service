@@ -1,0 +1,199 @@
+@import "../app";
+
+.arrow-button {
+  width: 32px;
+  height: 32px;
+  background-color: $default-primary-color;
+  fill: $background-primary-color;
+  border-radius: 50%;
+  padding: 6px;
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 100ms;
+}
+
+.arrow-button:hover {
+  cursor: pointer;
+  filter: brightness(1.5);
+  transform: scale(1.05);
+}
+
+.menu-container {
+  padding-right: 0;
+  overflow: hidden;
+}
+
+.search-row {
+  margin-left: 3px;
+}
+
+.header-row {
+  margin: 15px 0 10px;
+}
+
+.header-row h3 {
+  font-family: $secondary-font-family;
+  font-size: 22px;
+  color: $secondary-text-color;
+  margin: 5px 10px 5px 0;
+}
+
+.my-cards {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(5, [col] 1fr);
+  padding: 0;
+  margin-right: 10px;
+}
+
+.my-card {
+  grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  height: 385px;
+  text-align: center;
+  margin: 0 1.5% 1.5% 0;
+  box-shadow: $box-shadow;
+  border-radius: 12px;
+  transition: .5s;
+}
+
+@media (max-width: 1500px) {
+  .my-cards {
+    grid-template-columns: repeat(4, [col] 1fr);
+  }
+}
+
+@media (max-width: 1270px) {
+  .my-cards {
+    grid-template-columns: repeat(3, [col] 1fr);
+  }
+}
+
+@media (max-width: 1223px) {
+  .my-cards {
+    grid-template-columns: repeat(4, [col] 1fr);
+  }
+}
+
+@media (max-width: 955px) {
+  .my-cards {
+    grid-template-columns: repeat(3, [col] 1fr);
+  }
+}
+
+@media (max-width: 715px) {
+  .my-cards {
+    grid-template-columns: repeat(2, [col] 1fr);
+  }
+}
+
+@media (max-width: 475px) {
+  .my-cards {
+    grid-template-columns: repeat(1, [col] 1fr);
+  }
+}
+
+.my-card:hover, .my-card:focus {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.custom-card-container {
+  text-decoration: none;
+  color: $primary-text-color;
+}
+
+.card-img {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  justify-content: center;
+}
+
+.card-img p {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  font-size: 36px;
+  line-height: 175px;
+  color: $background-primary-color;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.card-img img {
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  margin: 5% auto;
+}
+
+.smooth-image {
+  transition: opacity 1s;
+}
+
+.image-visible {
+  opacity: 1;
+}
+
+.image-hidden {
+  opacity: 0;
+}
+
+.card-body {
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+.card-body p {
+  white-space: pre-wrap;
+}
+
+.card-wrapper {
+  display: flex;
+  height: 380px;
+  flex-direction: column;
+}
+
+.my-card-footer {
+  margin-top: auto;
+  font-family: $secondary-font-family;
+}
+
+.itemPrice, .notAvailable {
+  font-weight: bold;
+}
+
+.notAvailable {
+  font-size: 18px;
+  padding-bottom: 6px;
+}
+
+.cart-item-btn {
+  background: $light-primary-color;
+  border-radius: 10px;
+  border: 0;
+  color: $dark-primary-color;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.cart-item-btn:focus, .cart-item-btn:hover {
+  background: $default-primary-color;
+  color: $background-primary-color;
+  cursor: pointer;
+}
+
+.opacity100 {
+  opacity: 1;
+}
+
+.opacity50 {
+  opacity: 0.5;
+}

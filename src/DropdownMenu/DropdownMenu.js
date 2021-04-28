@@ -11,7 +11,7 @@ import {ReactComponent as DeliveryIcon} from "../_assets/icons/delivery.svg";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {userConstants} from "../_constants/UserConstants";
-import "./dropdown.scss";
+import "./style.scss";
 
 
 function DropdownMenu() {

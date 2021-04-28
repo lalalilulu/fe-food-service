@@ -1,5 +1,5 @@
 import React from "react";
-import "./input.scss";
+import "./style.scss";
 
 function Input({type, id, name, value, onChange, labelContent}) {
 

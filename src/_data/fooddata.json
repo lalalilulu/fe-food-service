@@ -237,6 +237,24 @@
 			"status": "published"
 		},
 		{
+			"name": "Greek Pizza",
+			"id": "124",
+			"description": "Greek Pizza is topped with feta, spinach, and olives for a colorful meal with Mediterranean inspiration. This is a white pizza that is simply brushed with olive oil – a fun way to mix up pizza night!",
+			"image": "https://www.cookingclassy.com/wp-content/uploads/2013/10/greek-pizza2+srgb.-450x500.jpg",
+			"category": "pizzas",
+			"ingredients": [
+				"yeast dough",
+				"feta cheese",
+				"kalamata olives",
+				"baby spinach",
+				"olive oil",
+				"roasted red peppers",
+				"red onion"
+			],
+			"price": 27,
+			"status": "published"
+		},
+		{
 			"name": "Chicken & Pesto Pizza",
 			"id": "125",
 			"description": "The absolute perfect weeknight meal that comes together in minutes! For it we use rotisserie chicken, fresh tomatoes, pesto and cheese",
