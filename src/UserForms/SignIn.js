@@ -11,6 +11,8 @@ import {cartActions} from "../_actions/CartActions";
 import {isCorrectEmail} from "../_helpers/Utils";
 import {messageActions} from "../_actions/MessageActions";
 import GoogleAuth from "../Auth/GoogleAuth";
+import VkAuth from "../Auth/VkAuth";
+import FbAuth from "../Auth/FbAuth";
 import "./style.scss";
 
 function SignIn() {
@@ -55,14 +57,6 @@ function SignIn() {
         }
     }
 
-    function handleFacebookLogin() {
-        dispatch(messageActions.error('Facebook Login is not implemented'));
-    }
-
-    function handleVKLogin() {
-        dispatch(messageActions.error('VK Login is not implemented'));
-    }
-
     return (
         <div className="container-md justify-content-center form-container">
             <form onSubmit={handleSubmit}>
@@ -72,7 +66,7 @@ function SignIn() {
                 <div className="modal-body text-center">
                     <div className="md-form md-5">
                         <Input type="email" name="email" value={inputs.email} id="email" onChange={handleChange}
-                               labelContent="Enter email"/>
+                               labelContent="Email"/>
                     </div>
                     <div className="md-form md-5">
                         <Input type="password" name="password" value={inputs.password} id="password"
@@ -88,8 +82,8 @@ function SignIn() {
                 </div>
 
                 <div className="login-social-networks">
-                    <button type="button" className="sn-button" onClick={handleFacebookLogin}><img className="social-n" src={facebook} alt="Facebook"/></button>
-                    <button type="button" className="sn-button" onClick={handleVKLogin}><img className="social-n" src={vk} alt="VK"/></button>
+                    <FbAuth children=<img className="social-n" src={facebook} alt="Facebook"/>/>
+                    <VkAuth children=<img className="social-n" src={vk} alt="VK"/>/>
                     <GoogleAuth children=<img className="social-n" src={googlePlus} alt="G+"/>/>
                 </div>
 

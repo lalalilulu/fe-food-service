@@ -1,26 +1,17 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
 import {userActions} from "../_actions/UserActions";
+import {messageActions} from "../_actions/MessageActions";
 
 function GoogleAuth({children}) {
 
     const dispatch = useDispatch();
 
-    //init auth2 for google authentication
-    const _onInit = auth2 => {
-        console.log('init OK', auth2)
-    }
-    const _onError = err => {
-        console.log('error', err)
-    }
-
     window.gapi.load('auth2', function () {
         window.gapi.auth2
             .init({
-                client_id:
-                process.env.REACT_APP_GOOGLE_CLIENT_ID,
+                client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
             })
-            .then(_onInit, _onError)
     });
 
      function handleClick() {
@@ -29,6 +20,9 @@ function GoogleAuth({children}) {
         auth2.signIn().then(googleUser => {
             const profile = googleUser.getBasicProfile();
             dispatch(userActions.loginSocialNetworks(profile.getName(), profile.getEmail()));
+        }).catch(error => {
+            console.log(error);
+            dispatch(messageActions.error(error.toString()));
         });
     }
 

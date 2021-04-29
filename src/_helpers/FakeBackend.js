@@ -121,7 +121,7 @@ export function configureFakeBackend() {
                     user = {
                         role: userConstants.USER_ROLE,
                         name: name,
-                        email: email,
+                        email: email ? email : '',
                         phone: '',
                         token: 'fake-jwt-token'
                     }
