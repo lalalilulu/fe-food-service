@@ -9,8 +9,9 @@ import {ReactComponent as CheckIcon} from "../_assets/icons/check-mark.svg";
 import {ReactComponent as BoltIcon} from "../_assets/icons/bolt.svg";
 import {ReactComponent as DeliveryIcon} from "../_assets/icons/delivery.svg";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {userConstants} from "../_constants/UserConstants";
+import {cartActions} from "../_actions/CartActions";
 import "./style.scss";
 
 
@@ -25,6 +26,7 @@ function DropdownMenu() {
     }, [])
 
     const currentUser = useSelector(state => state.authentication.user);
+    const dispatch = useDispatch();
 
     function calcHeight(el) {
         const height = el.offsetHeight + 30;
@@ -67,7 +69,7 @@ function DropdownMenu() {
                     <DropdownItem
                         leftIcon={<UserLogInIcon />}>
                         {!currentUser && <Link to="/signin" onClick={() => setOpened(!opened)}>Sign In</Link>}
-                        {currentUser && <Link to="/signin" onClick={() => setOpened(!opened)}>Sign Out</Link>}
+                        {currentUser && <Link to="/signin" onClick={() => {dispatch(cartActions.clear()); setOpened(!opened)}}>Sign Out</Link>}
                     </DropdownItem>
                 </div>
             </CSSTransition>
